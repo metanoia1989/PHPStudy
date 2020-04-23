@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>PHPEMS模拟考试系统</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.75, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="files/public/css/bootstrap.css" />
+	<link rel="stylesheet/less" type="text/css" href="files/public/css/pe.less" />
+	<link rel="stylesheet" href="files/public/css/swiper.min.css">
+	<script src="files/public/js/less.min.js"></script>
+	<script src="files/public/js/jquery.min.js"></script>
+	<script src="files/public/js/swiper.min.js"></script>
+	<script src="files/public/js/bootstrap.min.js"></script>
+	<script src="files/public/js/bootstrap-datetimepicker.js"></script>
+	<script src="files/public/js/all.fine-uploader.min.js"></script>
+	<script src="files/public/js/ckeditor/ckeditor.js"></script>
+	<script src="files/public/js/pe.app.js"></script>
+</head><body>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="pages">
+            <div class="topbar">
+	<div class="topbar-box">
+		<div class="col-xs-4">
+			<ul class="list-unstyled list-inline">
+				<li>
+					<a href="" class="menu">
+						新乡市落笔千言网络技术有限公司
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-xs-8">
+			<ul class="list-unstyled list-inline text-right">
+								<li>
+					<a href="javascript:;" onclick="javascript:$.loginbox.show();" class="menu">
+						登陆
+					</a>
+				</li>
+				<li>|</li>
+				<li>
+					<a href="index.php?user-app-register" class="menu">
+						注册
+					</a>
+				</li>
+				<li>|</li>
+				<li>
+					<a href="index.php?user-app-register-findpassword" class="menu">
+						忘记密码
+					</a>
+				</li>
+								<li>|</li>
+				<li>
+					<a href="" class="menu">
+						联系我们
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="header">
+	<div class="nav">
+		<div class="col-xs-3">
+			<h1 class="logo">PHPEMS 6.0</h1>
+		</div>
+		<div class="col-xs-9">
+			<ul class="list-unstyled list-inline text-right">
+				<li>
+					<a href="index.php" class="menu">
+						首页
+					</a>
+				</li>
+				<li>
+					<a href="index.php?content" class="menu">
+						新闻
+					</a>
+				</li>
+				<li>
+					<a href="index.php?seminar" class="menu">
+						专题
+					</a>
+				</li>
+				<li>
+					<a href="index.php?course" class="menu">
+						课程
+					</a>
+				</li>
+				<li>
+					<a href="index.php?exam" class="menu">
+						考试
+					</a>
+				</li>
+				<li>
+					<a href="index.php?certificate" class="menu">
+						证书
+					</a>
+				</li>
+				<li>
+					<a href="index.php?docs" class="menu">
+						文档
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>			<div class="content">
+				<div class="col-xs-9">
+					<div class="content-box">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+                                								<div class="swiper-slide">
+									<a href="index.php?content-app-content&contentid=89">
+										<img src="files/attach/images/content/20190725/15640582706151.jpg" />
+									</a>
+								</div>
+															</div>
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+					<div class="content-box padding">
+						<h2 class="title">
+							最新考试
+							<a href="index.php?exam" class="badge pull-right">更多 <em class="glyphicon glyphicon-plus"></em> </a>
+						</h2>
+						<ul class="list-box list-unstyled">
+                            							<li class="col-xs-4 box">
+								<a href="index.php?exam-app-basics-detail&basicid=11">
+									<div class="img">
+										<img src="files/attach/images/content/20190902/15674144561812.jpg" />
+									</div>
+									<h5 class="box-title">测试新科目</h5>
+									<div class="intro">
+										<p></p>
+									</div>
+								</a>
+							</li>
+                                                        							<li class="col-xs-4 box">
+								<a href="index.php?exam-app-basics-detail&basicid=10">
+									<div class="img">
+										<img src="files/attach/images/content/20190708/15625595523841.jpg" />
+									</div>
+									<h5 class="box-title">公共数学</h5>
+									<div class="intro">
+										<p>本考场为PHPEMS系统演示考场</p>
+									</div>
+								</a>
+							</li>
+                                                        							<li class="col-xs-4 box">
+								<a href="index.php?exam-app-basics-detail&basicid=8">
+									<div class="img">
+										<img src="files/attach/images/content/20190708/15625595523841.jpg" />
+									</div>
+									<h5 class="box-title">英语</h5>
+									<div class="intro">
+										<p>本考场为PHPEMS系统演示考场</p>
+									</div>
+								</a>
+							</li>
+                            						</ul>
+						<ul class="list-box list-unstyled">
+                                                        							<li class="col-xs-4 box">
+								<a href="index.php?exam-app-basics-detail&basicid=7">
+									<div class="img">
+										<img src="files/attach/images/content/20190708/15625595523841.jpg" />
+									</div>
+									<h5 class="box-title">电力测试</h5>
+									<div class="intro">
+										<p>本考场为PHPEMS系统演示考场</p>
+									</div>
+								</a>
+							</li>
+                                                        							<li class="col-xs-4 box">
+								<a href="index.php?exam-app-basics-detail&basicid=6">
+									<div class="img">
+										<img src="files/attach/images/content/20190708/15625595523841.jpg" />
+									</div>
+									<h5 class="box-title">请问请问</h5>
+									<div class="intro">
+										<p>本考场为PHPEMS系统演示考场</p>
+									</div>
+								</a>
+							</li>
+                                                        							<li class="col-xs-4 box">
+								<a href="index.php?exam-app-basics-detail&basicid=5">
+									<div class="img">
+										<img src="files/attach/images/content/20190708/15625595523841.jpg" />
+									</div>
+									<h5 class="box-title">手机加个试试</h5>
+									<div class="intro">
+										<p>本考场为PHPEMS系统演示考场</p>
+									</div>
+								</a>
+							</li>
+                                                        						</ul>
+					</div>
+					<div class="content-box padding">
+						<h2 class="title">
+							最新课程
+							<a href="index.php?course" class="badge pull-right">更多 <em class="glyphicon glyphicon-plus"></em> </a>
+						</h2>
+						<ul class="list-unstyled list-box">
+                            							<li class="col-xs-4 box">
+								<a href="index.php?course-app-course&csid=1">
+									<div class="img">
+										<img src="files/attach/images/content/20190719/15635014035375.jpg" />
+									</div>
+									<h5 class="box-title">会计基础</h5>
+									<div class="intro">
+										<p>会计基础会计基础会计基础会计基础会计基础会计基础会计...</p>
+									</div>
+								</a>
+							</li>
+                                                        						</ul>
+					</div>
+					<div class="content-box padding">
+						<h2 class="title">
+							热点新闻
+							<a href="index.php?content" class="badge pull-right">更多 <em class="glyphicon glyphicon-plus"></em> </a>
+						</h2>
+						<ul class="list-unstyled list-img">
+                            							<li class="border morepadding">
+								<h4 class="shorttitle">
+									<a href="index.php?content-app-content&contentid=79">这支“红色文艺轻骑兵”，习近平再次为他们点赞</a>
+								</h4>
+								<div class="intro">
+									<div class="col-xs-3 img">
+										<img src="files/attach/images/content/20190722/15637639215219.png" />
+									</div>
+									<div class="desc">
+										<p></p>
+										<p class="toolbar">
+                                            2019-07-22											<a href="index.php?content-app-content&contentid=79" class="hide btn btn-info pull-right more">查看详情</a>
+										</p>
+									</div>
+								</div>
+							</li>
+                            							<li class="border morepadding">
+								<h4 class="shorttitle">
+									<a href="index.php?content-app-content&contentid=80">香港特区政府强烈谴责示威者冲击中央驻港机构</a>
+								</h4>
+								<div class="intro">
+									<div class="col-xs-3 img">
+										<img src="files/attach/images/content/20190722/15637646361951.png" />
+									</div>
+									<div class="desc">
+										<p></p>
+										<p class="toolbar">
+                                            2019-07-22											<a href="index.php?content-app-content&contentid=80" class="hide btn btn-info pull-right more">查看详情</a>
+										</p>
+									</div>
+								</div>
+							</li>
+                            							<li class="border morepadding">
+								<h4 class="shorttitle">
+									<a href="index.php?content-app-content&contentid=81">华春莹接棒陆慷任外交部新闻司司长 陆慷新职公开</a>
+								</h4>
+								<div class="intro">
+									<div class="col-xs-3 img">
+										<img src="files/attach/images/content/20190722/15637648113561.png" />
+									</div>
+									<div class="desc">
+										<p></p>
+										<p class="toolbar">
+                                            2019-07-22											<a href="index.php?content-app-content&contentid=81" class="hide btn btn-info pull-right more">查看详情</a>
+										</p>
+									</div>
+								</div>
+							</li>
+                            							<li class="border morepadding">
+								<h4 class="shorttitle">
+									<a href="index.php?content-app-content&contentid=82">孙杨夺金后澳选手霍顿拒同登领奖台 孙杨回应</a>
+								</h4>
+								<div class="intro">
+									<div class="col-xs-3 img">
+										<img src="files/attach/images/content/20190722/15637651158587.png" />
+									</div>
+									<div class="desc">
+										<p>孙杨夺金后澳选手霍顿拒同登领奖台 孙杨回应</p>
+										<p class="toolbar">
+                                            2019-07-22											<a href="index.php?content-app-content&contentid=82" class="hide btn btn-info pull-right more">查看详情</a>
+										</p>
+									</div>
+								</div>
+							</li>
+                            							<li class="border morepadding">
+								<h4 class="shorttitle">
+									<a href="index.php?content-app-content&contentid=83">任正非：特朗普希望将华为作为筹码 中国不会买账</a>
+								</h4>
+								<div class="intro">
+									<div class="col-xs-3 img">
+										<img src="files/attach/images/content/20190722/15637653198035.png" />
+									</div>
+									<div class="desc">
+										<p></p>
+										<p class="toolbar">
+                                            2019-07-22											<a href="index.php?content-app-content&contentid=83" class="hide btn btn-info pull-right more">查看详情</a>
+										</p>
+									</div>
+								</div>
+							</li>
+                            							<li class="border morepadding">
+								<h4 class="shorttitle">
+									<a href="index.php?content-app-content&contentid=84">重大历史时刻 科创板公司今日上市交易</a>
+								</h4>
+								<div class="intro">
+									<div class="col-xs-3 img">
+										<img src="files/attach/images/content/20190722/15637655197300.png" />
+									</div>
+									<div class="desc">
+										<p></p>
+										<p class="toolbar">
+                                            2019-07-22											<a href="index.php?content-app-content&contentid=84" class="hide btn btn-info pull-right more">查看详情</a>
+										</p>
+									</div>
+								</div>
+							</li>
+                            							<li class="border morepadding">
+								<h4 class="shorttitle">
+									<a href="index.php?content-app-content&contentid=85">4年后中国终重回第一 但千万别忽视美国真正实力</a>
+								</h4>
+								<div class="intro">
+									<div class="col-xs-3 img">
+										<img src="files/attach/images/content/20190722/15637657089146.png" />
+									</div>
+									<div class="desc">
+										<p></p>
+										<p class="toolbar">
+                                            2019-07-22											<a href="index.php?content-app-content&contentid=85" class="hide btn btn-info pull-right more">查看详情</a>
+										</p>
+									</div>
+								</div>
+							</li>
+                            							<li class="border morepadding">
+								<h4 class="shorttitle">
+									<a href="index.php?content-app-content&contentid=86">英舰跟踪我海军神盾舰 雷达失灵遭反向锁定后跑了</a>
+								</h4>
+								<div class="intro">
+									<div class="col-xs-3 img">
+										<img src="files/attach/images/content/20190722/15637664197472.png" />
+									</div>
+									<div class="desc">
+										<p></p>
+										<p class="toolbar">
+                                            2019-07-22											<a href="index.php?content-app-content&contentid=86" class="hide btn btn-info pull-right more">查看详情</a>
+										</p>
+									</div>
+								</div>
+							</li>
+                            							<li class="border morepadding">
+								<h4 class="shorttitle">
+									<a href="index.php?content-app-content&contentid=87">陆军承办“国际军事比赛2019”各项准备工作基本就绪</a>
+								</h4>
+								<div class="intro">
+									<div class="col-xs-3 img">
+										<img src="files/attach/images/content/20190722/15637667042844.png" />
+									</div>
+									<div class="desc">
+										<p>陆军承办“国际军事比赛-2019”各项准备工作基本就绪
+
+　　首支外军参赛队入驻库尔勒赛区</p>
+										<p class="toolbar">
+                                            2019-07-22											<a href="index.php?content-app-content&contentid=87" class="hide btn btn-info pull-right more">查看详情</a>
+										</p>
+									</div>
+								</div>
+							</li>
+                            						</ul>
+					</div>
+				</div>
+				<div class="col-xs-3 nopadding">
+					<div class="content-box padding">
+						<h2 class="title">网站公告</h2>
+						<ul class="list-unstyled list-txt">
+                            							<li class="border">
+								<a target="_blank" href="index.php?content-app-content&contentid=87">
+                                    陆军承办“国际军事比赛2019”各...								</a>
+							</li>
+                            						</ul>
+					</div>
+					<div class="content-box padding">
+						<h2 class="title">精彩专题<a href="index.php?seminar" class="badge pull-right">更多 <em class="glyphicon glyphicon-plus"></em> </a> </h2>
+						<ul class="list-unstyled list-img">
+                            							<li class="border padding">
+								<a href="index.php?seminar-app-seminar&seminarid=1">
+									<div class="intro">
+										<div class="col-xs-5 img noleftpadding">
+											<img src="files/attach/images/content/20190705/15623349496058.jpg" />
+										</div>
+										<div class="desc">
+											<p>测试专题</p>
+										</div>
+									</div>
+								</a>
+							</li>
+													</ul>
+					</div>
+					<div class="content-box padding hide">
+						<h2 class="title">点击排行</h2>
+						<p>
+							<img src="../h1.jpg"/>
+						</p>
+						<ul class="list-unstyled list-txt">
+							<li class="striped">
+								<span class="badge">1</span> PHPEMS6.0开发界面预览
+							</li>
+							<li class="striped">
+								<span class="badge">2</span> PHPEMS6.0开发界面预览
+							</li>
+							<li class="striped">
+								<span class="badge">3</span> PHPEMS6.0开发界面预览
+							</li>
+							<li class="striped">
+								<span class="badge">4</span> PHPEMS6.0开发界面预览
+							</li>
+							<li class="striped">
+								<span class="badge">5</span> PHPEMS6.0开发界面预览
+							</li>
+							<li class="striped">
+								<span class="badge">6</span> PHPEMS6.0开发界面预览
+							</li>
+							<li class="striped">
+								<span class="badge">7</span> PHPEMS6.0开发界面预览
+							</li>
+							<li class="striped">
+								<span class="badge">8</span> PHPEMS6.0开发界面预览
+							</li>
+						</ul>
+					</div>
+					<div class="content-box padding">
+						<h2 class="title">友情链接</h2>
+						<ul class="list-unstyled list-txt">
+														<li class="border">
+								<a target="_blank" href="index.php?content-app-content&contentid=87">
+                                    陆军承办“国际军事比赛2019”各...								</a>
+							</li>
+													</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+	<div class="footer-content">
+		<p class="text-center">
+			PHPEMS在线模拟考试系统 著作权登记号：2013 SR 113189
+		</p>
+		<p class="text-center">
+			Copyright © phpems.net  2020		</p>
+	</div>
+</div>		</div>
+	</div>
+</div>
+<script>
+    $(function(){
+        var mySwiper = new Swiper ('.swiper-container',{
+            autoplay: true,
+            loop:true,
+            pagination: {
+                el: '.swiper-pagination'
+            }
+        });
+    });
+</script>
+</body>
+</html>
