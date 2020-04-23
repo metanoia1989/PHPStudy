@@ -3,7 +3,7 @@ class A
 {
     public static function call()
     {
-        echo "class A<br>";
+        echo "class A.\n";
     }
 
     public static function test()
@@ -17,7 +17,7 @@ class B extends A
 {
     public static function call()
     {
-        echo "class B.<br>";
+        echo "class B.\n";
     }
 }
 
