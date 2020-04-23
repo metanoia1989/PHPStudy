@@ -1,6 +1,13 @@
 {
     "require": {
         "illuminate/routing": "^v7.7.1",
-        "illuminate/events": "^v7.7.1"
+        "illuminate/events": "^v7.7.1",
+        "illuminate/database": "^v7.7.1",
+        "illuminate/view": "^v7.7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
     }
 }
