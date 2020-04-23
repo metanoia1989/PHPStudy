@@ -1,0 +1,6 @@
+{
+    "require": {
+        "illuminate/routing": "^v7.7.1",
+        "illuminate/events": "^v7.7.1"
+    }
+}
