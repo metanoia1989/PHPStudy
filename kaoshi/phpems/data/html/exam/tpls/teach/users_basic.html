@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>PHPEMS模拟考试系统后台管理</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="files/public/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="files/public/css/datetimepicker.css" />
+	<link rel="stylesheet" type="text/css" href="files/public/css/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="files/public/css/pe.master.css" />
+	<script src="files/public/js/jquery.min.js"></script>
+	<script src="files/public/js/jquery-ui.min.js"></script>
+	<script src="files/public/js/bootstrap.min.js"></script>
+	<script src="files/public/js/bootstrap-datetimepicker.js"></script>
+	<script src="files/public/js/all.fine-uploader.min.js"></script>
+	<script src="files/public/js/ckeditor/ckeditor.js"></script>
+	<script src="files/public/js/pe.master.js"></script>
+</head><body>
+<div class="container-fluid navbar" style="margin-top:0px;margin-bottom:0px;background-color:#337AB7;">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-12">
+				<ul class="list-unstyled list-inline">
+					<li>
+						<span class="logo">PHPEMS6.0教师管理</span>
+					</li>
+					<li class="menu"><a href="index.php?course-teach">课程</a></li>
+					<li class="menu active"><a href="index.php?exam-teach">考试</a></li>
+					<li class="pull-right">
+						<div class="btn-group" style="margin-top: 15px;">
+							<button type="button" class="btn btn-info"><em class="glyphicon glyphicon-user"></em> 教师管理员</button>
+							<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="index.php?user-center"><em class="glyphicon glyphicon-user"></em> 用户中心</a></li>
+                                <li><a href="index.php?exam-teach"><em class="glyphicon glyphicon-book"></em> 教师管理</a></li>                                								<li><a class="ajax" href="index.php?user-app-logout"><em class="glyphicon glyphicon-log-out"></em> 退出</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div><div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2 leftmenu">
+				<style>.panel-heading a{color:#FFFFFF;text-decoration:none;}</style><div class="panel-group" id="panel-13465">	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-707348">				<em class="glyphicon glyphglyphicon glyphicon-th-large"></em> 考试设计			</a>		</div>		<div id="panel-element-707348" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="?exam-teach-basic">考场列表</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-2120901">				<em class="glyphicon glyphglyphicon glyphicon-wrench"></em> 课程成绩			</a>		</div>		<div id="panel-element-2120901" class="panel-collapse in collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-users">成绩管理</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212076">				<em class="glyphicon glyphglyphicon glyphicon-text-color"></em> 试题管理			</a>		</div>		<div id="panel-element-212076" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-questions">普通试题管理</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-rowsquestions">题帽题管理</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212096">				<em class="glyphicon glyphglyphicon glyphicon-duplicate"></em> 试卷管理			</a>		</div>		<div id="panel-element-212096" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-exams">试卷列表</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-autopage">随机组卷</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-selfpage">手工组卷</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-temppage">即时组卷</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212090">				<em class="glyphicon glyphglyphicon glyphicon-trash"></em> 回收站			</a>		</div>		<div id="panel-element-212090" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-recyle">普通试题</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-recyle-rows">题帽题</a></li>			</ul>		</div>	</div></div>			</div>
+			<div id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li><a href="index.php?exam-teach">考试</a></li>
+							<li class="active">课程成绩</li>
+						</ol>
+					</div>
+				</div>
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						课程成绩
+					</h4>
+					<form action="index.php?exam-teach-users" method="post">
+						<table class="table form-inline">
+							<thead>
+				                <tr>
+							        <th colspan="6" style="border-bottom: 0px;">搜索</th>
+				                </tr>
+				            </thead>
+							<tr>
+								<td>
+									考场ID：
+								</td>
+								<td>
+									<input name="search[basicid]" class="form-control" type="text" class="number" value=""/>
+								</td>
+								<td>
+									关键字：
+								</td>
+								<td>
+									<input class="form-control" name="search[keyword]" type="text" value=""/>
+								</td>
+								<td>
+									地区：
+								</td>
+					        	<td>
+					        		<select name="search[basicareaid]" class="form-control">
+						        		<option value="0">选择地区</option>
+								  										  		<option value="1">全国</option>
+								  										  		<option value="3">河南</option>
+								  										  		<option value="4">北京</option>
+								  										  		<option value="5">陕西</option>
+								  										  		<option value="6">河北</option>
+								  										  		<option value="7">天津</option>
+								  										  		<option value="8">山东</option>
+								  										  		<option value="9">江苏</option>
+								  										  		<option value="10">湖北</option>
+								  										  		<option value="11">辽宁</option>
+								  										  		<option value="12">贵州</option>
+								  										  		<option value="13">北京春雪</option>
+								  										  		<option value="14">云南</option>
+								  										  		<option value="15">四川</option>
+								  										  		<option value="16">安徽</option>
+								  										  		<option value="17">深圳</option>
+								  										  		<option value="18">吉林</option>
+								  										  		<option value="19">广东</option>
+								  										  		<option value="20">新疆</option>
+								  										  		<option value="21">广西</option>
+								  										  		<option value="22">福建</option>
+								  										  		<option value="23">湖南</option>
+								  										  		<option value="24">上海</option>
+								  										  		<option value="25">重庆</option>
+								  										  		<option value="26">江西</option>
+								  										  		<option value="27">浙江</option>
+								  										  		<option value="28">山西</option>
+								  									  		</select>
+					        	</td>
+					        </tr>
+					        <tr>
+					        	<td>
+									API标识：
+								</td>
+								<td>
+									<input class="form-control" name="search[basicapi]" type="text" value=""/>
+								</td>
+								<td>
+									科目：
+								</td>
+								<td>
+					        		<select name="search[basicsubjectid]" class="form-control">
+						        		<option value="0">选择科目</option>
+								  										  		<option value="1">演示课程</option>
+								  										  		<option value="2">测试科目二</option>
+								  									  		</select>
+					        	</td>
+								<td>
+									<button class="btn btn-primary" type="submit">提交</button>
+								</td>
+								<td></td>
+							</tr>
+						</table>
+						<div class="input">
+							<input type="hidden" value="1" name="search[argsmodel]" />
+						</div>
+					</form>
+			        <table class="table table-hover table-bordered">
+						<thead>
+							<tr class="info">
+			                    <th width="80">考场ID</th>
+						        <th>考场名称</th>
+						        <th>考场地区</th>
+						        <th>考试科目</th>
+						        <th width="100">操作</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                					        <tr>
+								<td>
+									8								</td>
+								<td>
+									英语								</td>
+								<td>
+									全国								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+										<a class="btn" href="index.php?exam-teach-users-scorelist&page=&basicid=8" title="成绩统计"><em class="glyphicon glyphicon-subscript"></em></a>
+										<a class="btn" href="index.php?exam-teach-users-exams&page=&basicid=8" title="主观题批改"><em class="glyphicon glyphicon-saved"></em></a>
+									</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									6								</td>
+								<td>
+									请问请问								</td>
+								<td>
+									广东								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+										<a class="btn" href="index.php?exam-teach-users-scorelist&page=&basicid=6" title="成绩统计"><em class="glyphicon glyphicon-subscript"></em></a>
+										<a class="btn" href="index.php?exam-teach-users-exams&page=&basicid=6" title="主观题批改"><em class="glyphicon glyphicon-saved"></em></a>
+									</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									5								</td>
+								<td>
+									手机加个试试								</td>
+								<td>
+									全国								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+										<a class="btn" href="index.php?exam-teach-users-scorelist&page=&basicid=5" title="成绩统计"><em class="glyphicon glyphicon-subscript"></em></a>
+										<a class="btn" href="index.php?exam-teach-users-exams&page=&basicid=5" title="主观题批改"><em class="glyphicon glyphicon-saved"></em></a>
+									</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									4								</td>
+								<td>
+									ceshi								</td>
+								<td>
+									全国								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+										<a class="btn" href="index.php?exam-teach-users-scorelist&page=&basicid=4" title="成绩统计"><em class="glyphicon glyphicon-subscript"></em></a>
+										<a class="btn" href="index.php?exam-teach-users-exams&page=&basicid=4" title="主观题批改"><em class="glyphicon glyphicon-saved"></em></a>
+									</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									3								</td>
+								<td>
+									测试考场								</td>
+								<td>
+									全国								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+										<a class="btn" href="index.php?exam-teach-users-scorelist&page=&basicid=3" title="成绩统计"><em class="glyphicon glyphicon-subscript"></em></a>
+										<a class="btn" href="index.php?exam-teach-users-exams&page=&basicid=3" title="主观题批改"><em class="glyphicon glyphicon-saved"></em></a>
+									</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									1								</td>
+								<td>
+									演示考场								</td>
+								<td>
+									全国								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+										<a class="btn" href="index.php?exam-teach-users-scorelist&page=&basicid=1" title="成绩统计"><em class="glyphicon glyphicon-subscript"></em></a>
+										<a class="btn" href="index.php?exam-teach-users-exams&page=&basicid=1" title="主观题批改"><em class="glyphicon glyphicon-saved"></em></a>
+									</div>
+								</td>
+					        </tr>
+					        			        	</tbody>
+			        </table>
+			        <ul class="pagination pull-right">
+									        </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid box" style="background-color:#337AB7;margin-bottom:0px;" id="footer">
+	<div class="row-fluid">
+		<div class="main itembox">
+			<div class="col-xs-12">
+				<ul class="list-unstyled">
+					<li class="text-center"><a href="">PHPEMS在线模拟考试系统 著作权登记号：2013 SR 113189</a></li>
+					<li class="text-center"><a href="">Copyright © phpems.net  2015-2016</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div></body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>PHPEMS模拟考试系统</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.75, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="files/public/css/bootstrap.css" />
+	<link rel="stylesheet/less" type="text/css" href="files/public/css/pe.less" />
+	<link rel="stylesheet" href="files/public/css/swiper.min.css">
+	<script src="files/public/js/less.min.js"></script>
+	<script src="files/public/js/jquery.min.js"></script>
+	<script src="files/public/js/swiper.min.js"></script>
+	<script src="files/public/js/bootstrap.min.js"></script>
+	<script src="files/public/js/bootstrap-datetimepicker.js"></script>
+	<script src="files/public/js/all.fine-uploader.min.js"></script>
+	<script src="files/public/js/ckeditor/ckeditor.js"></script>
+	<script src="files/public/js/pe.app.js"></script>
+	<script src="files/public/js/exam.app.js"></script>
+</head><body>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="pages">
+            <div class="topbar">
+	<div class="topbar-box">
+		<div class="col-xs-4">
+			<ul class="list-unstyled list-inline">
+				<li>
+					<a href="" class="menu">
+						新乡市落笔千言网络技术有限公司
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-xs-8">
+			<ul class="list-unstyled list-inline text-right">
+								<li>
+                    <span class="menu">欢迎您，教师管理员</span>
+				</li>
+				<li>|</li>
+				<li>
+					<a href="index.php?user-center" class="menu">
+						个人中心
+					</a>
+				</li>
+				<li>|</li>
+				<li>
+					<a href="index.php?user-app-logout" class="menu ajax">
+						退出
+					</a>
+				</li>
+								<li>|</li>
+				<li>
+					<a href="" class="menu">
+						联系我们
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="header">
+	<div class="nav">
+		<div class="col-xs-3">
+			<h1 class="logo">PHPEMS 6.0</h1>
+		</div>
+		<div class="col-xs-9">
+			<ul class="list-unstyled list-inline text-right">
+				<li>
+					<a href="index.php" class="menu">
+						首页
+					</a>
+				</li>
+				<li>
+					<a href="index.php?content" class="menu">
+						新闻
+					</a>
+				</li>
+				<li>
+					<a href="index.php?seminar" class="menu">
+						专题
+					</a>
+				</li>
+				<li>
+					<a href="index.php?course" class="menu">
+						课程
+					</a>
+				</li>
+				<li>
+					<a href="index.php?exam" class="menu">
+						考试
+					</a>
+				</li>
+				<li>
+					<a href="index.php?certificate" class="menu">
+						证书
+					</a>
+				</li>
+				<li>
+					<a href="index.php?docs" class="menu">
+						文档
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>			<div class="content">
+				<div class="col-xs-3" style="width: 20%">
+					<div class="content-box padding">
+                        <h2 class="title">功能导航</h2><ul class="list-unstyled list-txt">	<li class="border">		<a href="index.php?user-center">			<span class="glyphicon glyphicon-user"></span> 个人中心		</a>	</li>	<li class="border">		<a href="index.php?user-center-progress">			<span class="glyphicon glyphicon-stats"></span> 学习进度		</a>	</li>	<li  class="border active">		<a href="index.php?user-center-payfor">			<span class="glyphicon glyphicon-yen"></span> 积分充值		</a>	</li>	<li  class="border">		<a href="index.php?user-center-privatement">			<span class="glyphicon glyphicon-cog"></span> 个人设置		</a>	</li>	    	<li  class="border">		<a href="index.php?exam-teach">			<span class="glyphicon glyphicon-dashboard"></span> 教师管理		</a>	</li>    </ul>					</div>
+				</div>
+				<div class="col-xs-9 nopadding" style="width: 80%">
+					<div class="content-box padding">
+						<h2 class="title">
+                            积分充值
+						</h2>
+						<ul class="list-unstyled list-img">
+							<li class="border padding">
+								<div class="desc">
+									<form action="index.php?user-center-payfor" method="post" class="form-inline">
+										<fieldset>
+											<b>充值金额</b>
+											<input type="text" placeholder="0" size="2" name="money" class="form-control text-center" onchange="javascript:$('#moneycoin').html(parseInt($(this).val())*10);" needle="needle" datatype="number" min="1" msg="您最少充值1元，充值数必须为整数"/>  元，
+											1元 = 10积分，可兑换 <b id="moneycoin">0</b> 积分
+											<a href="#myModal" class="btn btn-primary badge pull-right" role="button" data-toggle="modal">代金券充值</a>
+											<button class="btn btn-primary badge pull-right" type="submit">充值</button>
+											<input type="hidden" name="payforit" value="1" />
+										</fieldset>
+									</form>
+								</div>
+							</li>
+							<li class="border padding">
+								<div class="desc">
+									<table class="table table-hover table-bordered">
+										<tr class="info">
+											<td>订单号</td>
+											<td>充值金额</td>
+											<td>下单时间</td>
+											<td>订单状态</td>
+											<td width="100">操作</td>
+										</tr>
+																			</table>
+																	</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+            <div class="footer">
+	<div class="footer-content">
+		<p class="text-center">
+			PHPEMS在线模拟考试系统 著作权登记号：2013 SR 113189
+		</p>
+		<p class="text-center">
+			Copyright © phpems.net  2020		</p>
+	</div>
+</div>		</div>
+	</div>
+</div>
+<form aria-hidden="true" id="myModal" method="post" class="modal fade" role="dialog" aria-labelledby="#myModalLabel" action="index.php?exam-app-basics-coupon">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-hidden="true" class="close" type="button" data-dismiss="modal">×</button>
+				<h4 class="modal-title" id="myModalLabel">代金券充值</h4>
+			</div>
+			<div class="modal-body" id="modal-body">
+				<div class="control-group">
+					<div class="controls">
+						<input type="text" class="form-control" name="couponsn" placeholder="请输入16位代金券号码" value="" needle="needle" msg="请输入16位代金券号码"/>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<input name="coupon" type="hidden" value="1">
+				<button class="btn btn-primary" type="submit">充值</button>
+			</div>
+		</div>
+	</div>
+</form>
+</body>
+</html>

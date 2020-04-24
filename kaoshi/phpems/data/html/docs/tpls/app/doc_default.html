@@ -15,7 +15,6 @@
 	<script src="files/public/js/all.fine-uploader.min.js"></script>
 	<script src="files/public/js/ckeditor/ckeditor.js"></script>
 	<script src="files/public/js/pe.app.js"></script>
-	<script src="files/public/js/exam.app.js"></script>
 </head><body>
 <div class="container-fluid">
 	<div class="row-fluid">
@@ -33,8 +32,8 @@
 		</div>
 		<div class="col-xs-8">
 			<ul class="list-unstyled list-inline text-right">
-								<li>
-                    <span class="menu">欢迎您，peadmin</span>
+                				<li>
+					<span class="menu">欢迎您，peadmin</span>
 				</li>
 				<li>|</li>
 				<li>
@@ -48,7 +47,7 @@
 						退出
 					</a>
 				</li>
-								<li>|</li>
+                				<li>|</li>
 				<li>
 					<a href="" class="menu">
 						联系我们
@@ -105,53 +104,27 @@
 	</div>
 </div>			<div class="content">
 				<div class="col-xs-9">
-										<div class="content-box padding">
+                    <div class="content-box padding">
 						<h2 class="title">
-							会议							<a href="index.php?seminar-app-category&catid=25" class="badge pull-right">更多 <em class="glyphicon glyphicon-plus"></em> </a>
-						</h2>
+                            考试							<a href="index.php?docs-app-category&catid=19" class="badge pull-right"> 返回 </a>
+							<a class="badge pull-right" href="index.php?docs-app-docs-history&docid=3">历史版本</a>
+                            							<a class="badge pull-right" href="index.php?docs-app-mydoc-edit&docid=3">编辑词条</a>
+                            						</h2>
 						<ul class="list-unstyled list-img">
-                            						</ul>
-					</div>
-										<div class="content-box padding">
-						<h2 class="title">
-							活动							<a href="index.php?seminar-app-category&catid=24" class="badge pull-right">更多 <em class="glyphicon glyphicon-plus"></em> </a>
-						</h2>
-						<ul class="list-unstyled list-img">
-                            							<li class="border morepadding">
-								<h4 class="shorttitle">测试专题</h4>
+							<li class="border morepadding">
+								<h2 class="shorttitle text-center">考试</h2>
 								<div class="intro">
-									<div class="col-xs-3 img">
-										<img src="files/attach/images/content/20190905/15676949748386.jpg" />
-									</div>
-									<div class="desc">
-										<p>测试专题</p>
-										<p class="toolbar">
-                                            2019-07-05											【 活动 】
-											<a href="index.php?seminar-app-seminar&seminarid=1" class="btn btn-info pull-right more">查看专题</a>
-										</p>
-									</div>
+									<div class="desc" id="content">
+                                        									</div>
 								</div>
 							</li>
-                            						</ul>
+						</ul>
 					</div>
-									</div>
+				</div>
 				<div class="col-xs-3 nopadding">
-					<div class="content-box padding">
-						<h2 class="title">推荐专题</h2>
-						<ul class="list-unstyled list-img">
-                            							<li class="border padding">
-								<a href="index.php?seminar-app-seminar&seminarid=1">
-									<div class="intro">
-										<div class="col-xs-5 img noleftpadding">
-											<img src="files/attach/images/content/20190705/15623349496058.jpg" />
-										</div>
-										<div class="desc">
-											<p>测试专题</p>
-										</div>
-									</div>
-								</a>
-							</li>
-                            						</ul>
+					<div class="content-box padding" id="questionindex" data-spy="affix" data-offset-top="150" style="top:-15px;">
+						<h2 class="title">导航</h2>
+						<ul class="list-unstyled list-txt" id="lemma"></ul>
 					</div>
 				</div>
 			</div>
@@ -166,5 +139,21 @@
 </div>		</div>
 	</div>
 </div>
+<script>
+	$(function(){
+		$('#content .wikititle').each(function(){
+			var _this = $(this);
+			_this.attr('id',Math.random().toString().substr(2))
+			if(_this[0].tagName.toUpperCase() == 'H1')
+			{
+			    $('#lemma').append($('<li class="border active"><a href="#'+_this.attr('id')+'">'+_this.html()+'</a></li>'));
+			}
+			else
+			{
+				$('#lemma').append($('<li class="border"><a href="#'+_this.attr('id')+'">&nbsp;&nbsp;'+_this.html()+'</a></li>'));
+			}
+		});
+	});
+</script>
 </body>
 </html>

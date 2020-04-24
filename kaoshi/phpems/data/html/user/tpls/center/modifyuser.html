@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>PHPEMS模拟考试系统</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.75, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="files/public/css/bootstrap.css" />
+	<link rel="stylesheet/less" type="text/css" href="files/public/css/pe.less" />
+	<link rel="stylesheet" href="files/public/css/swiper.min.css">
+	<script src="files/public/js/less.min.js"></script>
+	<script src="files/public/js/jquery.min.js"></script>
+	<script src="files/public/js/swiper.min.js"></script>
+	<script src="files/public/js/bootstrap.min.js"></script>
+	<script src="files/public/js/bootstrap-datetimepicker.js"></script>
+	<script src="files/public/js/all.fine-uploader.min.js"></script>
+	<script src="files/public/js/ckeditor/ckeditor.js"></script>
+	<script src="files/public/js/pe.app.js"></script>
+	<script src="files/public/js/exam.app.js"></script>
+</head><body>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="pages">
+            <div class="topbar">
+	<div class="topbar-box">
+		<div class="col-xs-4">
+			<ul class="list-unstyled list-inline">
+				<li>
+					<a href="" class="menu">
+						新乡市落笔千言网络技术有限公司
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-xs-8">
+			<ul class="list-unstyled list-inline text-right">
+								<li>
+                    <span class="menu">欢迎您，peadmin</span>
+				</li>
+				<li>|</li>
+				<li>
+					<a href="index.php?user-center" class="menu">
+						个人中心
+					</a>
+				</li>
+				<li>|</li>
+				<li>
+					<a href="index.php?user-app-logout" class="menu ajax">
+						退出
+					</a>
+				</li>
+								<li>|</li>
+				<li>
+					<a href="" class="menu">
+						联系我们
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="header">
+	<div class="nav">
+		<div class="col-xs-3">
+			<h1 class="logo">PHPEMS 6.0</h1>
+		</div>
+		<div class="col-xs-9">
+			<ul class="list-unstyled list-inline text-right">
+				<li>
+					<a href="index.php" class="menu">
+						首页
+					</a>
+				</li>
+				<li>
+					<a href="index.php?content" class="menu">
+						新闻
+					</a>
+				</li>
+				<li>
+					<a href="index.php?seminar" class="menu">
+						专题
+					</a>
+				</li>
+				<li>
+					<a href="index.php?course" class="menu">
+						课程
+					</a>
+				</li>
+				<li>
+					<a href="index.php?exam" class="menu">
+						考试
+					</a>
+				</li>
+				<li>
+					<a href="index.php?certificate" class="menu">
+						证书
+					</a>
+				</li>
+				<li>
+					<a href="index.php?docs" class="menu">
+						文档
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>			<div class="content">
+				<div class="col-xs-3" style="width: 20%">
+					<div class="content-box padding">
+                        <h2 class="title">功能导航</h2><ul class="list-unstyled list-txt">	<li class="border">		<a href="index.php?user-center">			<span class="glyphicon glyphicon-user"></span> 个人中心		</a>	</li>	<li class="border">		<a href="index.php?user-center-progress">			<span class="glyphicon glyphicon-stats"></span> 学习进度		</a>	</li>	<li  class="border">		<a href="index.php?user-center-payfor">			<span class="glyphicon glyphicon-yen"></span> 积分充值		</a>	</li>	<li  class="border active">		<a href="index.php?user-center-privatement">			<span class="glyphicon glyphicon-cog"></span> 个人设置		</a>	</li>		<li  class="border">		<a href="index.php?core-master">			<span class="glyphicon glyphicon-dashboard"></span> 后台管理		</a>	</li>	    </ul>					</div>
+				</div>
+				<div class="col-xs-9 nopadding" style="width: 80%">
+					<div class="content-box padding">
+						<h2 class="title">
+							个人资料
+							<a href="index.php?user-center-privatement-password" class="badge pull-right">修改密码</a>
+						</h2>
+						<ul class="list-unstyled list-img">
+							<li class="border padding">
+								<div class="desc">
+									<form action="index.php?user-center-privatement" method="post" class="form-horizontal">
+										<fieldset>
+																						<div class="form-group underline">
+												<div class="col-xs-2 tip">
+													头像												</div>
+												<div class="col-xs-8">
+													    	<script type="text/template" id="pe-template-userphoto">
+    		<div class="qq-uploader-selector" qq-drop-area-text="可将图片拖拽至此处上传" style="clear:both;max-width:270px;">
+            	<div class="qq-upload-button-selector" style="clear:both;">
+                	<ul class="qq-upload-list-selector list-unstyled" aria-live="polite" aria-relevant="additions removals" style="clear:both;">
+		                <li class="text-center">
+		                    <div class="thumbnail">
+								<img class="qq-thumbnail-selector" alt="点击上传新图片">
+								<input type="hidden" class="qq-edit-filename-selector" name="args[userphoto]" tabindex="0">
+							</div>
+		                </li>
+		            </ul>
+		            <ul class="qq-upload-list-selector list-unstyled" aria-live="polite" aria-relevant="additions removals" style="clear:both;">
+			            <li class="text-center">
+			                <div class="thumbnail">
+								<img class="qq-thumbnail-selector" src="files/attach/images/content/20190806/15650642813897.png" alt="点击上传新图片">
+								<input type="hidden" class="qq-edit-filename-selector" name="args[userphoto]" tabindex="0" value="files/attach/images/content/20190806/15650642813897.png">
+                			</div>
+			            </li>
+			        </ul>
+                </div>
+            </div>
+        </script>
+        <div class="fineuploader" attr-type="thumb" attr-template="pe-template-userphoto"></div>												</div>
+											</div>
+																						<div class="form-group underline">
+												<div class="col-xs-2 tip">
+													真实姓名												</div>
+												<div class="col-xs-8">
+													<input type="text" class="form-control noborder" placeholder="请输入真实姓名" value="test" name="args[usertruename]" id="usertruename" />												</div>
+											</div>
+																						<div class="form-group underline">
+												<div class="col-xs-2 tip">
+													手机号												</div>
+												<div class="col-xs-8">
+													<input type="text" class="form-control" value="13456789234" name="args[userphone]" id="userphone" />												</div>
+											</div>
+																						<div class="form-group underline">
+												<div class="col-xs-2 tip">
+													性别												</div>
+												<div class="col-xs-8">
+													<label class="radio-inline inline"><input type="radio" name="args[usergender]" id="usergender0" value="男" checked/> <span class="selector">男</span></label>&nbsp;&nbsp;<label class="radio-inline inline"><input type="radio" name="args[usergender]" id="usergender1" value="女" /> <span class="selector">女</span></label>&nbsp;&nbsp;												</div>
+											</div>
+																						<div class="form-group underline">
+												<div class="col-xs-2 tip">
+													地址												</div>
+												<div class="col-xs-8">
+													<input type="text" class="form-control" value="河南省郑州市管城区某地" name="args[useraddress]" id="useraddress" />												</div>
+											</div>
+																						<div class="form-group underline">
+												<div class="col-xs-2 tip">
+													个人简介												</div>
+												<div class="col-xs-8">
+													<textarea class="form-control" rows="5" placeholder="请输入个人简介" name="args[userprofile]" id="userprofile" ></textarea>												</div>
+											</div>
+																						<div class="form-group">
+												<label class="control-label col-sm-2"></label>
+												<div class="col-sm-10">
+													<button class="btn btn-primary" type="submit">提交</button>
+													<input type="hidden" name="modifyuserinfo" value="1"/>
+													<input type="hidden" name="page" value=""/>
+																									</div>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+            <div class="footer">
+	<div class="footer-content">
+		<p class="text-center">
+			PHPEMS在线模拟考试系统 著作权登记号：2013 SR 113189
+		</p>
+		<p class="text-center">
+			Copyright © phpems.net  2020		</p>
+	</div>
+</div>		</div>
+	</div>
+</div>
+</body>
+</html>

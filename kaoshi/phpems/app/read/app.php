@@ -17,14 +17,14 @@ class app
 		$this->html = $this->G->make('html');
 		$this->files = $this->G->make('files');
 		$this->session = $this->G->make('session');
-		$this->category = $this->G->make('category');
-		$this->course = $this->G->make('course','course');
-		$this->content = $this->G->make('content','content');
+        $this->category = $this->G->make('category');
 		$this->user = $this->G->make('user','user');
 		$this->_user = $_user = $this->session->getSessionUser();
 		$this->tpl->assign('_user',$this->user->getUserById($this->_user['sessionuserid']));
 		$rcats = $this->category->getCategoriesByArgs(array(array("AND","catparent = '0'")));
-		$this->tpl->assign('rcats',$rcats);
+        $this->tpl->assign('rcats',$rcats);
+
+		$this->news = $this->G->make('news','read');
+		echo "<h1>测试是否被访问到</h1>";
 	}
 }
-?>

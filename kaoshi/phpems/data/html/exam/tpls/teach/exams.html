@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>PHPEMS模拟考试系统后台管理</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="files/public/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="files/public/css/datetimepicker.css" />
+	<link rel="stylesheet" type="text/css" href="files/public/css/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="files/public/css/pe.master.css" />
+	<script src="files/public/js/jquery.min.js"></script>
+	<script src="files/public/js/jquery-ui.min.js"></script>
+	<script src="files/public/js/bootstrap.min.js"></script>
+	<script src="files/public/js/bootstrap-datetimepicker.js"></script>
+	<script src="files/public/js/all.fine-uploader.min.js"></script>
+	<script src="files/public/js/ckeditor/ckeditor.js"></script>
+	<script src="files/public/js/pe.master.js"></script>
+</head><body>
+<div class="container-fluid navbar" style="margin-top:0px;margin-bottom:0px;background-color:#337AB7;">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-12">
+				<ul class="list-unstyled list-inline">
+					<li>
+						<span class="logo">PHPEMS6.0教师管理</span>
+					</li>
+					<li class="menu"><a href="index.php?course-teach">课程</a></li>
+					<li class="menu active"><a href="index.php?exam-teach">考试</a></li>
+					<li class="pull-right">
+						<div class="btn-group" style="margin-top: 15px;">
+							<button type="button" class="btn btn-info"><em class="glyphicon glyphicon-user"></em> 教师管理员</button>
+							<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="index.php?user-center"><em class="glyphicon glyphicon-user"></em> 用户中心</a></li>
+                                <li><a href="index.php?exam-teach"><em class="glyphicon glyphicon-book"></em> 教师管理</a></li>                                								<li><a class="ajax" href="index.php?user-app-logout"><em class="glyphicon glyphicon-log-out"></em> 退出</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div><div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2 leftmenu">
+				<style>.panel-heading a{color:#FFFFFF;text-decoration:none;}</style><div class="panel-group" id="panel-13465">	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-707348">				<em class="glyphicon glyphglyphicon glyphicon-th-large"></em> 考试设计			</a>		</div>		<div id="panel-element-707348" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="?exam-teach-basic">考场列表</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-2120901">				<em class="glyphicon glyphglyphicon glyphicon-wrench"></em> 课程成绩			</a>		</div>		<div id="panel-element-2120901" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-users">成绩管理</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212076">				<em class="glyphicon glyphglyphicon glyphicon-text-color"></em> 试题管理			</a>		</div>		<div id="panel-element-212076" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-questions">普通试题管理</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-rowsquestions">题帽题管理</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212096">				<em class="glyphicon glyphglyphicon glyphicon-duplicate"></em> 试卷管理			</a>		</div>		<div id="panel-element-212096" class="panel-collapse in collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-exams">试卷列表</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-autopage">随机组卷</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-selfpage">手工组卷</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-temppage">即时组卷</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212090">				<em class="glyphicon glyphglyphicon glyphicon-trash"></em> 回收站			</a>		</div>		<div id="panel-element-212090" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-recyle">普通试题</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-recyle-rows">题帽题</a></li>			</ul>		</div>	</div></div>			</div>
+			<div id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li><a href="index.php?exam-teach">考试</a></li>
+							<li class="active">试卷管理</li>
+						</ol>
+					</div>
+				</div>
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						试卷管理
+						<span class="pull-right">
+							<a data-toggle="dropdown" class="btn btn-primary" href="#">添加试卷 <strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li><a href="index.php?exam-teach-exams-autopage&page=">随机组卷</a></li>
+								<li><a href="index.php?exam-teach-exams-selfpage&page=">手动组卷</a></li>
+								<li><a href="index.php?exam-teach-exams-temppage&page=">即时组卷</a></li>
+							</ul>
+						</span>
+					</h4>
+			        <form action="index.php?exam-teach-exams" method="post" class="form-inline">
+						<table class="table">
+							<thead>
+				                <tr>
+							        <th colspan="2">搜索</th>
+							        <th></th>
+							        <th></th>
+							        <th></th>
+							        <th></th>
+				                </tr>
+				            </thead>
+							<tr>
+								<td>
+									选择类型：
+								</td>
+								<td>
+									<select name="search[examtype]" class="form-control">
+										<option value="0">不限</option>
+										<option value="1">随机抽题</option>
+										<option value="2">手动抽题</option>
+										<option value="2">即时组卷</option>
+									</select>
+								</td>
+								<td>
+									选择科目：
+								</td>
+								<td>
+									<select name="search[examsubject]" class="form-control">
+										<option value="0">不限</option>
+																		  		<option value="1">演示课程</option>
+								  										  		<option value="2">测试科目二</option>
+								  											</select>
+								</td>
+								<td>
+									<button class="btn btn-primary" type="submit">搜索</button>
+									<input type="hidden" value="1" name="search[argsmodel]" />
+								</td>
+							</tr>
+						</table>
+					</form>
+			        <table class="table table-hover table-bordered">
+						<thead>
+							<tr class="info">
+			                    <th>ID</th>
+						        <th>考试名称</th>
+						        <th>组卷人</th>
+						        <th>组卷类型</th>
+						        <th>组卷时间</th>
+						        <th>考试科目</th>
+						        <th width="180">操作</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+		                    					        <tr>
+								<td>
+									11								</td>
+								<td>
+									新试卷								</td>
+								<td>
+									peadmin								</td>
+								<td>
+									随机组卷								</td>
+								<td>
+									2019-08-15								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+			                    					                    					                    		<a class="btn" href="index.php?exam-teach-exams-modify&page=&examid=11" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
+										<a class="btn confirm" href="index.php?exam-teach-exams-del&page=&examid=11" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
+			                    	</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									10								</td>
+								<td>
+									商务英语								</td>
+								<td>
+									peadmin								</td>
+								<td>
+									手工组卷								</td>
+								<td>
+									2019-06-26								</td>
+								<td>
+									测试科目二								</td>
+								<td>
+									<div class="btn-group">
+			                    					                    		<a class="btn" target="_blank" href="index.php?exam-teach-exams-preview&examid=10" title="查看试卷"><em class="glyphicon glyphicon-list-alt"></em></a>
+			                    					                    					                    		<a class="btn" href="index.php?exam-teach-exams-modify&page=&examid=10" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
+										<a class="btn confirm" href="index.php?exam-teach-exams-del&page=&examid=10" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
+			                    	</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									6								</td>
+								<td>
+									测试修改								</td>
+								<td>
+									peadmin								</td>
+								<td>
+									随机组卷								</td>
+								<td>
+									2017-12-04								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+			                    					                    					                    		<a class="btn" href="index.php?exam-teach-exams-modify&page=&examid=6" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
+										<a class="btn confirm" href="index.php?exam-teach-exams-del&page=&examid=6" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
+			                    	</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									5								</td>
+								<td>
+									测试								</td>
+								<td>
+									peadmin								</td>
+								<td>
+									手工组卷								</td>
+								<td>
+									2017-12-02								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+			                    					                    		<a class="btn" target="_blank" href="index.php?exam-teach-exams-preview&examid=5" title="查看试卷"><em class="glyphicon glyphicon-list-alt"></em></a>
+			                    					                    					                    		<a class="btn" href="index.php?exam-teach-exams-modify&page=&examid=5" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
+										<a class="btn confirm" href="index.php?exam-teach-exams-del&page=&examid=5" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
+			                    	</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									4								</td>
+								<td>
+									测试222								</td>
+								<td>
+									peadmin								</td>
+								<td>
+									手工组卷								</td>
+								<td>
+									2017-05-05								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+			                    					                    		<a class="btn" target="_blank" href="index.php?exam-teach-exams-preview&examid=4" title="查看试卷"><em class="glyphicon glyphicon-list-alt"></em></a>
+			                    					                    					                    		<a class="btn" href="index.php?exam-teach-exams-modify&page=&examid=4" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
+										<a class="btn confirm" href="index.php?exam-teach-exams-del&page=&examid=4" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
+			                    	</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									3								</td>
+								<td>
+									测试								</td>
+								<td>
+									peadmin								</td>
+								<td>
+									即时组卷								</td>
+								<td>
+									2017-04-01								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+			                    					                    		<a class="btn" target="_blank" href="index.php?exam-teach-exams-preview&examid=3" title="查看试卷"><em class="glyphicon glyphicon-list-alt"></em></a>
+			                    					                    					                    		<a class="btn ajax" href="index.php?exam-teach-exams-outcsv&page=&examid=3" title="下载csv"><em class="glyphicon glyphicon-download-alt"></em></a>
+			                    					                    		<a class="btn" href="index.php?exam-teach-exams-modify&page=&examid=3" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
+										<a class="btn confirm" href="index.php?exam-teach-exams-del&page=&examid=3" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
+			                    	</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									2								</td>
+								<td>
+									测试二								</td>
+								<td>
+									peadmin								</td>
+								<td>
+									随机组卷								</td>
+								<td>
+									2017-03-09								</td>
+								<td>
+									测试科目二								</td>
+								<td>
+									<div class="btn-group">
+			                    					                    					                    		<a class="btn" href="index.php?exam-teach-exams-modify&page=&examid=2" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
+										<a class="btn confirm" href="index.php?exam-teach-exams-del&page=&examid=2" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
+			                    	</div>
+								</td>
+					        </tr>
+					        					        <tr>
+								<td>
+									1								</td>
+								<td>
+									演示试卷一								</td>
+								<td>
+									peadmin								</td>
+								<td>
+									随机组卷								</td>
+								<td>
+									2016-11-16								</td>
+								<td>
+									演示课程								</td>
+								<td>
+									<div class="btn-group">
+			                    					                    					                    		<a class="btn" href="index.php?exam-teach-exams-modify&page=&examid=1" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
+										<a class="btn confirm" href="index.php?exam-teach-exams-del&page=&examid=1" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
+			                    	</div>
+								</td>
+					        </tr>
+					        			        	</tbody>
+			        </table>
+			        <ul class="pagination pull-right">
+			            			        </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid box" style="background-color:#337AB7;margin-bottom:0px;" id="footer">
+	<div class="row-fluid">
+		<div class="main itembox">
+			<div class="col-xs-12">
+				<ul class="list-unstyled">
+					<li class="text-center"><a href="">PHPEMS在线模拟考试系统 著作权登记号：2013 SR 113189</a></li>
+					<li class="text-center"><a href="">Copyright © phpems.net  2015-2016</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div></body>
+</html>

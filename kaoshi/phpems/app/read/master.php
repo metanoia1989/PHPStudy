@@ -39,6 +39,7 @@ class app
 		$apps = $this->apps->getAppList();
 		$this->tpl->assign('localapps',$localapps);
 		$this->tpl->assign('apps',$apps);
+		$modules = $this->module->getModulesByApp('course');
 		$groups = $this->user->getUserGroups();
 		$user = $this->user->getUserById($_user['sessionuserid']);
 		$user['manager_apps'] = unserialize($user['manager_apps']);
@@ -48,10 +49,10 @@ class app
 			header("location:index.php?core-master");
 			exit();
 		}
+		$this->tpl->assign('modules',$modules);
 		$this->tpl->assign('groups',$groups);
 		$this->tpl->assign('userhash',$this->ev->get('userhash'));
-		$this->doc = $this->G->make('doc','docs');
+        $this->news = $this->G->make('news','read');
+
 	}
 }
-
-?>
