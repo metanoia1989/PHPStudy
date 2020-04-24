@@ -1,460 +1,0 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>PHPEMS模拟考试系统后台管理</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" type="text/css" href="files/public/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="files/public/css/datetimepicker.css" />
-	<link rel="stylesheet" type="text/css" href="files/public/css/jquery-ui.min.css" />
-	<link rel="stylesheet" type="text/css" href="files/public/css/pe.master.css" />
-	<script src="files/public/js/jquery.min.js"></script>
-	<script src="files/public/js/jquery-ui.min.js"></script>
-	<script src="files/public/js/bootstrap.min.js"></script>
-	<script src="files/public/js/bootstrap-datetimepicker.js"></script>
-	<script src="files/public/js/all.fine-uploader.min.js"></script>
-	<script src="files/public/js/ckeditor/ckeditor.js"></script>
-	<script src="files/public/js/pe.master.js"></script>
-</head><body>
-<div class="container-fluid navbar" style="margin-top:0px;margin-bottom:0px;background-color:#337AB7;">
-	<div class="row-fluid">
-		<div class="main">
-			<div class="col-xs-12">
-				<ul class="list-unstyled list-inline">
-					<li>
-						<span class="logo">PHPEMS6.0教师管理</span>
-					</li>
-					<li class="menu"><a href="index.php?course-teach">课程</a></li>
-					<li class="menu active"><a href="index.php?exam-teach">考试</a></li>
-					<li class="pull-right">
-						<div class="btn-group" style="margin-top: 15px;">
-							<button type="button" class="btn btn-info"><em class="glyphicon glyphicon-user"></em> 教师管理员</button>
-							<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="caret"></span>
-								<span class="sr-only">Toggle Dropdown</span>
-							</button>
-							<ul class="dropdown-menu">
-								<li><a href="index.php?user-center"><em class="glyphicon glyphicon-user"></em> 用户中心</a></li>
-                                <li><a href="index.php?exam-teach"><em class="glyphicon glyphicon-book"></em> 教师管理</a></li>                                								<li><a class="ajax" href="index.php?user-app-logout"><em class="glyphicon glyphicon-log-out"></em> 退出</a></li>
-							</ul>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div><div class="container-fluid">
-	<div class="row-fluid">
-		<div class="main">
-			<div class="col-xs-2 leftmenu">
-				<style>.panel-heading a{color:#FFFFFF;text-decoration:none;}</style><div class="panel-group" id="panel-13465">	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-707348">				<em class="glyphicon glyphglyphicon glyphicon-th-large"></em> 考试设计			</a>		</div>		<div id="panel-element-707348" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="?exam-teach-basic">考场列表</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-2120901">				<em class="glyphicon glyphglyphicon glyphicon-wrench"></em> 课程成绩			</a>		</div>		<div id="panel-element-2120901" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-users">成绩管理</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212076">				<em class="glyphicon glyphglyphicon glyphicon-text-color"></em> 试题管理			</a>		</div>		<div id="panel-element-212076" class="panel-collapse in collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-questions">普通试题管理</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-rowsquestions">题帽题管理</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212096">				<em class="glyphicon glyphglyphicon glyphicon-duplicate"></em> 试卷管理			</a>		</div>		<div id="panel-element-212096" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-exams">试卷列表</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-autopage">随机组卷</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-selfpage">手工组卷</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-exams-temppage">即时组卷</a></li>			</ul>		</div>	</div>	<div class="panel panel-primary">		<div class="panel-heading">			<a class="panel-toggle text-center" data-parent="#panel-13465" data-toggle="collapse" href="#panel-element-212090">				<em class="glyphicon glyphglyphicon glyphicon-trash"></em> 回收站			</a>		</div>		<div id="panel-element-212090" class="panel-collapse collapse" role="tabpanel">     		<ul class="list-group">				<li class="list-group-item"><a href="index.php?exam-teach-recyle">普通试题</a></li>				<li class="list-group-item"><a href="index.php?exam-teach-recyle-rows">题帽题</a></li>			</ul>		</div>	</div></div>			</div>
-			<div id="datacontent">
-				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
-					<div class="col-xs-12">
-						<ol class="breadcrumb">
-							<li><a href="index.php?exam-teach">考试</a></li>
-							<li><a href="index.php?exam-teach-questions">试题管理</a></li>
-							<li class="active">普通试题管理</li>
-						</ol>
-					</div>
-				</div>
-				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
-					<h4 class="title" style="padding:10px;">
-						普通试题管理
-						<span class="pull-right">
-							<a data-toggle="dropdown" class="btn btn-primary" href="#">添加试题 <strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="index.php?exam-teach-questions-addquestion&page=">单题添加</a></li>
-								<li><a href="index.php?exam-teach-questions-filebataddquestion&page=">CSV导入</a></li>
-							</ul>
-						</span>
-					</h4>
-					<form action="index.php?exam-teach-questions" method="post" class="form-inline">
-						<table class="table">
-							<thead>
-				                <tr>
-							        <th colspan="2">搜索</th>
-							        <th></th>
-							        <th></th>
-							        <th></th>
-							        <th></th>
-				                </tr>
-				            </thead>
-							<tr>
-								<td>
-									试题ID：
-								</td>
-								<td>
-									<input name="search[questionid]" class="form-control" size="10" type="text" class="number" value=""/>
-								</td>
-								<td>
-									录入时间：
-								</td>
-								<td>
-									<input class="form-control datetimepicker" data-date="2020-04-24" data-date-format="yyyy-mm-dd" type="text" name="search[stime]" size="10" id="stime" value=""/> - <input class="form-control datetimepicker" data-date="2020-04-24" data-date-format="yyyy-mm-dd" size="10" type="text" name="search[etime]" id="etime" value=""/>
-								</td>
-								<td>
-									关键字：
-								</td>
-								<td>
-									<input class="form-control" name="search[keyword]" size="10" type="text" value=""/>
-								</td>
-							</tr>
-					        <tr>
-								<td>
-									科目：
-								</td>
-								<td>
-					        		<select name="search[questionsubjectid]" class="combox form-control" target="sectionselect" refUrl="?exam-teach-questions-ajax-getsectionsbysubjectid&subjectid={value}">
-						        		<option value="0">选择科目</option>
-								  										  		<option value="1">演示课程</option>
-								  										  		<option value="2">测试科目二</option>
-								  									  		</select>
-					        	</td>
-					        	<td>
-									章节：
-								</td>
-								<td>
-							  		<select name="search[questionsectionid]" class="combox form-control" id="sectionselect" target="knowsselect" refUrl="?exam-teach-questions-ajax-getknowsbysectionid&sectionid={value}">
-							  		<option value="0">选择章节</option>
-							  									  		</select>
-					        	</td>
-					        	<td>
-									知识点：
-								</td>
-								<td>
-							  		<select name="search[questionknowsid]" id="knowsselect" class="form-control">
-								  		<option value="">选择知识点</option>
-								  									  		</select>
-					        	</td>
-							</tr>
-							<tr>
-								<td>
-									录入人：
-								</td>
-					        	<td>
-					        		<input class="form-control" name="search[username]" size="10" type="text" value=""/>
-					        	</td>
-					        	<td>
-									试题类型：
-								</td>
-								<td>
-									<select name="search[questiontype]" class="form-control">
-								  		<option value="0">类型不限</option>
-								  										  		<option value="1">单选题</option>
-								  										  		<option value="2">多选题</option>
-								  										  		<option value="3">判断题</option>
-								  										  		<option value="4">定值填空</option>
-								  										  		<option value="5">填空题</option>
-								  										  		<option value="6">问答题</option>
-								  									  		</select>
-								</td>
-								<td>
-									难度：
-								</td>
-								<td>
-									<select name="search[questionlevel]" class="form-control">
-								  		<option value="0">难度不限</option>
-										<option value="1">易</option>
-										<option value="2">中</option>
-										<option value="3">难</option>
-							  		</select>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<button class="btn btn-primary" type="submit">搜索</button>
-									<input type="hidden" value="1" name="search[argsmodel]" />
-								</td>
-								<td colspan="4"></td>
-							</tr>
-						</table>
-					</form>
-					<form action="index.php?exam-teach-questions-batdel" method="post">
-						<fieldset>
-							<table class="table table-hover table-bordered">
-								<thead>
-									<tr class="info">
-					                    <th width="32"><input type="checkbox" class="checkall" target="delids"/></th>
-					                    <th width="40">ID</th>
-								        <th width="80">试题类型</th>
-								        <th>试题内容</th>
-								        <th width="140">录入人/录入时间</th>
-								        <th width="140">删除人/删除时间</th>
-								        <th width="48">难度</th>
-								        <th width="100">操作</th>
-					                </tr>
-					            </thead>
-					            <tbody>
-				                    							        <tr>
-										<td><input type="checkbox" name="delids[1768]" value="1"></td>
-										<td>
-											1768										</td>
-										<td>
-											单选题										</td>
-										<td>
-											<a title="查看试题" class="selfmodal" href="javascript:;" url="index.php?exam-teach-questions-detail&questionid=1768" data-target="#modal">谁曾因谏司马昭不可伐蜀而被杀？</a>
-										</td>
-										<td>
-											<br />2017-12-18										</td>
-										<td>
-                                            										</td>
-										<td>
-											中										</td>
-										<td>
-											<div class="btn-group">
-					                    		<a class="btn" href="index.php?exam-teach-questions-modifyquestion&page=&questionid=1768" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
-												<a class="btn confirm" href="index.php?exam-teach-questions-delquestion&questionparent=0&page=&questionid=1768" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
-					                    	</div>
-										</td>
-							        </tr>
-							        							        <tr>
-										<td><input type="checkbox" name="delids[1767]" value="1"></td>
-										<td>
-											1767										</td>
-										<td>
-											单选题										</td>
-										<td>
-											<a title="查看试题" class="selfmodal" href="javascript:;" url="index.php?exam-teach-questions-detail&questionid=1767" data-target="#modal">周瑜为何要派诸葛亮去聚铁山袭击曹军？</a>
-										</td>
-										<td>
-											<br />2017-12-18										</td>
-										<td>
-                                            										</td>
-										<td>
-											中										</td>
-										<td>
-											<div class="btn-group">
-					                    		<a class="btn" href="index.php?exam-teach-questions-modifyquestion&page=&questionid=1767" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
-												<a class="btn confirm" href="index.php?exam-teach-questions-delquestion&questionparent=0&page=&questionid=1767" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
-					                    	</div>
-										</td>
-							        </tr>
-							        							        <tr>
-										<td><input type="checkbox" name="delids[1766]" value="1"></td>
-										<td>
-											1766										</td>
-										<td>
-											单选题										</td>
-										<td>
-											<a title="查看试题" class="selfmodal" href="javascript:;" url="index.php?exam-teach-questions-detail&questionid=1766" data-target="#modal">诸葛亮常自比管仲和谁？</a>
-										</td>
-										<td>
-											<br />2017-12-18										</td>
-										<td>
-                                            										</td>
-										<td>
-											中										</td>
-										<td>
-											<div class="btn-group">
-					                    		<a class="btn" href="index.php?exam-teach-questions-modifyquestion&page=&questionid=1766" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
-												<a class="btn confirm" href="index.php?exam-teach-questions-delquestion&questionparent=0&page=&questionid=1766" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
-					                    	</div>
-										</td>
-							        </tr>
-							        							        <tr>
-										<td><input type="checkbox" name="delids[1765]" value="1"></td>
-										<td>
-											1765										</td>
-										<td>
-											单选题										</td>
-										<td>
-											<a title="查看试题" class="selfmodal" href="javascript:;" url="index.php?exam-teach-questions-detail&questionid=1765" data-target="#modal">因暗杀未遂，被曹操断九指，割舌，分肢体而死的是谁？</a>
-										</td>
-										<td>
-											<br />2017-12-18										</td>
-										<td>
-                                            										</td>
-										<td>
-											中										</td>
-										<td>
-											<div class="btn-group">
-					                    		<a class="btn" href="index.php?exam-teach-questions-modifyquestion&page=&questionid=1765" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
-												<a class="btn confirm" href="index.php?exam-teach-questions-delquestion&questionparent=0&page=&questionid=1765" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
-					                    	</div>
-										</td>
-							        </tr>
-							        							        <tr>
-										<td><input type="checkbox" name="delids[1764]" value="1"></td>
-										<td>
-											1764										</td>
-										<td>
-											单选题										</td>
-										<td>
-											<a title="查看试题" class="selfmodal" href="javascript:;" url="index.php?exam-teach-questions-detail&questionid=1764" data-target="#modal">谁在葭萌关下挑灯夜斗，不分胜负？</a>
-										</td>
-										<td>
-											<br />2017-12-18										</td>
-										<td>
-                                            										</td>
-										<td>
-											中										</td>
-										<td>
-											<div class="btn-group">
-					                    		<a class="btn" href="index.php?exam-teach-questions-modifyquestion&page=&questionid=1764" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
-												<a class="btn confirm" href="index.php?exam-teach-questions-delquestion&questionparent=0&page=&questionid=1764" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
-					                    	</div>
-										</td>
-							        </tr>
-							        							        <tr>
-										<td><input type="checkbox" name="delids[1763]" value="1"></td>
-										<td>
-											1763										</td>
-										<td>
-											单选题										</td>
-										<td>
-											<a title="查看试题" class="selfmodal" href="javascript:;" url="index.php?exam-teach-questions-detail&questionid=1763" data-target="#modal">曹操为收买樊城百姓人心，派谁去说降刘备？</a>
-										</td>
-										<td>
-											<br />2017-12-18										</td>
-										<td>
-                                            										</td>
-										<td>
-											中										</td>
-										<td>
-											<div class="btn-group">
-					                    		<a class="btn" href="index.php?exam-teach-questions-modifyquestion&page=&questionid=1763" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
-												<a class="btn confirm" href="index.php?exam-teach-questions-delquestion&questionparent=0&page=&questionid=1763" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
-					                    	</div>
-										</td>
-							        </tr>
-							        							        <tr>
-										<td><input type="checkbox" name="delids[1762]" value="1"></td>
-										<td>
-											1762										</td>
-										<td>
-											单选题										</td>
-										<td>
-											<a title="查看试题" class="selfmodal" href="javascript:;" url="index.php?exam-teach-questions-detail&questionid=1762" data-target="#modal">诸葛亮第六次伐魏时谁曾到营中诈降？</a>
-										</td>
-										<td>
-											<br />2017-12-18										</td>
-										<td>
-                                            										</td>
-										<td>
-											中										</td>
-										<td>
-											<div class="btn-group">
-					                    		<a class="btn" href="index.php?exam-teach-questions-modifyquestion&page=&questionid=1762" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
-												<a class="btn confirm" href="index.php?exam-teach-questions-delquestion&questionparent=0&page=&questionid=1762" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
-					                    	</div>
-										</td>
-							        </tr>
-							        							        <tr>
-										<td><input type="checkbox" name="delids[1761]" value="1"></td>
-										<td>
-											1761										</td>
-										<td>
-											单选题										</td>
-										<td>
-											<a title="查看试题" class="selfmodal" href="javascript:;" url="index.php?exam-teach-questions-detail&questionid=1761" data-target="#modal">世界上第一辆自行车是由什么材料制成的？</a>
-										</td>
-										<td>
-											<br />2017-12-18										</td>
-										<td>
-                                            										</td>
-										<td>
-											中										</td>
-										<td>
-											<div class="btn-group">
-					                    		<a class="btn" href="index.php?exam-teach-questions-modifyquestion&page=&questionid=1761" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
-												<a class="btn confirm" href="index.php?exam-teach-questions-delquestion&questionparent=0&page=&questionid=1761" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
-					                    	</div>
-										</td>
-							        </tr>
-							        							        <tr>
-										<td><input type="checkbox" name="delids[1760]" value="1"></td>
-										<td>
-											1760										</td>
-										<td>
-											单选题										</td>
-										<td>
-											<a title="查看试题" class="selfmodal" href="javascript:;" url="index.php?exam-teach-questions-detail&questionid=1760" data-target="#modal">人类第一次登月是在哪年？</a>
-										</td>
-										<td>
-											<br />2017-12-18										</td>
-										<td>
-                                            										</td>
-										<td>
-											中										</td>
-										<td>
-											<div class="btn-group">
-					                    		<a class="btn" href="index.php?exam-teach-questions-modifyquestion&page=&questionid=1760" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
-												<a class="btn confirm" href="index.php?exam-teach-questions-delquestion&questionparent=0&page=&questionid=1760" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
-					                    	</div>
-										</td>
-							        </tr>
-							        							        <tr>
-										<td><input type="checkbox" name="delids[1759]" value="1"></td>
-										<td>
-											1759										</td>
-										<td>
-											单选题										</td>
-										<td>
-											<a title="查看试题" class="selfmodal" href="javascript:;" url="index.php?exam-teach-questions-detail&questionid=1759" data-target="#modal">世界上第一个发现地磁偏角中国人是：</a>
-										</td>
-										<td>
-											<br />2017-12-18										</td>
-										<td>
-                                            										</td>
-										<td>
-											中										</td>
-										<td>
-											<div class="btn-group">
-					                    		<a class="btn" href="index.php?exam-teach-questions-modifyquestion&page=&questionid=1759" title="修改"><em class="glyphicon glyphicon-edit"></em></a>
-												<a class="btn confirm" href="index.php?exam-teach-questions-delquestion&questionparent=0&page=&questionid=1759" title="删除"><em class="glyphicon glyphicon-remove"></em></a>
-					                    	</div>
-										</td>
-							        </tr>
-							        					        	</tbody>
-					        </table>
-					        <div class="form-group">
-					            <div class="col-sm-9">
-						            <label class="radio-inline">
-						                <input type="radio" name="action" value="delete" checked/>删除
-						            </label>
-						            						            <label class="radio-inline">
-						            	<button class="btn btn-primary" type="submit">提交</button>
-						            </label>
-						            <input type="hidden" name="page" value=""/>
-						        </div>
-					        </div>
-					        <ul class="pagination pull-right">
-					            <li><a target="" href="index.php?exam-teach-questions&page=1">|&lsaquo;</a></li><li><a target="" href="index.php?exam-teach-questions&page=1">1</a></li><li><a href="#" class="current">2</a></li><li><a target="" href="index.php?exam-teach-questions&page=3">3</a></li><li><a target="" href="index.php?exam-teach-questions&page=4">4</a></li><li><a target="" href="index.php?exam-teach-questions&page=5">5</a></li><li><a target="" href="index.php?exam-teach-questions&page=6">6</a></li><li><a target="" href="index.php?exam-teach-questions&page=7">7</a></li><li><a target="" href="index.php?exam-teach-questions&page=8">8</a></li><li><a target="" href="index.php?exam-teach-questions&page=9">9</a></li><li><a target="" href="index.php?exam-teach-questions&page=10">10</a></li><li><a target="" href="index.php?exam-teach-questions&page=11"> >> </a></li><li><a target="" href="index.php?exam-teach-questions&page=86">&rsaquo;|</a></li><li><a>共859条数据</a></li>					        </ul>
-				        </fieldset>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div id="modal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button aria-hidden="true" class="close" type="button" data-dismiss="modal">×</button>
-				<h4 id="myModalLabel">
-					试题详情
-				</h4>
-			</div>
-			<div class="modal-body"></div>
-			<div class="modal-footer">
-				 <button aria-hidden="true" class="btn btn-primary" data-dismiss="modal">关闭</button>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="container-fluid box" style="background-color:#337AB7;margin-bottom:0px;" id="footer">
-	<div class="row-fluid">
-		<div class="main itembox">
-			<div class="col-xs-12">
-				<ul class="list-unstyled">
-					<li class="text-center"><a href="">PHPEMS在线模拟考试系统 著作权登记号：2013 SR 113189</a></li>
-					<li class="text-center"><a href="">Copyright © phpems.net  2015-2016</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div></body>
-</html>
