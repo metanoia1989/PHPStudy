@@ -19,11 +19,11 @@ class action extends app
 
     private function index()
     {
-        // $news = $this->news->getNewsList();
-        // var_dump($news);
-        echo "哈哈哈哈";
-        // $this->tpl->assign('news_data', $news); 
-        // $this->tpl->display('index');
+        $news = $this->news->getNewsList([], 1);
+        // header('Content-Type: application/json');
+        // echo json_encode($news);
+        $this->tpl->assign('news_data', $news); 
+        $this->tpl->display('index');
     }
 
     public function test()

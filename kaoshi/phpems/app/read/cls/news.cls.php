@@ -1,6 +1,6 @@
 <?php
 
-class news_content
+class news_read
 {
 	public $G;
 

@@ -12,7 +12,7 @@
                             <a href="index.php?content-app" class="badge pull-right">回首页</a>
                         </h2>
                         <ul class="list-unstyled list-img">
-                            {x2;tree:$contents['data'],content,cid}
+                            {x2;tree:$news_data['data'],content,cid}
                             <li class="border morepadding">
                                 <h4 class="shorttitle">{x2;v:content['contenttitle']}</h4>
                                 <div class="intro">

@@ -38,5 +38,4 @@ define('PAYJSMCHID','1551052561');
 define('PAYJSKEY','Zz8ks1ZP3UPKeTGi');
 
 
-
 ?>

@@ -25,6 +25,5 @@ class app
         $this->tpl->assign('rcats',$rcats);
 
 		$this->news = $this->G->make('news','read');
-		echo "<h1>测试是否被访问到</h1>";
 	}
 }
