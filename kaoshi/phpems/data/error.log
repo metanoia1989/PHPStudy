@@ -81534,3 +81534,5376 @@ Array
     [1] => 
     [2] => 
 )
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE 1 ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,20
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE 1 LIMIT 512
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587776313
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_session WHERE 1 AND sessionlasttime <= :sessionlasttime 
+    [v] => Array
+        (
+            [sessionlasttime] => 1587517113
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE 1 ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,20
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE 1 LIMIT 512
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587776392
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_coursesubject WHERE 1 ORDER BY cssequence desc,cstime DESC,csid DESC LIMIT 0,6
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_coursesubject WHERE 1 LIMIT 512
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_basic WHERE 1 ORDER BY basicid desc LIMIT 0,6
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_basic WHERE 1 LIMIT 512
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 1  AND pccontentid = contentid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,5
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 1  AND pccontentid = contentid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentcatid = 11  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  contentcatid = 11  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentcatid = 26  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  contentcatid = 26  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587777384
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_coursesubject WHERE 1 ORDER BY cssequence desc,cstime DESC,csid DESC LIMIT 0,6
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_coursesubject WHERE 1 LIMIT 512
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_basic WHERE 1 ORDER BY basicid desc LIMIT 0,6
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_basic WHERE 1 LIMIT 512
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 1  AND pccontentid = contentid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,5
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 1  AND pccontentid = contentid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentcatid = 11  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  contentcatid = 11  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentcatid = 26  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  contentcatid = 26  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587777387
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_coursesubject WHERE 1 ORDER BY cssequence desc,cstime DESC,csid DESC LIMIT 0,6
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_coursesubject WHERE 1 LIMIT 512
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_basic WHERE 1 ORDER BY basicid desc LIMIT 0,6
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_basic WHERE 1 LIMIT 512
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 1  AND pccontentid = contentid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,5
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 1  AND pccontentid = contentid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentcatid = 11  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  contentcatid = 11  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentcatid = 26  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  contentcatid = 26  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587777388
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_session WHERE 1 AND sessionlasttime <= :sessionlasttime 
+    [v] => Array
+        (
+            [sessionlasttime] => 1587518188
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE 1 ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,20
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE 1 LIMIT 512
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587777513
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE 1 ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,20
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE 1 LIMIT 512
+    [v] => 
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587777514
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'phpems.x2_test' doesn't exist
+)
+Array
+(
+    [sql] => INSERT INTO x2_test () VALUES ()
+    [v] => Array
+        (
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'phpems.x2_test' doesn't exist
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'phpems.x2_test' doesn't exist
+)
+Array
+(
+    [sql] => UPDATE x2_test SET  WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE 1 AND id = '0'  LIMIT 512' at line 1
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'phpems.x2_test' doesn't exist
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'phpems.x2_test' doesn't exist
+)
+Array
+(
+    [sql] => INSERT INTO x2_test () VALUES ()
+    [v] => Array
+        (
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'phpems.x2_test' doesn't exist
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'phpems.x2_test' doesn't exist
+)
+Array
+(
+    [sql] => INSERT INTO x2_test () VALUES ()
+    [v] => Array
+        (
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table 'phpems.x2_test' doesn't exist
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,desc,status) VALUES (:name,:desc,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [desc] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,status) VALUES ('原人亚当','第一个人，寂静圆满','1')' at line 1
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,desc,status) VALUES (:name,:desc,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [desc] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,status) VALUES ('超级赛亚号','高达欧耶','1')' at line 1
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,desc,status) VALUES (:name,:desc,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [desc] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,status) VALUES ('呼和浩特','一座城市','1')' at line 1
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,desc,status) VALUES (:name,:desc,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [desc] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,status) VALUES ('原人亚当','第一个人，寂静圆满','1')' at line 1
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,desc,status) VALUES (:name,:desc,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [desc] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,status) VALUES ('原人亚当','第一个人，寂静圆满','1')' at line 1
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,desc,status) VALUES (:name,:desc,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [desc] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,status) VALUES ('原人亚当','第一个人，寂静圆满','1')' at line 1
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,desc,status) VALUES (:name,:desc,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [desc] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,status) VALUES ('原人亚当','第一个人，寂静圆满','1')' at line 1
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,desc,status) VALUES (:name,:desc,:status)
+    [v] => Array
+        (
+            [name] => 
+            [desc] => 
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,status) VALUES ('','','1')' at line 1
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,desc,status) VALUES (:name,:desc,:status)
+    [v] => Array
+        (
+            [name] => 
+            [desc] => 
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc,status) VALUES ('','','1')' at line 1
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 
+            [description] => 
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 
+            [description] => 
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 2
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 2
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 
+            [description] => 
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 5
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 
+            [description] => 
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 6
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 7
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 9
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 9
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 12
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 13
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 14
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 15
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 16
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 17
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catinmenu = 0  AND catapp = 'content'  AND catparent = 0  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catapp = :catapp  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catapp] => content
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,5
+    [v] => Array
+        (
+            [catstring] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  LIMIT 512
+    [v] => Array
+        (
+            [catstring] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,5
+    [v] => Array
+        (
+            [catstring] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  LIMIT 512
+    [v] => Array
+        (
+            [catstring] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587784588
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_session WHERE 1 AND sessionlasttime <= :sessionlasttime 
+    [v] => Array
+        (
+            [sessionlasttime] => 1587525388
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catinmenu = 0  AND catapp = 'content'  AND catparent = 0  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catapp = :catapp  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catapp] => content
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,5
+    [v] => Array
+        (
+            [catstring] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  LIMIT 512
+    [v] => Array
+        (
+            [catstring] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,5
+    [v] => Array
+        (
+            [catstring] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  LIMIT 512
+    [v] => Array
+        (
+            [catstring] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587784589
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catinmenu = 0  AND catapp = 'content'  AND catparent = 0  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catapp = :catapp  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catapp] => content
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,5
+    [v] => Array
+        (
+            [catstring] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  LIMIT 512
+    [v] => Array
+        (
+            [catstring] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  ORDER BY contentsequence DESC,contentinputtime DESC,contentid DESC LIMIT 0,5
+    [v] => Array
+        (
+            [catstring] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_content WHERE  find_in_set(contentcatid,:catstring)  LIMIT 512
+    [v] => Array
+        (
+            [catstring] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_seminar AS seminar WHERE  pcposid = 3  AND pccontentid = seminarid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587784591
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid = :contentid  LIMIT 512
+    [v] => Array
+        (
+            [contentid] => 85
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catapp = :catapp  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catapp] => content
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catid = :catid  LIMIT 512
+    [v] => Array
+        (
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = :catparent  AND catinmenu = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catparent] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid < :contentid  AND contentcatid = :catid  ORDER BY contentid DESC LIMIT 5
+    [v] => Array
+        (
+            [contentid] => 85
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid > :contentid  AND contentcatid = :catid  ORDER BY contentid ASC LIMIT 5
+    [v] => Array
+        (
+            [contentid] => 85
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587784592
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid = :contentid  LIMIT 512
+    [v] => Array
+        (
+            [contentid] => 85
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catapp = :catapp  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catapp] => content
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catid = :catid  LIMIT 512
+    [v] => Array
+        (
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = :catparent  AND catinmenu = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catparent] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid < :contentid  AND contentcatid = :catid  ORDER BY contentid DESC LIMIT 5
+    [v] => Array
+        (
+            [contentid] => 85
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid > :contentid  AND contentcatid = :catid  ORDER BY contentid ASC LIMIT 5
+    [v] => Array
+        (
+            [contentid] => 85
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587784603
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid = :contentid  LIMIT 512
+    [v] => Array
+        (
+            [contentid] => 85
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catapp = :catapp  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catapp] => content
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catid = :catid  LIMIT 512
+    [v] => Array
+        (
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = :catparent  AND catinmenu = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catparent] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid < :contentid  AND contentcatid = :catid  ORDER BY contentid DESC LIMIT 5
+    [v] => Array
+        (
+            [contentid] => 85
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid > :contentid  AND contentcatid = :catid  ORDER BY contentid ASC LIMIT 5
+    [v] => Array
+        (
+            [contentid] => 85
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587785500
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 18
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 19
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 20
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 21
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 21
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 24
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 24
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 27
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 27
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 30
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 30
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 33
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 33
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 36
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 36
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT 1 FROM x2_test WHERE  id > :id  ORDER BY id DESC LIMIT 0,10
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_test WHERE  id > :id  LIMIT 512
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 39
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 39
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  ORDER BY id DESC LIMIT 0,10
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_test WHERE  id > :id  LIMIT 512
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 42
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 42
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  ORDER BY id DESC LIMIT 0,10
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_test WHERE  id > :id  LIMIT 512
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 45
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 45
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  ORDER BY id DESC LIMIT 0,10
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_test WHERE  id > :id  LIMIT 512
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 原人亚当
+            [description] => 第一个人，寂静圆满
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_test SET status = :status WHERE 1 AND id = :id  LIMIT 512
+    [v] => Array
+        (
+            [status] => 0
+            [id] => 48
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_test WHERE  id > :id  LIMIT 1
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => DELETE FROM x2_test WHERE 1 AND id <= :id 
+    [v] => Array
+        (
+            [id] => 48
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 超级赛亚号
+            [description] => 高达欧耶
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_test`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => INSERT INTO x2_test (name,description,status) VALUES (:name,:description,:status)
+    [v] => Array
+        (
+            [name] => 呼和浩特
+            [description] => 一座城市
+            [status] => 1
+        )
+
+    [dim] => 0
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT name FROM x2_test WHERE  id > :id  ORDER BY id DESC LIMIT 0,10
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_test WHERE  id > :id  LIMIT 512
+    [v] => Array
+        (
+            [id] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
