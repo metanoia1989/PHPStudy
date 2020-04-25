@@ -5,3 +5,4 @@ $app['router']->get('/', function() {
 
 $app['router']->get('welcome', 
     'App\Http\Controllers\WelcomeController@index');
+
