@@ -83,3 +83,6 @@ Route::get('home/{id}/{name?}', 'HomeController@user');
 
 # 隐式控制器路由 5.3版已弃用
 // Route::controller('users', 'UserController');
+
+# 资源控制器路由
+Route::resource('resources', 'ResourceController');
