@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,3 +87,12 @@ Route::get('home/{id}/{name?}', 'HomeController@user');
 
 # 资源控制器路由
 Route::resource('resources', 'ResourceController');
+
+# 模块/控制器/方法 module/controller/action 路由
+Route::get('/{class}/{action}', function ($class, $action) {
+    $instance = App ::make('App\\Http\\Controllers\\' . ucfirst($class) . 'Controller');
+    return App::call([$instance, $action]);
+});
+
+
+// 视图

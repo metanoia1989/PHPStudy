@@ -12,4 +12,9 @@ class HomeController extends Controller
     {
         return "Hello, $name, $id";
     }
+
+    public function implicit()
+    {
+        return "这是隐式路由 module/controller/action";
+    }
 }
