@@ -86907,3 +86907,208 @@ Array
     [1] => 
     [2] => 
 )
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_session WHERE  sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_user AS user,x2_user_group AS user_group WHERE  user.userid = :id  AND user.usergroupid = user_group.groupid  LIMIT 512
+    [v] => Array
+        (
+            [id] => 1
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid = :contentid  LIMIT 512
+    [v] => Array
+        (
+            [contentid] => 85
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catapp = :catapp  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catapp] => content
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catid = :catid  LIMIT 512
+    [v] => Array
+        (
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_category WHERE  catparent = :catparent  AND catinmenu = '0'  ORDER BY catlite DESC,catid DESC
+    [v] => Array
+        (
+            [catparent] => 0
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid < :contentid  AND contentcatid = :catid  ORDER BY contentid DESC LIMIT 5
+    [v] => Array
+        (
+            [contentid] => 85
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_content WHERE  contentid > :contentid  AND contentcatid = :catid  ORDER BY contentid ASC LIMIT 5
+    [v] => Array
+        (
+            [contentid] => 85
+            [catid] => 3
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT * FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  ORDER BY pcsequence DESC, pcid DESC LIMIT 0,10
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SELECT count(*) AS number FROM x2_poscontent AS poscontent,x2_content AS content WHERE  pcposid = 2  AND pccontentid = contentid  LIMIT 512
+    [v] => Array
+        (
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => SHOW FULL COLUMNS FROM  `x2_session`
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [sql] => UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+    [v] => Array
+        (
+            [sessionlasttime] => 1587787010
+            [sessionid] => 29cdd2ee1aca18d4f9e4a55560ccbcde
+        )
+
+)
+Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)

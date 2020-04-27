@@ -113,7 +113,7 @@ $dbArgs = [
 $dbClient->insertElement($dbArgs);
 
 $dbArgs = [
-    'select' => false,
+    'select' => false, 
     'table' => 'test',
     'query' => [['AND', 'id > :id', 'id', 0]],
     'groupby' => false,
