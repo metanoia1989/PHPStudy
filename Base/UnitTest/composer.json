@@ -1,0 +1,13 @@
+{
+    "name": "administrator/unit-test",
+    "authors": [
+        {
+            "name": "metanoia1989",
+            "email": "sogaxili@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "9.1"
+    }
+}

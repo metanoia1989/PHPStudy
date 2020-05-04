@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-// use Encore\Admin\Admin;
 
 Admin::routes();
 
@@ -16,4 +14,7 @@ Route::group([
     // $router->get('/routes', function() {
     //     return collect()
     // });
+    $router->resource('users', UserController::class);
+    $router->get('users/layout', 'UserController@layout');
 });
+
