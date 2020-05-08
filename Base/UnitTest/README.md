@@ -1,7 +1,3 @@
-# PHP 基础
-这个文件夹下专门放PHP基础方面的代码。
-
-
 # UnitTest 单元测试
 PHPUnit文档：https://phpunit.readthedocs.io/en/9.1/index.html           
 
