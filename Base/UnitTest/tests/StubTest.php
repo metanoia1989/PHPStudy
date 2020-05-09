@@ -1,7 +1,7 @@
 <?php
-
 namespace app\test;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 class SomeClass
@@ -48,5 +48,51 @@ class StubTest extends TestCase
         $stub->method('doSomething')->will($this->returnSelf());
 
         $this->assertSame($stub, $stub->doSomething());
+    }
+
+    public function testReturnValueMapStub()
+    {
+        $stub = $this->createStub(SomeClass::class);
+
+        // 创建从参数到返回值的映射
+        $map = [
+            [ 'a', 'b', 'c', 'd' ],
+            [ 'e', 'f', 'g', 'h' ],
+        ];
+
+        $stub->method('doSomething')
+            ->will($this->returnValueMap($map));
+
+        $this->assertSame('d', $stub->doSomething('a', 'b', 'c'));
+        $this->assertSame('h', $stub->doSomething('e', 'f', 'g'));
+    }
+
+    public function testReturnCallbackStub()
+    {
+        $stub = $this->createStub(SomeClass::class);
+        $stub->method('doSomething')
+            ->will($this->returnCallback('str_rot13'));
+        // 返回str_rot13传入参数的执行
+        $this->assertSame('fbzrguvat', $stub->doSomething('something'));
+    }
+
+    public function testOnConsecutiveCallsStub()
+    {
+        $stub = $this->createStub(SomeClass::class);
+        $stub->method('doSomething')
+            ->will($this->onConsecutiveCalls(2, 3, 5, 7));
+
+        $this->assertSame(2, $stub->doSomething());
+        $this->assertSame(3, $stub->doSomething());
+        $this->assertSame(5, $stub->doSomething());
+    }
+
+    public function testThrowExceptionStub()
+    {
+        $stub = $this->createStub(SomeClass::class);
+        $stub->method('doSomething')
+            ->will($this->throwException(new Exception()));
+        // 将抛出异常
+        $stub->doSomething();
     }
 }
