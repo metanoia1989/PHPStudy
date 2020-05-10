@@ -1,5 +1,5 @@
 <?php
-namespace app\test;
+namespace app\tests;
 
 use Iterator;
 use PHPUnit\Framework\TestCase;

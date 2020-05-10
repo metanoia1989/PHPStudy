@@ -1,5 +1,5 @@
 <?php
-namespace app\test;
+namespace app\tests;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
