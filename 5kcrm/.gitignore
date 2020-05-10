@@ -1,0 +1,7 @@
+.idea/
+.vscode/
+/runtime/
+node_modules/
+.user.ini
+# .htaccess
+ux/dist/*

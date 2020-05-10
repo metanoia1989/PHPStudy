@@ -1,0 +1,19 @@
+{
+    "name": "metanoia1989/swoole",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Adam Smith",
+            "email": "sogaxili@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "eaglewu/swoole-ide-helper": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "/"
+        }
+    }
+}
