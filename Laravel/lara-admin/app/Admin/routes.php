@@ -14,7 +14,7 @@ Route::group([
     // $router->get('/routes', function() {
     //     return collect()
     // });
-    $router->resource('users', UserController::class);
     $router->get('users/layout', 'UserController@layout');
+    $router->resource('users', UserController::class);
 });
 

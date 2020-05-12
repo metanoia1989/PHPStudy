@@ -2,11 +2,13 @@
 
 namespace App\Admin\Controllers;
 
-use App\User;
+use App\AdminUser as User;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
+use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
+use Encore\Admin\Layout\Row;
 use Encore\Admin\Show;
 
 class UserController extends AdminController
@@ -84,7 +86,7 @@ class UserController extends AdminController
      *
      * @param Content $content
      *
-     * @return Content
+     * @return Content  这个类实现内容区的布局
      */
     public function index(Content $content)
     {
@@ -92,7 +94,7 @@ class UserController extends AdminController
             // ->title($this->title())
             ->header('用户管理首页')
             ->description('可以进行用户的增删改查的工作')
-            ->body($this->grid());
+            ->body($this->grid()); // body方法添加内容
     }
 
     /**
@@ -104,9 +106,41 @@ class UserController extends AdminController
      */
     public function layout(Content $content)
     {
-        return $content
-            ->title('布局测试')
-            ->description('栅格系统')
-            ->row('hello');
+        $content->title('布局测试')->description('栅格系统');
+
+        // 返回一行内容
+        $content->row('hello');
+
+        // 一行内添加多列内容
+        $content->row(function(Row $row) {
+            $row->column(4, "金刚葫芦娃");
+            $row->column(4, "无敌小旋风");
+            $row->column(4, "超级赛亚人");
+        });
+
+        // 列中添加行
+        $content->row(function(Row $row) {
+            $row->column(4, "第一列文字：呼啦啦啦啦");
+            $row->column(8, function(Column $column) {
+                $column->row("第二列第一行：不善护身");
+                $column->row("第二列第二行：不守根门");
+                $column->row("第二列第三行：不摄其念");
+            });
+        });
+
+        // 行内添加行，行内再添加列
+        $content->row(function (Row $row) {
+            $row->column(4, "第一列的文字：观察女人少壮好色而生染着");
+            $row->column(8, function(Column $column) {
+                $column->row("第二列第一行");
+                $column->row("第二列第二行");
+                $column->row(function (Row $row) {
+                    $row->column(6, "第三列中的列");
+                    $row->column(6, "第三列中的列");
+                });
+            });
+        });
+
+        return $content;
     }
 }
