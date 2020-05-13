@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Movie;
+use App\User;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
@@ -94,7 +95,21 @@ class MovieController extends AdminController
     public function index(Content $content)
     {
         $grid = new Grid(new Movie);
+
         // 第一列显示id字段，并将这一列设置为可排序的
+        $grid->column('id', 'ID')->sortable();
+
+        // 第二列显示title字段，由于title字段名和Grid对象的title方法冲突，所以用Grid的column()方法代替
+        $grid->column('title');
+
+        // 第三列显示director字段，通过display($callback)方法设置这一列的显示内容为users表中对应的用户名
+        $grid->column('director')->display(function($userid) {
+            return User::find($userid)->name;
+        });
+
+        // 第四列显示为describe字段
+        $grid->column('describe');
+
         return $content
             // ->title($this->title())
             ->header('用户管理首页')
