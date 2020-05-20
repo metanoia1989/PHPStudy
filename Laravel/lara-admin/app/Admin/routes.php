@@ -16,5 +16,7 @@ Route::group([
     // });
     $router->get('users/layout', 'UserController@layout');
     $router->resource('users', UserController::class);
+
+    $router->get('movie', 'MovieController@index');
 });
 
