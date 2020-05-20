@@ -143,4 +143,36 @@ class UserController extends AdminController
 
         return $content;
     }
+
+    /**
+     * 用户角色
+     *
+     * @return void
+     */
+    public function roles(Content $content)
+    {
+        $user = User::find(1);
+        $roles = $user->roles;
+        dd($roles);
+        exit;
+        $grid = new Grid(new User());
+
+        $grid->column('id', 'ID')->sortable();
+        $grid->column('username', '用户名');
+        $grid->column('name', '真实姓名');
+
+        $grid->column('roles')->display(function ($roles) {
+            dd($roles);
+            return 'ttt';
+            // $roles = array_map(function ($role) {
+            //     return "<span class='label label-success'>{$role['name']}</span>";
+            // }, $roles);
+            // return join('&nbsp', $roles);
+        });
+
+        $grid->column('created_at', '创建时间');
+        $grid->column('updated_at', '更新时间');
+
+        return $content->body($grid);
+    }
 }

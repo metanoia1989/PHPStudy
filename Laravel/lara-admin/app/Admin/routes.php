@@ -15,8 +15,10 @@ Route::group([
     //     return collect()
     // });
     $router->get('users/layout', 'UserController@layout');
+    $router->get('users/roles', 'UserController@roles');
     $router->resource('users', UserController::class);
 
     $router->get('movie', 'MovieController@index');
+
 });
 
