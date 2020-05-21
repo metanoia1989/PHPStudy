@@ -16,9 +16,13 @@ Route::group([
     // });
     $router->get('users/layout', 'UserController@layout');
     $router->get('users/roles', 'UserController@roles');
+    $router->get('users/profile', 'UserController@profile');
+    $router->get('users/posts', 'UserController@posts');
     $router->resource('users', UserController::class);
 
     $router->get('movie', 'MovieController@index');
+
+    $router->get('column/show', 'ShowController@index');
 
 });
 
