@@ -9,7 +9,8 @@
     ],
     "require": {},
     "require-dev": {
-        "eaglewu/swoole-ide-helper": "dev-master"
+        "eaglewu/swoole-ide-helper": "dev-master",
+        "swoft/swoole-ide-helper": "^4.4"
     },
     "autoload": {
         "psr-4": {
