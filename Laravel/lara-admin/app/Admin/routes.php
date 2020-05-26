@@ -24,6 +24,7 @@ Route::group([
 
     $router->get('column/show', 'ShowController@index');
     $router->get('column/columnFilter', 'ShowController@columnFilter');
+    $router->get('column/simple', 'ShowController@simple');
     $router->get('chartjs/index', 'ChartjsController@index');
 
 });

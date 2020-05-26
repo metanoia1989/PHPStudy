@@ -534,4 +534,127 @@ class ShowController extends AdminController
             ->description('display、collection、以及其他操作')
             ->body($grid); // body方法添加内容
     }
+
+    /**
+     * laravel-admin简单模型表格功能演示
+     *
+     * @return void
+     */
+    public function simple(Content $content)
+    {
+        $grid = new Grid(new ColumnShow());
+
+        // 启用 Laravel-admin 快捷键
+        // 从v1.7.2版本开始，在grid页面加入了几个操作快捷键，
+        // s	快捷搜索聚焦
+        // f	展开或者隐藏过滤器
+        // r	刷新页面
+        // c	进入创建页面
+        // left	跳转上一页
+        // right	跳转下一页
+        $grid->enableHotKeys();
+
+        // 快捷创建表单
+        // 在表格中开启这个功能之后，会在表格头部增加一个form表单来创建数据，
+        // 对于一些简单的表格页面，可以方便快速创建数据，不用跳转到创建页面操作
+        // 需要注意的是，快捷创建表单中的每一项，在form表单页面要设置相同类型的表单项。
+        // quickCreate 方法跟 fixColumns 冲突，设置后者，快捷创建表单将不会显示
+        $grid->quickCreate(function (Grid\Tools\QuickCreate $create) {
+            $create->text('title', '标题');
+            $create->email('email', '邮箱');
+            $create->password('password', '密码输入框');
+            $create->mobile('mobile', '手机号输入框');
+            $create->integer('integer', '整数输入框');
+            $create->select('select', '单选框')->options([
+                1 => 'foo',
+                2 => 'bar',
+            ]);
+            $create->multipleSelect('multipleSelect', '多选框')->options([
+                1 => 'foo',
+                2 => 'bar',
+            ]);
+            $create->datetime('datetime', '日期时间选择');
+            $create->time('time', '时间选择');
+            $create->date('date', '日期选择');
+        });
+
+        // 规格选择器
+        // 用来构建类似淘宝或京东商品的规格选择
+
+        // 快捷搜索
+        // 快捷搜索是除了filter之外的另一个表格数据搜索方式，用来快速过滤你想要的数据
+        // 通过给quickSearch方法传入不同的参数，来设置不同的搜索方式
+        // $grid->quickSearch();
+        // Like搜索 通过设置字段名称来进行简单的like查询
+        // 提交后模型会执行下面的查询 $model->where('title', 'like', "%{$input}%");
+        // $grid->quickSearch('title');
+        // 对多个字段做like查询 where ... or ... like....
+        // $grid->quickSearch('title', 'email', 'content');
+        // 自定义搜索 更灵活的控制搜索条件
+        // 闭包的参数$query为你填入搜索框中的内容
+        // $grid->quickSearch(function ($model, $query) {
+        //     $model->where('title', $query)->orWhere('content', 'like', "%{$query}%");
+        // });
+        // 快捷语法搜索
+        // 参考了Github的搜索语法，来进行快捷搜索，无需传递任何参数
+        // 比较查询
+        // title:foo 、title:!foo
+        // $model->where('title', 'foo');
+        // $model->where('title', '!=', 'foo');
+        // rate:>10、rate:<10、rate:>=10、rate:<=10
+        // In、NotIn查询
+        // status:(1,2,3,4)、status:!(1,2,3,4)
+        // Between查询
+        // score:[1,10]
+        // 时间日期函数查询
+        // created_at:date,2019-06-08
+        // created_at:time,09:57:45
+        // created_at:day,08
+        // Like查询
+        // content:%Laudantium%
+        // 正则查询
+        // username:/song/
+        // $model->where('username', 'REGEXP', 'song');
+        // Label作为查询字段名称
+        // 比如设置了`user_status`的表头列名为`用户状态`
+        // $grid->column('user_status', '用户状态');
+        // 可以填入用户状态:(1,2,3)来执行下面的查询
+        // $model->whereIn('user_status', [1, 2, 3]);
+
+        $grid->quickSearch();
+
+
+        // 模型表格字段列表
+        $grid->column('title', '标题')->display(function ($title, $column) {
+            return $this->status == 1 ? $title : $column->editable();
+        })->filter('like');
+        $grid->column('email', '邮箱');
+        $grid->column('full_name', '姓甚名谁')->display(function () {
+            return $this->first_name . ' ' . $this->last_name;
+        });
+        $grid->column('gender', '是男是女')->using([
+            'female' => '女性',
+            'male' => '男性'
+        ])->filter();
+        $grid->content('内容');
+        $grid->column('cost')->replace(['0.00' => '免费']);
+        $grid->column('file_size')->filesize();
+        $grid->column('file_path')->downloadable();
+        $grid->column('first_name', '姓甚名谁')->copyable();
+        $grid->column('link', '外链')->qrcode();
+        $grid->column('status')->loading([1, 2, 3], [ 4 => '完成'])->filter([ 0 => '未知', 1 => '已下单', 2 => '已付款', 3 => '已取消', ]);;
+        $grid->column('price', '价格')->display(function() {
+            return rand(100, 105);
+        })->filter('range');
+        $grid->column('created_at')->date('Y-m-d')->filter('date');
+        $grid->column('updated_at')->date('Y-m-d')->filter('range', 'date');
+
+        // $grid->fixColumns(3, -3);
+        $grid->paginate(5);
+        return $content
+            ->header('模型表格简单功能')
+            ->description('快捷键等功能')
+            ->body($grid); // body方法添加内容
+
+    }
 }
