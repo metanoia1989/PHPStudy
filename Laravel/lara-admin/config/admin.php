@@ -396,6 +396,9 @@ return [
     |
     */
     'extensions' => [
-
+        // 开启 chartjs 图表扩展
+        'chartjs' => [
+            'enable' => true,
+        ]
     ],
 ];
