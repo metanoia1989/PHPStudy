@@ -580,6 +580,18 @@ class ShowController extends AdminController
 
         // 规格选择器
         // 用来构建类似淘宝或京东商品的规格选择
+        // 假设brand字段的4个取值分别对应4个品牌，下面的方式会构建出brand的规格选择器
+        // select方法默认是多选的，在页面上点击每一个选项的右边的加号，这个字段的查询会增加一个查询选项，如果字段筛选只允许选择一项，使用selectOne方法
+        $grid->selector(function (Grid\Tools\Selector $selector) {
+            // $selector->select('brand', '品牌', [
+            $selector->selectOne('brand', '品牌', [
+                1 => '华为',
+                2 => '小米',
+                3 => 'OPPO',
+                4 => 'vivo',
+            ]);
+            // 传入一个匿名函数作为第四个参数，价格字段price选择之后，将会使用匿名函数中的逻辑进行数据查询，这样你可以定义任意的查询方式。
+        });
 
         // 快捷搜索
         // 快捷搜索是除了filter之外的另一个表格数据搜索方式，用来快速过滤你想要的数据
@@ -620,7 +632,6 @@ class ShowController extends AdminController
         // $grid->column('user_status', '用户状态');
         // 可以填入用户状态:(1,2,3)来执行下面的查询
         // $model->whereIn('user_status', [1, 2, 3]);
-
         $grid->quickSearch();
 
 
