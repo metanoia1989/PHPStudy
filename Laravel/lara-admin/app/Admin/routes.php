@@ -23,6 +23,7 @@ Route::group([
     $router->get('movie', 'MovieController@index');
 
     $router->get('column/show', 'ShowController@index');
+    $router->get('column/columnFilter', 'ShowController@columnFilter');
     $router->get('chartjs/index', 'ChartjsController@index');
 
 });

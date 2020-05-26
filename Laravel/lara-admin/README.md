@@ -107,6 +107,7 @@ CREATE TABLE `column_show` (
 `images` text   NULL COMMENT '轮播图' ,
 `status` tinyint(1) unsigned  NOT NULL DEFAULT 1 COMMENT '状态 ' ,
 `approved` tinyint(1) unsigned  NOT NULL DEFAULT 1 COMMENT '是否同意' ,
+`trashed` tinyint(1) unsigned  NOT NULL DEFAULT 0 COMMENT '被软删除的数据' ,
 `progress` int(10) unsigned  NOT NULL DEFAULT 50 COMMENT '进度' ,
 `created_at` timestamp NULL DEFAULT NULL COMMENT '发布时间',
 `updated_at` timestamp NULL DEFAULT NULL,

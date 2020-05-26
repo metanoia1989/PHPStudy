@@ -268,4 +268,270 @@ class ShowController extends AdminController
             ->description('display、collection、以及其他操作')
             ->body($grid); // body方法添加内容
     }
+
+    /**
+     * 查询过滤器以及列过滤器
+     *
+     * @param Content $content
+     *
+     * @return Content  这个类实现内容区的布局
+     */
+    public function columnFilter(Content $content)
+    {
+        $grid = new Grid(new ColumnShow());
+
+        /* 查询过滤器 */
+        // 对过滤查询面板的样式做了调整，从原来的弹出modal改为嵌入表格头部，通过点击筛选按钮展开显示，默认是不展开的
+        // 在`$grid`实例上操作展开
+        // $grid->expandFilter();
+
+        // $grid->filter() 设置查询过滤器
+        $grid->filter(function ($filter) {
+            // 或者在filter回调里面操作`$filter`实例进行展开
+            $filter->expand();
+
+            // 去掉默认的ID过滤器
+            $filter->disableIdFilter();
+
+            $filter->column(12, function ($filter) {
+
+                // 添加字段过滤器
+                $filter->like('title', '标题字段');
+
+                // 自定义筛选栏下拉菜单
+                // scope() 定义为一个查询范围，它将会出现在**筛选按钮的下拉菜单**中
+                // scope方法第一个参数为查询的key, 会出现的url参数中，第二个参数是下拉菜单项的label, 如果不填，第一个参数会作为label显示
+                // scope方法可以链式调用任何eloquent查询条件
+                $filter->scope('male', '男性')->where('gender', 'male');
+                // 多条件查询
+                $filter->scope('new', '最近修改的')
+                    ->whereDate('created_at', '>', date('Y-m-d', strtotime('2020-5-20')))
+                    ->orWhere('updated_at', '>', date('Y-m-d', strtotime('2020-5-21')));
+                // 关联关系查询
+                $filter->scope('address', '地址')->whereHas('profile', function ($query) {
+                    $query->whereNotNull('address');
+                });
+
+                $filter->scope('trashed', '被软删除的数据')->where('trashed', '1');
+
+                // 过滤器支持的查询类型
+                // equal WHERE column= "$input"：
+                $filter->equal('title', '标题等于');
+                // not equal WHERE column != "$input"：
+                $filter->notEqual('title', '标题不等于');
+                // ilike WHERE column ILIKE "%$input%"：
+                $filter->notEqual('title', '标题不等于');
+                // contains 等于like查询
+                // $filter->contains('content', '内容');
+                // starts with 查询以输入内容开头的title字段数据
+                // $filter->startsWith('content', '内容开头');
+                // ends with 查询以输入内容结尾的title字段数据
+                $filter->endsWith('content', '内容结尾');
+                // 大于 WHERE column> "$input"：
+                // $filter->gt('cost', "大于多少钱");
+                // 小于 WHERE column< "$input"：
+                // $filter->lt('cost', "小于多少钱");
+                // between WHERE columnBETWEEN "$start" AND "$end"：
+                // 范围查询有问题，感觉基本上都需要自定义Between类
+                // $filter->between('cost', '价格范围');
+                // $filter->between('created_at', '创建的时间日期范围')->datetime();
+                // $filter->between('updated_at', '创建的时间范围')->time();
+                // in WHERE columnin (...$inputs)
+                $filter->in('status', '在指定范围的状态')->multipleSelect([
+                    0 => '状态0',
+                    1 => '状态1',
+                    2 => '状态2',
+                    3 => '状态3',
+                ]);
+                // notIn WHERE columnnot in (...$inputs)
+                $filter->notIn('status', '不在指定范围的状态')->multipleSelect(['key' => 'value']);
+                // date WHERE DATE(column) = "$input"
+                $filter->date('created_time', '查询字段的日期');
+                // day WHERE DAY(column) = "$input"
+                $filter->day('created_time', '查询字段的天数');
+                // month WHERE MONTH(column) = "$input"
+                $filter->month('created_time', '查询字段的月份');
+                // year WHERE YEAR(column) = "$input"：
+                $filter->year('created_time', '查询字段的年份');
+
+                // 用where来构建比较复杂的查询过滤
+                // WHERE title LIKE "%$input" OR content LIKE "%$input"
+                $filter->where(function ($query) {
+                    $query->where('email', 'like', "%{$this->input}%")
+                        ->orWhere('cost', 'like', "%{$this->input}%");
+                }, '邮箱和价格模糊匹配');
+                // WHERE rate>= 6 AND created_at= {$input}
+                $filter->where(function ($query) {
+                    $query->whereRaw("`cost` > 10 AND `email`= '{$this->input}'");
+                }, '价格大于10，然后指定邮箱');
+                // 关系查询，查询对应关系profile的字段
+                $filter->where(function ($query) {
+                    $query->whereHas('profile', function ($query) {
+                        $query->where('address', 'like', "%{$this->input}%")->orWhere('email', 'like', "%{$this->input}%");
+                    });
+                }, '地址或手机号');
+
+                // 表单类型
+                // text 表单类型默认是text input，可以设置placeholder：
+                $filter->equal('first_name', '名字')->placeholder('请输入名字....');
+                $filter->equal('url', 'URL格式')->url();
+                $filter->equal('email', 'Email格式')->email();
+                $filter->equal('integer', '整数格式')->integer();
+                $filter->equal('ip', 'IP格式')->ip();
+                $filter->equal('max', 'MAC地址格式')->mac();
+                $filter->equal('mobile', '手机格式')->mobile();
+                // $options 参考 https://github.com/RobinHerbots/Inputmask
+                $filter->equal('decimal', '钱数字格式')->decimal($options = []);
+                $filter->equal('currency', '货币格式')->currency($options = []);
+                $filter->equal('percentage', '百分比格式')->percentage($options = []);
+                $filter->equal('inputmask', '输入掩码格式')->inputmask($options = [], $icon = 'pencil');
+                // select 单选下拉菜单
+                $filter->equal('select', '单选下拉菜单')->select(["1" => "选项1", "2" => '选项2']);
+                // 或者从api获取数据，api的格式参考model-form的select组件
+                // $filter->equal('column')->select('api/users');
+                // multipleSelect 多选下拉菜单
+                $filter->in('multipleSelect', '多选下拉菜单')->multipleSelect(["1" => "选项1", "2" => '选项2']);
+                // 或者从api获取数据，api的格式参考model-form的multipleSelect组件
+                // $filter->in('column')->multipleSelect('api/users');
+                // radio 比较常见的场景是选择分类
+                $filter->equal('radio', '单选框')->radio([
+                    '' => 'All',
+                    0 => '未发布',
+                    1 => '已发布',
+                ]);
+                // checkbox 比较常见的场景是配合whereIn来做范围筛选
+                $filter->in('checkbox', '多选框')->checkbox([
+                    0 => '未知状态',
+                    1 => '状态1',
+                    2 => '状态2',
+                    3 => '状态3',
+                ]);
+                // 日期时间周期查询
+                // $options的参数和值参考 bootstrap-datetimepicker http://eonasdan.github.io/bootstrap-datetimepicker/Options/
+                $filter->equal('datetime', '日期时间查询')->datetime();
+                // `date()` 相当于 `datetime(['format' => 'YYYY-MM-DD'])`
+                $filter->equal('date', '日期查询')->date();
+                // `time()` 相当于 `datetime(['format' => 'HH:mm:ss'])`
+                $filter->equal('time', '时间查询')->time();
+                // `day()` 相当于 `datetime(['format' => 'DD'])`
+                $filter->equal('day', '天数查询')->day();
+                // `month()` 相当于 `datetime(['format' => 'MM'])`
+                $filter->equal('month', '月份查询')->month();
+                // `year()` 相当于 `datetime(['format' => 'YYYY'])`
+                $filter->equal('year', '年份查询')->year();
+
+                // 复杂查询过滤器
+                // 使用$this->input()来触发复杂的自定义查询
+                $filter->where(function ($query) {
+                    switch ($this->input) {
+                        case 'yes':
+                            $query->has('relationshipTable');
+                            break;
+                        case 'no':
+                            $query->doesntHave('relationshipTable');
+                            break;
+                    }
+                }, '复杂的查询啊', 'name_for_url_shortcut')->radio([
+                    '' => '所有的情况',
+                    'yes' => '仅仅有关系的',
+                    'no' => '除了有关系之外的'
+                ]);
+
+            });
+
+            $filter->column(12, function ($filter) {
+                // 多列布局
+                // 如果过滤器太多，会把页面拉的很长，将会很影响页面的观感，这个版本将支持过滤器的多列布局, 比如6个过滤器分两列显示
+                // 默认会有一个主键字段的过滤器放在第一列，所有左右各三个过滤器一共6个过滤器
+                // column方法的第一个参数设置列宽度，可以设置为比例1/2或0.5，或者bootstrap的栅格列宽度比如6，如果三列的话可以设置为1/3或者4
+                $filter->column(1/2, function ($filter) {
+                    $filter->like('title');
+                    $filter->between('rate');
+                });
+
+                $filter->column(1/2, function ($filter) {
+                    $filter->equal('created_at')->datetime();
+                    $filter->between('updated_at')->datetime();
+                    $filter->equal('released')->radio([
+                        1 => 'YES',
+                        0 => 'NO',
+                    ]);
+                });
+            });
+
+            $filter->column(12, function ($filter) {
+                // 过滤器组
+                // 有时候对同一个字段要设置多中筛选方式， 使用 group() 方法实现
+                // 等于 $group->equal();
+                // 不等于 $group->notEqual();
+                // 大于 $group->gt();
+                // 小于 $group->lt();
+                // 大于等于 $group->nlt();
+                // 小于等于 $group->ngt();
+                // 匹配 $group->match();
+                // 复杂条件 $group->where();
+                // like查询 $group->like();
+                // like查询 $group->contains();
+                // ilike查询 $group->ilike();
+                // 以输入的内容开头 $group->startWith();
+                // 以输入的内容结尾 $group->endWith();
+                $filter->group('status', '状态', function ($group) {
+                    $group->gt('大于');
+                    $group->lt('小于');
+                    $group->nlt('不小于');
+                    $group->ngt('不大于');
+                    $group->equal('等于');
+                });
+            });
+
+
+        });
+
+
+        /* 列过滤器 */
+        // 这个查询，最终是限制在SQL后面的WHERE条件的，数据表中不存在的字段不能使用这种方式
+        // 字符串比较查询
+        // 默认对这一列执行等于查询 filter()
+        // 执行like查询 filter('like')
+        // 用于时间日期的查询 filter('date') filter('time') filter('datetime')
+        // 过滤一个或者多个状态的数据，使用多选过滤可以非常方便的实现，只能用于值为数字的字段
+        // filter([ 0 => '未知', 1 => '已下单', 2 => '已付款', 3 => '已取消', ]);
+        // 过滤一个数字范围 filter('range')
+        // 时间日期的范围查询 filter('range', 'date') filter('range', 'time') filter('range', 'datetime')
+
+        // 根据条件显示不同的组件
+        $grid->column('title', '标题')->display(function ($title, $column) {
+            return $this->status == 1 ? $title : $column->editable();
+        })->filter('like');
+
+        $grid->column('full_name', '姓甚名谁')->display(function () {
+            return $this->first_name . ' ' . $this->last_name;
+        });
+
+        $grid->column('gender', '是男是女')->using([
+            'female' => '女性',
+            'male' => '男性'
+        ])->filter();
+        $grid->content('内容');
+        $grid->column('email', '邮箱');
+        $grid->column('cost')->replace(['0.00' => '免费']);
+        // $grid->column('email', '头像')->gravatar(45);
+        $grid->column('file_size')->filesize();
+        $grid->column('file_path')->downloadable();
+        $grid->column('first_name', '姓甚名谁')->copyable();
+        $grid->column('link', '外链')->qrcode();
+        $grid->column('status')->loading([1, 2, 3], [ 4 => '完成'])->filter([ 0 => '未知', 1 => '已下单', 2 => '已付款', 3 => '已取消', ]);;
+        $grid->column('price', '价格')->display(function() {
+            return rand(100, 105);
+        })->filter('range');
+        $grid->column('created_at')->date('Y-m-d')->filter('date');
+        $grid->column('updated_at')->date('Y-m-d')->filter('range', 'date');
+
+        $grid->fixColumns(3, -3);
+        $grid->paginate(5);
+        return $content
+            ->header('列的显示')
+            ->description('display、collection、以及其他操作')
+            ->body($grid); // body方法添加内容
+    }
 }
