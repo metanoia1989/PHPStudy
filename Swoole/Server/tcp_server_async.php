@@ -276,6 +276,9 @@ $server->on('packet', function (Swoole\Server $server, $data, $addr) {
 $server->on('pipeMessage', function ($server, $src_worker_id, $data) {
     echo "#{$server->worker_id} message from $src_worker_id: $data\n";
 });
+$server->on('task', function ($server, $task_id, $reactor_id, $data) {
+    var_dump($task_id, $reactor_id, $data);
+});
 
 
 $server->start();
