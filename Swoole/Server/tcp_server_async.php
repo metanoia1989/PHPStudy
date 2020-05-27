@@ -24,6 +24,7 @@ echo $port->port;
 $server->set([
     'reactor_num' => 2, // 调节主进程内事件处理线程的数量
     'worker_num' => 4, // 启动的 Worker 进程数
+    'task_worker_num' => 2,
     'backlog' => 128, // 设置 Listen 队列长度，此参数将决定最多同时有多少个等待 accept 的连接。
     'max_request' => 50, // 设置 worker 进程的最大任务数。一个 worker 进程在处理完超过此数值的任务后将自动退出，进程退出后会释放所有内存和资源
     'dispatch_mode' => 2, // 数据包分发策略。
@@ -73,17 +74,17 @@ $process = new Swoole\Process(function ($process) use ($server) {
     }
 }, false, 2, 1);
 $server->addProcess($process);
-$server->on('receive', function ($serv, $fd, $reactor_id, $data) use ($process) {
-    // 定时向客户端发送消息
-    $serv->tick(1000, function () use ($serv, $fd) {
-        $serv->send($fd, "hello client，this is from server random number: ".rand(1, 100)."\n");
-    });
+// $server->on('receive', function ($serv, $fd, $reactor_id, $data) use ($process) {
+//     // 定时向客户端发送消息
+//     $serv->tick(1000, function () use ($serv, $fd) {
+//         $serv->send($fd, "hello client，this is from server random number: ".rand(1, 100)."\n");
+//     });
 
-    // 群接收到的消息
-    $socket = $process->exportSocket();
-    $socket->send($data);
+//     // 群接收到的消息
+//     $socket = $process->exportSocket();
+//     $socket->send($data);
 
-});
+// });
 
 // start()
 // 启动服务器，监听所有 TCP/UDP 端口。
@@ -249,6 +250,32 @@ $server->on('packet', function (Swoole\Server $server, $data, $addr) {
 // 服务器可能会同时监听多个 UDP 端口，参考多端口监听，此参数可以指定使用哪个端口发送数据包
 // 必须监听了 UDP 的端口，才可以使用向 IPv4 地址发送数据
 // 必须监听了 UDP6 的端口，才可以使用向 IPv6 地址发送数据
+
+// sendwait()
+// 同步地向客户端发送数据。
+// Swoole\Server->sendwait(int $fd, string $data): bool
+// =提示=
+// 有一些特殊的场景，Server 需要连续向客户端发送数据，而 Server->send 数据发送接口是纯异步的，大量数据发送会导致内存发送队列塞满。
+// 使用 Server->sendwait 就可以解决此问题，Server->sendwait 会等待连接可写。直到数据发送完毕才会返回。
+// =注意=
+// sendwait 目前仅可用于 SWOOLE_BASE 模式
+// sendwait 只用于本机或内网通信，外网连接请勿使用 sendwait，在 enable_coroutine=>true (默认开启) 的时候也不要用这个函数，会卡死其他协程，只有同步阻塞的服务器才可以用。
+
+// sendMessage()
+// 向任意 Worker 进程或者 Task 进程发送消息。在非主进程和管理进程中可调用。收到消息的进程会触发 onPipeMessage 事件。
+// Swoole\Server->sendMessage(string $message, int $workerId): bool
+// =提示=
+// 在 Worker 进程内调用 sendMessage 是异步 IO 的，消息会先存到缓冲区，可写时向 unixSocket 发送此消息
+// 在 Task 进程 内调用 sendMessage 默认是同步 IO，但有些情况会自动转换成异步 IO，参考同步 IO 转换成异步 IO
+// 在 User 进程 内调用 sendMessage 和 Task 一样，默认同步阻塞的，参考同步 IO 转换成异步 IO
+// =注意=
+// - 如果 sendMessage() 是异步 IO 的，如果对端进程因为种种原因不接收数据，千万不要一直 sendMessage()，会导致占用大量的内存资源，可以做个应答机制，对端不回应就不要发了；
+// - MacOS/FreeBSD下超过 2K 就会使用临时文件存储；
+// - 使用 sendMessage 必须注册 onPipeMessage 事件回调函数；
+// - 设置了 task_ipc_mode = 3 将无法使用 sendMessage 向特定的 task 进程发送消息。
+$server->on('pipeMessage', function ($server, $src_worker_id, $data) {
+    echo "#{$server->worker_id} message from $src_worker_id: $data\n";
+});
 
 
 $server->start();
