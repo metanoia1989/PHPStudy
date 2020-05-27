@@ -36,9 +36,9 @@ $server->set([
 // Swoole\Server->on(string $event, mixed $callback): void
 // 重复调用 on 方法时会覆盖上一次的设定
 // 大小写不敏感，事件名称字符串不要加 on
-$server->on('connect', function ($server, $fd) {
-    echo "Client: Conenct.\n";
-});
+// $server->on('connect', function ($server, $fd) {
+//     echo "Client: Conenct.\n";
+// });
 
 // addListener()
 // 增加监听的端口。业务代码中可以通过调用 Server->getClientInfo 来获取某个连接来自于哪个端口。
@@ -149,7 +149,10 @@ $server->on('WorkerStart', function(Swoole\Server $server, int $workerId) {
             $server->clearTimer($timerId);
         });
     } else {
-        $server->tick(1000, function () {
+        // $server->tick(1000, function () {
+        //     echo "任务中的定时器任务执行\n";
+        // });
+        $server->after(1500, function () {
             echo "任务中的定时器任务执行\n";
         });
     }
@@ -279,6 +282,261 @@ $server->on('pipeMessage', function ($server, $src_worker_id, $data) {
 $server->on('task', function ($server, $task_id, $reactor_id, $data) {
     var_dump($task_id, $reactor_id, $data);
 });
+$server->on('finish', function ($server, $fd, $reactor_id) {
 
+});
+$server->on('receive', function (Swoole\Server $server, $fd, $reactor_id, $data) {
+    $fd_info = $server->getClientInfo($fd);
+    echo "客户端信息如下：\n";
+    var_dump($fd_info);
+
+
+    echo "遍历客户端链接：\n";
+    $start_fd = 0;
+    while (true) {
+        $conn_list = $server->getClientList($start_fd, 10);
+        if ($conn_list === false or count($conn_list) === 0) {
+            echo "finish\n";
+            break;
+        }
+        $start_fd = end($conn_list);
+        var_dump($conn_list);
+        foreach ($conn_list as $fd) {
+            $server->send($fd, "broadcast");
+        }
+    }
+
+    if (trim($data) == 'task') {
+        $server->task('async task coming');
+    } else {
+        $worker_id = 1 - $server->worker_id;
+        $server->sendMessage("hello task process", $worker_id);
+    }
+});
+
+// exist()
+// 检测 fd 对应的连接是否存在。
+// Swoole\Server->exist(int $fd): bool
+
+// pause()
+// 停止接收数据。
+// Swoole\Server->pause(int $fd)
+// 调用此函数后会将连接从 EventLoop 中移除，不再接收客户端数据。
+// 此函数不影响发送队列的处理
+// 只能在 SWOOLE_PROCESS 模式下，调用 pause 后，可能有部分数据已经到达 Worker 进程，因此仍然可能会触发 onReceive 事件
+
+// resume()
+// 恢复数据接收。与 pause 方法成对使用。
+// Swoole\Server->resume(int $fd)
+// 调用此函数后会将连接重新加入到 EventLoop 中，继续接收客户端数据
+
+// getClientInfo()
+// 获取连接的信息，别名是 Swoole\Server->connection_info()
+// Swoole\Server->getClientInfo(int $fd, int $extraData, bool $ignoreError = false): bool|array
+// 客户端证书
+// 仅在 onConnect 触发的进程中才能获取到证书
+// 格式为 x509 格式，可使用 openssl_x509_parse 函数获取到证书信息
+// 当使用 dispatch_mode = 1/3 配置时，考虑到这种数据包分发策略用于无状态服务，当连接断开后相关信息会直接从内存中删除，所以 Server->getClientInfo 是获取不到相关连接信息的。
+// 返回 array 参数
+// array(7) {
+//   ["reactor_id"]=>
+//   int(3)
+//   ["server_fd"]=>
+//   int(14)
+//   ["server_port"]=>
+//   int(9501)
+//   ["remote_port"]=>
+//   int(19889)
+//   ["remote_ip"]=>
+//   string(9) "127.0.0.1"
+//   ["connect_time"]=>
+//   int(1390212495)
+//   ["last_time"]=>
+//   int(1390212760)
+// }
+// reactor_id	来自哪个 Reactor 线程
+// server_fd	来自哪个监听端口 socket，这里不是客户端连接的 fd
+// server_port	来自哪个监听端口
+// remote_port	客户端连接的端口
+// remote_ip	客户端连接的 IP 地址
+// connect_time	客户端连接到 Server 的时间，单位秒，由 master 进程设置
+// last_time	最后一次收到数据的时间，单位秒，由 master 进程设置
+// close_errno	连接关闭的错误码，如果连接异常关闭，close_errno 的值是非零，可以参考 Linux 错误信息列表
+// websocket_status	[可选项] WebSocket 连接状态，当服务器是 Swoole\WebSocket\Server 时会额外增加此项信息
+// uid	[可选项] 使用 bind 绑定了用户 ID 时会额外增加此项信息
+// ssl_client_cert	[可选项] 使用 SSL 隧道加密，并且客户端设置了证书时会额外添加此项信息
+
+// getClientList()
+// 遍历当前 Server 所有的客户端连接，Server::getClientList 方法是基于共享内存的，不存在 IOWait，遍历的速度很快。
+// 另外 getClientList 会返回所有 TCP 连接，而不仅仅是当前 Worker 进程的 TCP 连接。别名是 Swoole\Server->connection_list()
+// Swoole\Server->getClientList(int $start_fd = 0, int $pageSize = 10): bool|array
+// 返回值
+// - 调用成功将返回一个数字索引数组，元素是取到的 $fd。数组会按从小到大排序。最后一个 $fd 作为新的 start_fd 再次尝试获取
+// - 调用失败返回 false
+// 提示
+// - 推荐使用 Server::$connections 迭代器来遍历连接
+// - getClientList 仅可用于 TCP 客户端，UDP 服务器需要自行保存客户端信息
+// - SWOOLE_BASE 模式下只能获取当前进程的连接
+
+// bind()
+// 将连接绑定一个用户定义的 UID，可以设置 dispatch_mode=5 设置以此值进行 hash 固定分配。可以保证某一个 UID 的连接全部会分配到同一个 Worker 进程。
+// Swoole\Server->bind(int $fd, int $uid)
+// 提示
+// - 可以使用 $serv->getClientInfo($fd) 查看连接所绑定 UID 的值
+// - 在默认的 dispatch_mode=2 设置下，Server 会按照 socket fd 来分配连接数据到不同的 Worker 进程。因为 fd 是不稳定的，一个客户端断开后重新连接，fd 会发生改变。这样这个客户端的数据就会被分配到别的 Worker。使用 bind 之后就可以按照用户定义的 UID 进行分配。即使断线重连，相同 UID 的 TCP 连接数据会被分配相同的 Worker 进程。
+// - 时序问题
+//   - 客户端连接服务器后，连续发送多个包，可能会存在时序问题。在 bind 操作时，后续的包可能已经 dispatch，这些数据包仍然会按照 fd 取模分配到当前进程。只有在 bind 之后新收到的数据包才会按照 UID 取模分配。
+//   - 因此如果要使用 bind 机制，网络通信协议需要设计握手步骤。客户端连接成功后，先发一个握手请求，之后客户端不要发任何包。在服务器 bind 完后，并回应之后。客户端再发送新的请求。
+// - 重新绑定
+//   - 某些情况下，业务逻辑需要用户连接重新绑定 UID。这时可以切断连接，重新建立 TCP 连接并握手，绑定到新的 UID。
+// 注意
+// - 仅在设置 dispatch_mode=5 时有效
+// - 未绑定 UID 时默认使用 fd 取模进行分配
+// - 同一个连接只能被 bind 一次，如果已经绑定了 UID，再次调用 bind 会返回 false
+// 使用示例见文件 uid_dispatch_server.php 文件
+
+// stats()
+// 得到当前 Server 的活动 TCP 连接数，启动时间等信息，accpet/close(建立连接 / 关闭连接) 的总次数等信息。
+// Swoole\Server->stats(): array
+// array(12) {
+//   ["start_time"]=>
+//   int(1580610688)
+//   ["connection_num"]=>
+//   int(1)
+//   ["accept_count"]=>
+//   int(1)
+//   ["close_count"]=>
+//   int(0)
+//   ["worker_num"]=>
+//   int(1)
+//   ["idle_worker_num"]=>
+//   int(1)
+//   ["tasking_num"]=>
+//   int(0)
+//   ["request_count"]=>
+//   int(1)
+//   ["worker_request_count"]=>
+//   int(1)
+//   ["worker_dispatch_count"]=>
+//   int(1)
+//   ["task_idle_worker_num"]=>
+//   int(1)
+//   ["coroutine_num"]=>
+//   int(1)
+// }
+// start_time	服务器启动的时间
+// connection_num	当前连接的数量
+// accept_count	接受了多少个连接
+// close_count	关闭的连接数量
+// worker_num	开启了多少个 worker 进程
+// idle_worker_num	空闲的 worker 进程数
+// tasking_num	当前正在排队的任务数
+// request_count	Server 收到的请求次数 【只有 onReceive、onMessage、onRequset、onPacket 四种数据请求计算 request_count】
+// worker_request_count	当前 Worker 进程收到的请求次数【worker_request_count 超过 max_request 时工作进程将退出】
+// worker_dispatch_count	master 进程向当前 Worker 进程投递任务的计数，在 master 进程进行 dispatch 时增加计数
+// task_queue_num	消息队列中的 task 数量【用于 Task】
+// task_queue_bytes	消息队列的内存占用字节数【用于 Task】
+// task_idle_worker_num	空闲的 task 进程数量
+// coroutine_num	当前协程数量 coroutine_num【用于 Coroutine】，想获取更多信息参考此节
+$server->on('connect', function ($serv, $fd, $reactor_id) {
+    echo "有客户端连接：".$fd;
+    $stats = $serv->stats();
+    print_r($stats);
+});
+
+// task()
+// 投递一个异步任务到 task_worker 池中。此函数是非阻塞的，执行完毕会立即返回。Worker 进程可以继续处理新的请求。使用 Task 功能，必须先设置 task_worker_num，并且必须设置 Server 的 onTask 和 onFinish 事件回调函数。
+// Swoole\Server->task(mixed $data, int $dstWorkerId  = -1): int
+// =返回值=
+// - 调用成功，返回值为整数 $task_id，表示此任务的 ID。如果有 finish 回应，onFinish 回调中会携带 $task_id 参数
+// - 调用失败，返回值为 false，$task_id 可能为 0，因此必须使用 === 判断是否失败
+// =提示=
+// - 此功能用于将慢速的任务异步地去执行，比如一个聊天室服务器，可以用它来进行发送广播。当任务完成时，在 task 进程中调用 $serv->finish("finish") 告诉 worker 进程此任务已完成。当然 Swoole\Server->finish 是可选的。
+// - task 底层使用 unixSocket 通信，是全内存的，没有 IO 消耗。单进程读写性能可达 100万/s，不同的进程使用不同的 unixSocket 通信，可以最大化利用多核。
+// - 未指定目标 Task 进程，调用 task 方法会判断 Task 进程的忙闲状态，底层只会向处于空闲状态的 Task 进程投递任务。如果所有 Task 进程均处于忙的状态，底层会轮询投递任务到各个进程。可以使用 server->stats 方法获取当前正在排队的任务数量。
+// - 第三个参数，可以直接设置 onFinish 函数，如果任务设置了回调函数，Task 返回结果时会直接执行指定的回调函数，不再执行 Server 的 onFinish 回调
+// $server->task($data, -1, function (Swoole\Server $server, $task_id, $data) {
+//     echo "Task Callback: ";
+//     var_dump($task_id, $data);
+// });
+// - $task_id 是从 0-42 亿的整数，在当前进程内是唯一的
+// - 默认不启动 task 功能，需要在手动设置 task_worker_num 来启动此功能
+// - TaskWorker 的数量在 Server::set() 参数中调整，如 task_worker_num => 64，表示启动 64 个进程来接收异步任务
+// =配置参数=
+// - Server->task/taskwait/finish 3 个方法当传入的 $data 数据超过 8K 时会启用临时文件来保存。当临时文件内容超过 server->package_max_length 时底层会抛出一个警告。此警告不影响数据的投递，过大的 Task 可能会存在性能问题。
+//       WARN: task package is too big.
+// =单向任务=
+// - 从 Master、Manager、UserProcess 进程中投递的任务，是单向的。在 TaskWorker 进程中无法使用 return 或 Server->finish() 方法返回结果数据。
+// =注意=
+// - task 方法不能在 task 进程 / 用户自定义进程中调用
+// - 使用 task 必须为 Server 设置 onTask 和 onFinish 回调，否则 Server->start 会失败
+// -task 操作的次数必须小于 onTask 处理速度，如果投递容量超过处理能力，task 数据会塞满缓存区，导致 Worker 进程发生阻塞。Worker 进程将无法接收新的请求
+// - 使用 addProcess 添加的用户进程中无法使用 task 投递任务，请使用 sendMessage 接口与 Task 工作进程通信
+// 详细使用见 task_deliver_server.php 文件
+
+// taskwait()
+// taskwait 与 task 方法作用相同，用于投递一个异步的任务到 task 进程池去执行。
+// 与 task 不同的是 taskwait 是同步等待的，直到任务完成或者超时返回。$result 为任务执行的结果，
+// 由 $server->finish 函数发出。如果此任务超时，这里会返回 false。
+// Swoole\Server->taskwait(mixed $data, float $timeout = 0.5, int $dstWorkerId = -1): string|bool
+// 提示
+// - 协程模式
+//   - 从 4.0.4 版本开始 taskwait 方法将支持协程调度，在协程中调用 Server->taskwait() 时将自动进行协程调度，不再阻塞等待。
+//   - 借助协程调度器，taskwait 可以实现并发调用。
+// - 同步模式
+//   - 在同步阻塞模式下，taskwait 需要使用 UnixSocket 通信和共享内存，将数据返回给 Worker 进程，这个过程是同步阻塞的。
+// - 特例
+//   - 如果 onTask 中没有任何同步 IO 操作，底层仅有 2 次进程切换的开销，并不会产生 IO 等待，因此这种情况下 taskwait 可以视为非阻塞。实际测试 onTask 中仅读写 PHP 数组，进行 10 万次 taskwait 操作，总耗时仅为 1 秒，平均每次消耗为 10 微秒
+// 注意
+// - Swoole\Server::finish, 不要使用 taskwait
+// - taskwait 方法不能在 task 进程中调用
+
+// taskWaitMulti()
+// 并发执行多个 task 异步任务，此方法不支持协程调度，会导致其他协程开始，协程环境下需要用下节的 taskCo。
+// Swoole\Server->taskWaitMulti(array $tasks, float $timeout = 0.5): bool|array
+// 返回值
+// - 任务完成或超时，返回结果数组。结果数组中每个任务结果的顺序与 $tasks 对应，如：$tasks[2] 对应的结果为 $result[2]
+// - 某个任务执行超时不会影响其他任务，返回的结果数据中将不包含超时的任务
+// 注意
+// - 最大并发任务不得超过 1024
+// $tasks[] = mt_rand(1000, 9999); //任务1
+// $tasks[] = mt_rand(1000, 9999); //任务2
+// $tasks[] = mt_rand(1000, 9999); //任务3
+// var_dump($tasks);
+
+// //等待所有Task结果返回，超时为10s
+// $results = $server->taskWaitMulti($tasks, 10.0);
+
+// if (!isset($results[0])) {
+//   echo "任务1执行超时了\n";
+// }
+// if (isset($results[1])) {
+//   echo "任务2的执行结果为{$results[1]}\n";
+// }
+// if (isset($results[2])) {
+//   echo "任务3的执行结果为{$results[2]}\n";
+// }
+
+// taskCo()
+// 并发执行 Task 并进行协程调度，用于支持协程环境下的 taskWaitMulti 功能。
+// Swoole\Server->taskCo(array $tasks, float $timeout = 0.5): array
+// $tasks 任务列表，必须为数组。底层会遍历数组，将每个元素作为 task 投递到 Task 进程池
+// $timeout 超时时间，默认为 0.5 秒，当规定的时间内任务没有全部完成，立即中止并返回结果
+// 任务完成或超时，返回结果数组。结果数组中每个任务结果的顺序与 $tasks 对应，如：$tasks[2] 对应的结果为 $result[2]
+// 某个任务执行失败或超时，对应的结果数组项为 false，如：$tasks[2] 失败了，那么 $result[2] 的值为 false
+// 最大并发任务不得超过 1024
+// 调度过程
+// - $tasks 列表中的每个任务会随机投递到一个 Task 工作进程，投递完毕后，yield 让出当前协程，并设置一个 $timeout 秒的定时器
+// - 在 onFinish 中收集对应的任务结果，保存到结果数组中。判断是否所有任务都返回了结果，如果为否，继续等待。如果为是，进行 resume 恢复对应协程的运行，并清除超时定时器
+// - 在规定的时间内任务没有全部完成，定时器先触发，底层清除等待状态。将未完成的任务结果标记为 false，立即 resume 对应协程
+
+// finish()
+// 用于在 Task 进程中通知 Worker 进程，投递的任务已完成。此函数可以传递结果数据给 Worker 进程。
+// Swoole\Server->finish(string $data)
+// 提示
+// - finish 方法可以连续多次调用，Worker 进程会多次触发 onFinish 事件
+// - 在 onTask 回调函数中调用过 finish 方法后，return 数据依然会触发 onFinish 事件
+// - Server->finish 是可选的。如果 Worker 进程不关心任务执行的结果，不需要调用此函数
+// - 在 onTask 回调函数中 return 字符串，等同于调用 finish
 
 $server->start();
