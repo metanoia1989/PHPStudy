@@ -539,5 +539,55 @@ $server->on('connect', function ($serv, $fd, $reactor_id) {
 // - Server->finish 是可选的。如果 Worker 进程不关心任务执行的结果，不需要调用此函数
 // - 在 onTask 回调函数中 return 字符串，等同于调用 finish
 
+// heartbeat()
+// 与 heartbeat_check_interval 的被动检测不同，此方法主动检测服务器所有连接，并找出已经超过约定时间的连接。如果指定 if_close_connection，则自动关闭超时的连接。未指定仅返回连接的 fd 数组。
+// Swoole\Server->heartbeat(bool $ifCloseConnection = true): bool|array
+// 返回值
+// - 调用成功将返回一个连续数组，元素是已关闭的 $fd
+// - 调用失败返回 false
+// $closeFdArrary = $server->heartbeat();
+
+// getLastError()
+// 获取最近一次操作错误的错误码。业务代码中可以根据错误码类型执行不同的逻辑。
+// Swoole\Server->getLastError(): int
+// 错误码	解释
+// 1001	连接已经被 Server 端关闭了，出现这个错误一般是代码中已经执行了 $server->close() 关闭了某个连接，但仍然调用 $server->send() 向这个连接发送数据
+// 1002	连接已被 Client 端关闭了，Socket 已关闭无法发送数据到对端
+// 1003	正在执行 close，onClose 回调函数中不得使用 $server->send()
+// 1004	连接已关闭
+// 1005	连接不存在，传入 $fd 可能是错误的
+// 1007	接收到了超时的数据，TCP 关闭连接后，可能会有部分数据残留在 unixSocket 缓存区内，这部分数据会被丢弃
+// 1008	发送缓存区已满无法执行 send 操作，出现这个错误表示这个连接的对端无法及时收数据导致发送缓存区已塞满
+// 1202	发送的数据超过了 server->buffer_output_size 设置
+// 9007	仅在使用 dispatch_mode=3 时出现，表示当前没有可用的进程，可以调大 worker_num 进程数量
+
+// getSocket()
+// 调用此方法可以得到底层的 socket 句柄，返回的对象为 sockets 资源句柄。
+// Swoole\Server->getSocket()
+// =监听端口=
+// - 使用 listen 方法增加的端口，可以使用 Swoole\Server\Port 对象提供的 getSocket 方法。
+// $port = $server->listen('127.0.0.1', 9502, SWOOLE_SOCK_TCP);
+// $socket = $port->getSocket();
+// Copy to clipboardErrorCopied
+// - 使用 socket_set_option 函数可以设置更底层的一些 socket 参数。
+// $socket = $server->getSocket();
+// if (!socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1)) {
+//     echo 'Unable to set option on socket: '. socket_strerror(socket_last_error()) . PHP_EOL;
+// }
+// - 支持组播
+// 使用 socket_set_option 设置 MCAST_JOIN_GROUP 参数可以将 Socket 加入组播，监听网络组播数据包。
+
+// protect()
+// 设置客户端连接为保护状态，不被心跳线程切断。
+// Swoole\Server->protect(int $fd, bool $value = true)
+
+// confirm()
+// 确认连接，与 enable_delay_receive 配合使用。当客户端建立连接后，并不监听可读事件，仅触发 onConnect 事件回调，在 onConnect 回调中执行 confirm 确认连接，这时服务器才会监听可读事件，接收来自客户端连接的数据。
+// Swoole 版本 >= v4.5.0 可用
+// Swoole\Server->confirm(int $fd);
+// 感觉可以用于身份验证啊
+// 用途
+// 此方法一般用于保护服务器，避免收到流量过载攻击。当收到客户端连接时 onConnect 函数触发，可判断来源 IP，是否允许向服务器发送数据。
+
 
 $server->start();
