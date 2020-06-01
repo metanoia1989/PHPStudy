@@ -6,7 +6,7 @@
 
 require "../vendor/autoload.php";
 
-$server = new \Swoole\Server("localhost", 9999, SWOOLE_PROCESS, SWOOLE_SOCK_TCP);
+$server = new \Swoole\Server("localhost", 9501, SWOOLE_PROCESS, SWOOLE_SOCK_TCP);
 
 // 混合使用UDP/TCP，同时监听内网和外网端口
 $server->addListener("127.0.0.1", 9502, SWOOLE_SOCK_TCP); // 添加TCP
