@@ -4,7 +4,7 @@
 // 例如：在 v4.3+ 支持了文件操作 (file_get_contents、fread 等) 的 Hook，如果您使用的是 v4.3+ 版本就可以直接使用 Hook 而不是使用 Swoole 提供的协程文件操作了。
 
 //*********************************************************** 
-// 一键协程化函数原型
+// 一键协程化函数原型 Swoole\Runtime
 //*********************************************************** 
 // 被 Hook 的函数需要在协程容器中使用
 // *通过 flags 设置要 Hook 的函数的范围*
@@ -191,3 +191,80 @@ Co\run(function () {
 
 // SWOOLE_HOOK_PROC
 // v4.4 开始支持。Hook proc* 函数，包括了：proc_open、proc_close、proc_get_status、proc_terminate。
+Co::set(['hook_flags' => SWOOLE_HOOK_PROC]);
+Co\run(function () {
+    $descriptorspec = array(
+        0 => array("pipe", "r"),  // stdin, child process read from it
+        1 => array("pipe", "w"),  // stdout, child process write to it
+    );
+    $process = proc_open('php', $descriptorspec, $pipes);
+    if (is_resource($process)) {
+        fwrite($pipes[0], '<?php echo "I am process\n" ?>');
+        fclose($pipes[0]);
+
+        while (true) {
+            echo fread($pipes[1], 1024);
+        }
+
+        fclose($pipes[1]);
+        $return_value = proc_close($process);
+        echo "command returned $return_value" . PHP_EOL;
+    }
+});
+
+// SWOOLE_HOOK_CURL
+// v4.4LTS 后或 v4.5 开始正式支持。
+// CURL 的 HOOK，支持的函数有：
+// curl_init
+// curl_setopt
+// curl_exec
+// curl_multi_getcontent
+// curl_setopt_array
+// curl_error
+// curl_getinfo
+// curl_errno
+// curl_close
+// curl_reset
+Co::set(['hook_flags' => SWOOLE_HOOK_CURL]);
+Co\run(function () {
+    $ch = curl_init();  
+    curl_setopt($ch, CURLOPT_URL, "http://www.xinhuanet.com/");  
+    curl_setopt($ch, CURLOPT_HEADER, false);  
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $result = curl_exec($ch);  
+    curl_close($ch);
+    var_dump($result);
+});
+
+
+//*********************************************************** 
+// 一键协程化 方法 Swoole\Runtime
+//*********************************************************** 
+// getHookFlags()
+// Swoole 版本 >= v4.4.12
+// 获取当前已 Hook 内容的 flags，可能会与开启 Hook 时传入的 flags 不一致（由于未 Hook 成功的 flags 将会被清除）
+// Swoole\Runtime::getHookFlags(): int;
+
+
+//*********************************************************** 
+// 一键协程化 常见的Hook列表
+//*********************************************************** 
+// 可用列表
+// redis 扩展
+// 使用 mysqlnd 模式的 pdo_mysql、mysqli 扩展，如果未启用 mysqlnd 将不支持协程化
+// soap 扩展
+// file_get_contents、fopen
+// stream_socket_client (predis、php-amqplib)
+// stream_socket_server
+// stream_select (需要 4.3.2 以上版本)
+// fsockopen
+// proc_open (需要 4.4.0 以上版本)
+// curl
+
+// 不可用列表
+// mysql：底层使用 libmysqlclient
+// mongo：底层使用 mongo-c-client
+// pdo_pgsql
+// pdo_ori
+// pdo_odbc
+// pdo_firebird
