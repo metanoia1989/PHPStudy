@@ -215,6 +215,7 @@ class UserController extends AdminController
             $count = count($comments);
             return "<span class='label label-warning'>$count</span>";
         })->expand(function ($model) {
+            $this->userData = "测试数据赋值";
             $comments = $model->comments()->take(10)->get()->map(function ($comment) {
                 return $comment->only(['id', 'content', 'created_at']);
             });
@@ -225,12 +226,19 @@ class UserController extends AdminController
         // 和列展开功能类似，可以通过弹出模态框来显示更多内容
         $grid->column('cat', '查看评论')->display(function () {
             return '查看评论';
-        })->modal('最新评论', function ($model) {
+        })->expand(function ($model) {
+            dd($this->userData);
             $comments = $model->comments()->take(10)->get()->map(function ($comment) {
                 return $comment->only(['id', 'content', 'created_at']);
             });
             return new Table(['ID', '内容', '发布时间'], $comments->toArray());
         });
+        // })->modal('最新评论', function ($model) {
+        //     $comments = $model->comments()->take(10)->get()->map(function ($comment) {
+        //         return $comment->only(['id', 'content', 'created_at']);
+        //     });
+        //     return new Table(['ID', '内容', '发布时间'], $comments->toArray());
+        // });
 
         $grid->column('created_at', '创建时间');
         $grid->column('updated_at', '更新时间');
