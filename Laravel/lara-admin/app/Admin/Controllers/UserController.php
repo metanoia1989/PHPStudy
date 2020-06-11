@@ -227,7 +227,6 @@ class UserController extends AdminController
         $grid->column('cat', '查看评论')->display(function () {
             return '查看评论';
         })->expand(function ($model) {
-            dd($this->userData);
             $comments = $model->comments()->take(10)->get()->map(function ($comment) {
                 return $comment->only(['id', 'content', 'created_at']);
             });
