@@ -36,3 +36,65 @@
 // *通道为空*
 // - 自动唤醒其中一个消费者协程
 // - 多个消费者协程同时 pop 时，底层自动进行排队，按照顺序逐个 resume 这些消费者协程
+
+
+// pop()
+// 从通道中读取数据。
+// Swoole\Coroutine\Channel->pop(float $timeout = -1): mixed;
+// *返回值*
+// - 返回值可以是任意类型的 PHP 变量，包括匿名函数和资源
+// - 通道被关闭时，执行失败返回 false
+// *通道已满*
+// - pop 消费数据后，将自动唤醒其中一个生产者协程，让其写入新数据
+// - 多个生产者协程同时 push 时，底层自动进行排队，按照顺序逐个 resume 这些生产者协程
+// *通道为空*
+// - 自动 yield 当前协程，其他生产者协程 push 生产数据后，通道可读，将重新 resume 当前协程
+// - 多个消费者协程同时 pop 时，底层自动进行排队，底层会按照顺序逐个 resume 这些消费者协程
+
+// stats()
+// 获取通道的状态。
+// Swoole\Coroutine\Channel->stats(): array;
+// *返回值*
+// 返回一个数组，缓冲通道将包括 4 项信息，无缓冲通道返回 2 项信息
+// - consumer_num 消费者数量，表示当前通道为空，有 N 个协程正在等待其他协程调用 push 方法生产数据
+// - producer_num 生产者数量，表示当前通道已满，有 N 个协程正在等待其他协程调用 pop 方法消费数据
+// - queue_num 通道中的元素数量
+array(
+  "consumer_num" => 0,
+  "producer_num" => 1,
+  "queue_num" => 10
+);
+
+// close()
+// 关闭通道。并唤醒所有等待读写的协程。
+// Swoole\Coroutine\Channel->close(): bool;
+// 唤醒所有生产者协程，push 方法返回 false；唤醒所有消费者协程，pop 方法返回 false
+
+// length()
+// 获取通道中的元素数量。
+// Swoole\Coroutine\Channel->length(): int;
+
+// isEmpty()
+// 判断当前通道是否为空。
+// Swoole\Coroutine\Channel->isEmpty(): bool;
+
+// isFull()
+// 判断当前通道是否已满。
+// Swoole\Coroutine\Channel->isFull(): bool;
+
+
+//**************************************************************** 
+// 属性
+//**************************************************************** 
+// capacity
+// 通道缓冲区容量。
+// 构造函数中设定的容量会保存在此，不过如果设定的容量小于 1 则此变量会等于 1
+// Swoole\Coroutine\Channel->capacity: int;
+
+// errCode
+// 获取错误码。
+// Swoole\Coroutine\Channel->errCode: int;
+// 值	对应常量	作用
+// 0	SWOOLE_CHANNEL_OK	默认 成功
+// -1	SWOOLE_CHANNEL_TIMEOUT	超时 pop 失败时 (超时)
+// -2	SWOOLE_CHANNEL_CLOSED	channel 已关闭，继续操作 channel
