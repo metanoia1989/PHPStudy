@@ -9,17 +9,14 @@ use BarcodeBakery\Common\BCGLabel;
 use BarcodeBakery\Barcode\BCGcode128;
 
 // The arguments are R, G, and B for color.
-$colorFront = new BCGColor(0, 0, 0);
-$colorBack = new BCGColor(255, 255, 255);
-$font = new BCGFontFile(__DIR__ . '/font/Arial.ttf', 18);
+// $colorFront = new BCGColor(0, 0, 0);
+// $colorBack = new BCGColor(255, 255, 255);
+// $font = new BCGFontFile(__DIR__ . '/font/Arial.ttf', 18);
 
 $code = new BCGcode128();
-$code->setScale(2); // Resolution
-$code->setThickness(30); // Thickness
-$code->setForegroundColor($colorFront); // Color of bars
-$code->setBackgroundColor($colorBack); // Color of spaces
-$code->setFont($font); // Font (or 0)
-$code->parse('1234'); // Text
+$f = imagecreatefromstring(file_get_contents("page.png"));
+$code->draw($f);
+$code->parse("1234");
 $drawing = new BCGDrawing('hello.png', $colorBack);
 $drawing->setBarcode($code);
 $drawing->draw();
