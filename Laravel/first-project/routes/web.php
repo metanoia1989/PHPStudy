@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\App;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+// 投递异步任务的测试代码
+Route::get('/task/test', function () {
+    $task = new \App\Jobs\TestTask('测试异步任务'); // 创建任务实例
+    $success = \Hhxsv5\LaravelS\Swoole\Task\Task::deliver($task); // 异步投递任务，触发调用任务类的 handle 方法
+    Illuminate\Support\Facades\Log::info('任务结果：', [$success]);
+    var_dump($success);
+});
 
 
 Route::get('/', function() {
@@ -111,3 +118,4 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 // 密码重置路由
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
+
