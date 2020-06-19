@@ -18,7 +18,16 @@ return [
         'excluded_dirs' => [],
         'log'           => true,
     ],
-    'event_handlers'           => [],
+    'event_handlers'           => [
+        // 添加事件与事件监听器的映射关系
+        'WorkerStart' => \App\Listeners\WorkerStartEventListener::class,
+    ],
+    'events' => [
+        // 配置自定义事件与事件监听器的映射关系，一个事件可以绑定多个监听器
+        \App\Events\TestEvent::class => [
+            \App\Listeners\TestEventListener::class,
+        ]
+    ],
     'websocket'                => [
         'enable' => true,
         'handler' => \App\Services\WebSocketService::class,

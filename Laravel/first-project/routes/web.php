@@ -25,6 +25,14 @@ Route::get('/task/test', function () {
     var_dump($success);
 });
 
+// 自定义事件测试
+Route::get('/event/test', function () {
+    $event = new \App\Events\TestEvent('测试异步事件监听及处理');
+    $success = \Hhxsv5\LaravelS\Swoole\Task\Event::fire($event);
+    var_dump($success);
+    echo "hello";
+});
+
 
 Route::get('/', function() {
     return 'Hello Laravel';
