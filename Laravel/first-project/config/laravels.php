@@ -40,6 +40,12 @@ return [
         //    'pipe'     => 0 // The type of pipeline, 0: no pipeline 1: SOCK_STREAM 2: SOCK_DGRAM
         //    'enable'   => true // Whether to enable, default true
         //],
+        // 注册自定义进程
+        [
+            'class' => \App\Processes\TestProcess::class,
+            'redirect' => false, // 是否将输入输出重定向到 stdin/stdout
+            'pipe' => 0, // 管道类型 0：不适用管道 1：SOCK_STREAM 2：SOCK_DGRAM
+        ],
     ],
     'timer'                    => [
         'enable'        => env('LARAVELS_TIMER', false),
@@ -53,7 +59,14 @@ return [
         ],
         'max_wait_time' => 5,
     ],
-    'swoole_tables'            => [],
+    'swoole_tables'            => [
+        'ws' => [ // 表名，会加上Table后缀，这里是wsTable
+            'size' => 102400, // 表容量
+            'column' => [ // 表字段，字段名为value
+                [ 'name' => 'value', 'type' => \Swoole\Table::TYPE_INT, 'size' => 8]
+            ],
+        ],
+    ],
     'register_providers'       => [],
     'cleaners'                 => [
         // See LaravelS's built-in cleaners: https://github.com/hhxsv5/laravel-s/blob/master/Settings.md#cleaners
@@ -86,7 +99,7 @@ return [
         'reload_async'       => true,
         'max_wait_time'      => 60,
         'enable_reuse_port'  => true,
-        'enable_coroutine'   => false,
+        'enable_coroutine'   => true,
         'http_compression'   => false,
 
         // WebSocket长连接的强制关闭逻辑
