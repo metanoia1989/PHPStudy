@@ -19,8 +19,12 @@ use Illuminate\Support\Facades\App;
 // });
 
 Route::get('/', function() {
-    return 'Hello Laravel';
+    return 'Hello LaravelS';
 });
+
+//***************************************************************
+// LaravelS 测试路由
+//***************************************************************
 
 // 投递异步任务的测试代码
 Route::get('/task/test', function () {
@@ -37,6 +41,15 @@ Route::get('/event/test', function () {
     var_dump($success);
     echo "hello";
 });
+
+// 弹幕
+Route::get('/danmu', function () {
+    return view('danmu');
+});
+
+//***************************************************************
+// 之前的旧路由
+//***************************************************************
 
 Route::get('home', function() {
     return 'Hello Laravel';
