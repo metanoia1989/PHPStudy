@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\WebSocket;
 
 use Hhxsv5\LaravelS\Swoole\WebSocketHandlerInterface;
 use Illuminate\Support\Facades\Log;
