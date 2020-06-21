@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// 注册和登录
+Route::post('/register', 'AuthController@register');
+Route::post('/login', 'AuthController@login');

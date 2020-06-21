@@ -38,8 +38,8 @@ class EventServiceProvider extends ServiceProvider
         });
 
         // 监听 laravels.generated_response 事件
-        Event::listen('laravels.generated_response', function (Request $request, Response $response, $app) {
-            $response->headers->set('header-key', 'swoole-header');
-        });
+        // Event::listen('laravels.generated_response', function (Request $request, Response $response, $app) {
+        //     $response->headers->set('header-key', 'swoole-header');
+        // });
     }
 }
