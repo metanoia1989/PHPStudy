@@ -1944,19 +1944,48 @@ __webpack_require__.r(__webpack_exports__);
       barrageIsShow: true,
       currentId: 0,
       barrageLoop: false,
-      barrageList: []
+      barrageList: [],
+      websocket: null
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // 初始化websocket并定义回调函数
+    this.websocket = new WebSocket("ws://lara-first.test/ws");
+
+    this.websocket.onopen = function (event) {
+      console.log("已建立 WebSocket 连接");
+    };
+
+    this.websocket.onmessage = function (event) {
+      // 接收到WebSocket服务器返回消息时触发
+      var data = JSON.parse(event.data);
+
+      _this.addToList(data.position, data.message);
+    };
+
+    this.websocket.onerror = function (event) {
+      console.log("与WebSocket通信出错；" + error.toString());
+    };
+
+    this.websocket.onclose = function (event) {
+      console.log("断开WebSocket连接");
+    };
+  },
+  destroyed: function destroyed() {
+    this.websocket.close();
   },
   methods: {
     removeList: function removeList() {
       this.barrageList = [];
     },
-    addToList: function addToList() {
-      if (this.position === 'top') {
+    addToList: function addToList(position, message) {
+      if (position === 'top') {
         this.barrageList.push({
           id: ++this.currentId,
           avatar: '/assets/images/girl_one.jpg',
-          msg: this.msg + this.currentId,
+          msg: message,
           barrageStyle: 'top',
           time: 8,
           type: vue_baberrage__WEBPACK_IMPORTED_MODULE_0__["MESSAGE_TYPE"].FROM_TOP,
@@ -1966,11 +1995,15 @@ __webpack_require__.r(__webpack_exports__);
         this.barrageList.push({
           id: ++this.currentId,
           avatar: '/assets/images/girl_two.jpg',
-          msg: this.msg,
+          msg: message,
           time: 15,
           type: vue_baberrage__WEBPACK_IMPORTED_MODULE_0__["MESSAGE_TYPE"].NORMAL
         });
       }
+    },
+    sendMsg: function sendMsg() {
+      // 发送消息到 WebSocket 服务器
+      this.websocket.send("{\"position\": \"".concat(this.position, "\", \"message\": \"").concat(this.msg, "\"}"));
     }
   }
 });
@@ -20419,7 +20452,7 @@ var render = function() {
           {
             staticStyle: { float: "left" },
             attrs: { type: "button" },
-            on: { click: _vm.addToList }
+            on: { click: _vm.sendMsg }
           },
           [_vm._v("发送")]
         )

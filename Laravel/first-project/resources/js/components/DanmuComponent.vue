@@ -16,7 +16,7 @@
                     <option value="right">从右</option>
                 </select>
                 <input type="text" style="float: left;" v-model="msg" />
-                <button type="button" style="float: left;" @click="addToList">发送</button>
+                <button type="button" style="float: left;" @click="sendMsg">发送</button>
             </div>
         </div>
     </div>
@@ -35,18 +35,40 @@
                 currentId: 0,
                 barrageLoop: false,
                 barrageList: [],
+                websocket: null,
             }
+        },
+        mounted() {
+            // 初始化websocket并定义回调函数
+            this.websocket = new WebSocket("ws://lara-first.test/ws");
+            this.websocket.onopen = (event) => {
+                console.log("已建立 WebSocket 连接");
+            };
+            this.websocket.onmessage = (event) => {
+                // 接收到WebSocket服务器返回消息时触发
+                let data = JSON.parse(event.data);
+                this.addToList(data.position, data.message);
+            };
+            this.websocket.onerror = (event) => {
+                console.log("与WebSocket通信出错；" + error.toString());
+            };
+            this.websocket.onclose = (event) => {
+                console.log("断开WebSocket连接");
+            };
+        },
+        destroyed() {
+            this.websocket.close();
         },
         methods: {
             removeList () {
                 this.barrageList = [];
             },
-            addToList () {
-                if (this.position === 'top') {
+            addToList (position, message) {
+                if (position === 'top') {
                     this.barrageList.push({
                         id: ++this.currentId,
                         avatar: '/assets/images/girl_one.jpg',
-                        msg: this.msg + this.currentId,
+                        msg: message,
                         barrageStyle: 'top',
                         time: 8,
                         type: MESSAGE_TYPE.FROM_TOP,
@@ -56,13 +78,17 @@
                     this.barrageList.push({
                         id: ++this.currentId,
                         avatar: '/assets/images/girl_two.jpg',
-                        msg: this.msg,
+                        msg: message,
                         time: 15,
                         type: MESSAGE_TYPE.NORMAL,
                     });
 
                 }
             },
+            sendMsg () {
+                // 发送消息到 WebSocket 服务器
+                this.websocket.send(`{"position": "${this.position}", "message": "${this.msg}"}`);
+            }
         },
     }
 </script>
