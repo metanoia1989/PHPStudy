@@ -1,0 +1,8 @@
+/vendor/
+/.idea/
+/.project
+/.settings
+.buildpath
+*.lock
+/logs
+/resources/static/uploads/
