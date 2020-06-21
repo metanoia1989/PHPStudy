@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -54,9 +55,20 @@ class AuthController extends Controller
         $user = User::where('email', $email)->first();
         // 用户校验成功则返回Token信息
         if ($user && Hash::check($password, $user->password)) {
+            $user->api_token = Str::random(60); // 登录成功更新 api_token
+            $user->save();
             return response()->json(['user' => $user, 'success' => true]);
         }
         return response()->json(['success' => false]);
+    }
+
+    public function logout(Request $request)
+    {
+        $user = Auth::guard('auth:api')->user();
+        $userModel = User::find($user->id);
+        $userModel->api_token = null; // 注销登录，清除 api_token
+        $userModel->save();
+        return response()->json(['success' => true ]);
     }
 }
 
