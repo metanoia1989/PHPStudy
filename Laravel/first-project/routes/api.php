@@ -14,10 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::post('/logout', 'AuthController@logout');
 });
 
 // 注册和登录
 Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
+
+// Not Found
+Route::fallback(function(){
+    return response()->json(['message' => 'Resource not found.'], 404);
+});

@@ -121,10 +121,10 @@ Route::get('home/{id}/{name?}', 'HomeController@user');
 Route::resource('resources', 'ResourceController');
 
 # 模块/控制器/方法 module/controller/action 路由
-Route::get('/{controller}/{action}', function ($controller, $action) {
-    $instance = App ::make('App\\Http\\Controllers\\' . ucfirst($controller) . 'Controller');
-    return App::call([$instance, $action]);
-});
+// Route::get('/{controller}/{action}', function ($controller, $action) {
+//     $instance = App ::make('App\\Http\\Controllers\\' . ucfirst($controller) . 'Controller');
+//     return App::call([$instance, $action]);
+// });
 
 
 //*******************

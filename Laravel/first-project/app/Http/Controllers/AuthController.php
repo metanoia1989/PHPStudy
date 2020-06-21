@@ -64,7 +64,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $user = Auth::guard('auth:api')->user();
+        $user = Auth::guard('api')->user();
         $userModel = User::find($user->id);
         $userModel->api_token = null; // 注销登录，清除 api_token
         $userModel->save();
