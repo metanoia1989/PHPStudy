@@ -8,8 +8,15 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * 当用户注册成功或者登录成功，会更新 users 表的 api_token 字段值，当用户退出时，则清空该字段值
+ */
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only('logout');
+    }
     /**
      * 用户注册
      *

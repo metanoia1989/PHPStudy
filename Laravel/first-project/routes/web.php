@@ -22,6 +22,10 @@ Route::get('/', function() {
     return 'Hello LaravelS';
 });
 
+Route::get('/login', function() {
+    return response()->json(["errno"=> -1, "message" => "请先登录"  ]);
+})->name('login');
+
 //***************************************************************
 // LaravelS 测试路由
 //***************************************************************

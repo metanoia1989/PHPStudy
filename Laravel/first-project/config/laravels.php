@@ -23,6 +23,7 @@ return [
         'WorkerStart' => \App\Listeners\WorkerStartEventListener::class,
     ],
     'events' => [
+        // 3.6 版之后就必须在事件类中硬编码了
         // 配置自定义事件与事件监听器的映射关系，一个事件可以绑定多个监听器
         \App\Events\TestEvent::class => [
             \App\Listeners\TestEventListener::class,
@@ -71,6 +72,9 @@ return [
     'register_providers'       => [],
     'cleaners'                 => [
         // See LaravelS's built-in cleaners: https://github.com/hhxsv5/laravel-s/blob/master/Settings.md#cleaners
+        Hhxsv5\LaravelS\Illuminate\Cleaners\SessionCleaner::class,
+        Hhxsv5\LaravelS\Illuminate\Cleaners\AuthCleaner::class,
+        Hhxsv5\LaravelS\Illuminate\Cleaners\JWTCleaner::class,
     ],
     'destroy_controllers'      => [
         'enable'        => false,
