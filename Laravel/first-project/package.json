@@ -17,11 +17,29 @@
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0",
-        "vue-template-compiler": "^2.6.11"
-    },
-    "dependencies": {
+        "vue-template-compiler": "^2.6.11",
         "vue-baberrage": "^3.2.4",
         "vue-router": "^3.3.4",
-        "vuex": "^3.4.0"
+        "vuex": "^3.4.0",
+        "core-js": "^2.6.5",
+        "randomcolor": "^0.5.4",
+        "socket.io-client": "^1.7.3",
+        "vue": "^2.6.10",
+        "vue-cropper": "^0.4.9",
+        "vue-flex-touch": "^1.0.0",
+        "xss-filters-es6": "^1.0.0",
+        "vivus": "^0.4.1",
+        "file-loader": "^4.2.0",
+        "jquery": "^3.2",
+        "popper.js": "^1.16.0",
+        "stylus": "^0.54.7",
+        "stylus-loader": "^3.0.2",
+        "timers": "^0.1.1",
+        "url-loader": "^2.2.0",
+        "vue-picture-preview": "^1.3.0",
+        "vue-style-loader": "^4.1.2"
+    },
+    "dependencies": {
+        "muse-ui": "^3.0.2"
     }
 }

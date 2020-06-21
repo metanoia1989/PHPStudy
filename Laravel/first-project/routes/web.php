@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\App;
 // });
 
 Route::get('/', function() {
-    return 'Hello LaravelS';
+    return view('index');
 });
 
 Route::get('/login', function() {
