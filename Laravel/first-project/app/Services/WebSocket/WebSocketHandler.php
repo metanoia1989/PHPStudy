@@ -1,7 +1,11 @@
 <?php
-namespace App\Handler;
+namespace App\Services\WebSocket;
 
 use App\Events\MessageReceived;
+use App\Services\WebSocket\Pusher;
+use App\Services\WebSocket\SocketIO\Packet;
+use App\Services\WebSocket\SocketIO\SocketIOParser;
+use App\Services\WebSocket\WebSocket;
 use App\User;
 use Hhxsv5\LaravelS\Swoole\Task\Event;
 use Hhxsv5\LaravelS\Swoole\WebSocketHandlerInterface;
@@ -14,9 +18,21 @@ use Illuminate\Support\Facades\Log;
  */
 class WebSocketHandler implements WebSocketHandlerInterface
 {
+    /**
+     * @var WebSocket
+     */
+    protected $websocket;
+
+    /**
+     * @var Parser
+     */
+    protected $parser;
+
+
     public function __construct()
     {
-
+        $this->websocket = app(WebSocket::class);
+        $this->parser = app(SocketIOParser::class);
     }
 
     /**
@@ -28,7 +44,62 @@ class WebSocketHandler implements WebSocketHandlerInterface
      */
     public function onOpen(\Swoole\WebSocket\Server $server, \Swoole\Http\Request $request)
     {
+        if (!request()->input('sid')) {
+            // 初始化连接信息适配 socket.io-client，这段代码不能省略，否则无法建立连接
+            $payload = json_encode([
+                'sid' => base64_encode(uniqid()),
+                'upgrades' => [],
+                'pingInterval' => config('laravels.swoole.heartbeat_idle_time') * 1000,
+                'pingTimeout' => config('laravels.swoole.heartbeat_check_interval') * 1000,
+            ]);
+            $initPayload = Packet::OPEN . $payload;
+            $connectPayload = Packet::MESSAGE . Packet::CONNECT;
+            $server->push($request->fd, $initPayload);
+            $server->push($request->fd, $connectPayload);
+        }
         Log::info('WebSocket连接建立：'.$request->fd);
+        $payload = [
+            'sender' => $request->fd,
+            'fds' => [$request->fd],
+            'broadcast' => false,
+            'assigned' => false,
+            'event' => 'message',
+            'message' => '欢迎访问聊天室',
+        ];
+        $pusher = Pusher::make($payload, $server);
+        $pusher->push($this->parser->encode($pusher->getEvent(), $pusher->getMessage()));
+    }
+
+    /**
+     * 收到消息时触发
+     * 在收到消息的回调方法 onMessage 中，首先调用 Parser 类的 execute 方法判断是否是心跳连接，
+     * 如果是心跳连接的话跳过不做处理， 否则的话将收到的信息进行解码，经过简单处理后，
+     * 再经由 Pusher 类的 push 方法发送回给客户端。
+     *
+     * @param \Swoole\WebSocket\Server $server
+     * @param \Swoole\WebSocket\Frame $frame
+     * @return void
+     */
+    public function onMessage(\Swoole\WebSocket\Server $server, \Swoole\WebSocket\Frame $frame)
+    {
+        // $frame->fd 是客户端 id，$frame->data 是客户端发送的数据
+        Log::info("从 {$frame->fd} 接收到的数据：{$frame->data}");
+        if ($this->parser->execute($server, $frame)) {
+            // 跳过心跳连接处理
+            return;
+        }
+        $payload = $this->parser->decode($frame);
+        ['event' => $event, 'data' => $data ] = $payload;
+        $payload = [
+            'sender' => $frame->fd,
+            'fds' => [$frame->fd],
+            'broadcast' => false,
+            'assigned' => false,
+            'event' => $event,
+            'message' => $data,
+        ];
+        $pusher = Pusher::make($payload, $server);
+        $pusher->push($this->parser->encode($pusher->getEvent(), $pusher->getMessage()));
     }
 
     /**
@@ -38,7 +109,7 @@ class WebSocketHandler implements WebSocketHandlerInterface
      * @param \Swoole\WebSocket\Frame $frame
      * @return void
      */
-    public function onMessage(\Swoole\WebSocket\Server $server, \Swoole\WebSocket\Frame $frame)
+    public function oldMessage(\Swoole\WebSocket\Server $server, \Swoole\WebSocket\Frame $frame)
     {
         // $frame->fd 是客户端 id，$frame->data 是客户端发送的数据
         Log::info("从 {$frame->fd} 接收到的数据：{$frame->data}");

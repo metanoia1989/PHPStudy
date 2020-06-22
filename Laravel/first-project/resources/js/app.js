@@ -65,27 +65,39 @@ socket.on('reconnect', async (attemptNumber) => {
 
 
 socket.on('connect', async () => {
-  console.log('connect');
+  console.log('websocket connected: ' + socket.connected);
   const roomId = queryString(window.location.href, 'roomId');
-  const userName = store.state.userInfo.userid;
-  const src = store.state.userInfo.src;
-  const userId = store.state.userInfo.id;
+  const userId = store.state.userInfo.userid;
+  const token = store.state.userInfo.token;
   if (userId) {
-    // 此处逻辑需要抽离复用
-    await handleInit({
-      socket,
-      store,
-      name: userName,
-      id: userId,
-      src,
-      env,
-      roomList: ['room1', 'room2']
-    })
+      socket.emit('login', {
+          name: userId,
+          api_token: token,
+      });
+  }
+  if (roomId) {
+      const obj = {
+          name: userId,
+          src: store.state.userInfo.src,
+          roomid, roomId,
+      };
+      socket.emit('room', obj);
+
+      if (store.state.isDiscount) {
+          await store.commit('setRoomDetailInfos');
+          await store.commit('setCurrent', 1);
+          await store.commit('setDiscount', false);
+          await store.commit('setTotal', 0);
+          await store.dispatch('getAllMessHistory', {
+              current: 1,
+              roomid: roomId,
+          });
+      }
   }
 });
 
 socket.on('disconnect', () => {
-  console.log('disconnect');
+  console.log('websocket disconnected: ' + socket.disconnected);
   Toast({
     content: '抱歉网络开了小差',
     timeout: 2000,
@@ -95,38 +107,14 @@ socket.on('disconnect', () => {
 });
 
 socket.on('message', function (obj) {
-  const userName = store.state.userInfo.userid;
-  const { roomid, username, img } = obj;
-  if(userName === username) {
-    if(img) {
-      console.log('img', obj);
-      store.commit('setRoomDetailStatus', {
-        clientId: obj.clientId,
-        roomid: obj.roomid,
-        status: 'finish',
-        loading: 100,
-        img: obj.img,
-        typeList: ['status', 'loading', 'img']
-      })
-    } else {
-      store.commit('setRoomDetailStatus', {
-        clientId: obj.clientId,
-        roomid: obj.roomid,
-        status: 'finish',
-        typeList: ['status']
-      })
-    }
-
-  } else {
-    store.commit('setRoomDetailInfosAfter', {
-      roomid,
-      msgs: [obj]
-    });
-    if (Notification.permission === "granted") {
+  store.commit('addRoomDetailInfos', [obj]);
+  if (Notification.permission === "granted") {
+    popNotice(obj);
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
       popNotice(obj);
-    }
+    });
   }
-
 });
 
 socket.on('count', (obj) => {

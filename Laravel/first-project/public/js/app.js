@@ -58962,34 +58962,64 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('reconnect', /*#__PURE__*/fun
   };
 }());
 _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('connect', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-  var roomId, userName, src, userId;
+  var roomId, userId, token, obj;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          console.log('connect');
+          console.log('websocket connected: ' + _socket__WEBPACK_IMPORTED_MODULE_6__["default"].connected);
           roomId = Object(_utils_queryString__WEBPACK_IMPORTED_MODULE_7__["queryString"])(window.location.href, 'roomId');
-          userName = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.userid;
-          src = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.src;
-          userId = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.id;
+          userId = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.userid;
+          token = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.token;
 
-          if (!userId) {
-            _context2.next = 8;
+          if (userId) {
+            _socket__WEBPACK_IMPORTED_MODULE_6__["default"].emit('login', {
+              name: userId,
+              api_token: token
+            });
+          }
+
+          if (!roomId) {
+            _context2.next = 19;
             break;
           }
 
-          _context2.next = 8;
-          return Object(_socket_handle__WEBPACK_IMPORTED_MODULE_12__["handleInit"])({
-            socket: _socket__WEBPACK_IMPORTED_MODULE_6__["default"],
-            store: _store__WEBPACK_IMPORTED_MODULE_4__["default"],
-            name: userName,
-            id: userId,
-            src: src,
-            env: _utils_env__WEBPACK_IMPORTED_MODULE_9__["default"],
-            roomList: ['room1', 'room2']
+          obj = {
+            name: userId,
+            src: _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.src,
+            roomid: roomid,
+            roomId: roomId
+          };
+          _socket__WEBPACK_IMPORTED_MODULE_6__["default"].emit('room', obj);
+
+          if (!_store__WEBPACK_IMPORTED_MODULE_4__["default"].state.isDiscount) {
+            _context2.next = 19;
+            break;
+          }
+
+          _context2.next = 11;
+          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setRoomDetailInfos');
+
+        case 11:
+          _context2.next = 13;
+          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setCurrent', 1);
+
+        case 13:
+          _context2.next = 15;
+          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setDiscount', false);
+
+        case 15:
+          _context2.next = 17;
+          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setTotal', 0);
+
+        case 17:
+          _context2.next = 19;
+          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch('getAllMessHistory', {
+            current: 1,
+            roomid: roomId
           });
 
-        case 8:
+        case 19:
         case "end":
           return _context2.stop();
       }
@@ -58997,7 +59027,7 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('connect', /*#__PURE__*/_asyn
   }, _callee2);
 })));
 _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('disconnect', function () {
-  console.log('disconnect');
+  console.log('websocket disconnected: ' + _socket__WEBPACK_IMPORTED_MODULE_6__["default"].disconnected);
   Object(_components_Toast__WEBPACK_IMPORTED_MODULE_10__["default"])({
     content: '抱歉网络开了小差',
     timeout: 2000,
@@ -59006,39 +59036,14 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('disconnect', function () {
   _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setDiscount', true);
 });
 _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('message', function (obj) {
-  var userName = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.userid;
-  var roomid = obj.roomid,
-      username = obj.username,
-      img = obj.img;
+  _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('addRoomDetailInfos', [obj]);
 
-  if (userName === username) {
-    if (img) {
-      console.log('img', obj);
-      _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setRoomDetailStatus', {
-        clientId: obj.clientId,
-        roomid: obj.roomid,
-        status: 'finish',
-        loading: 100,
-        img: obj.img,
-        typeList: ['status', 'loading', 'img']
-      });
-    } else {
-      _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setRoomDetailStatus', {
-        clientId: obj.clientId,
-        roomid: obj.roomid,
-        status: 'finish',
-        typeList: ['status']
-      });
-    }
-  } else {
-    _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setRoomDetailInfosAfter', {
-      roomid: roomid,
-      msgs: [obj]
-    });
-
-    if (Notification.permission === "granted") {
+  if (Notification.permission === "granted") {
+    popNotice(obj);
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
       popNotice(obj);
-    }
+    });
   }
 });
 _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('count', function (obj) {
@@ -61328,9 +61333,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
 /* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(socket_io_client__WEBPACK_IMPORTED_MODULE_0__);
  // 将后端配置修改为 Swoole WebSocket 服务器
+// 然后将路径设置为 /ws，以便连接到 Swoole WebSocket 服务器，
+// 最后设置传输层协议为 websocket，取代默认的长轮询（polling）机制。
 
-var url = 'http://lara-first.test/ws/';
-var socket = socket_io_client__WEBPACK_IMPORTED_MODULE_0___default.a.connect(url);
+var url = 'http://lara-first.test/';
+var socket = socket_io_client__WEBPACK_IMPORTED_MODULE_0___default.a.connect(url, {
+  path: '/ws',
+  transports: ['websocket']
+});
 /* harmony default export */ __webpack_exports__["default"] = (socket);
 
 /***/ }),

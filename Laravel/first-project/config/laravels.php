@@ -32,7 +32,7 @@ return [
     'websocket'                => [
         'enable' => true,
         // 'handler' => \App\Services\WebSocketService::class,
-        'handler' => \App\Handler\WebSocket\WebSocketHandler::class,
+        'handler' => \App\Services\WebSocket\WebSocketHandler::class,
     ],
     'sockets'                  => [],
     'processes'                => [

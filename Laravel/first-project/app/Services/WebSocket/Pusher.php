@@ -4,6 +4,7 @@ namespace App\Services\WebSocket;
 
 /**
  * 通信数据发送
+ * 用于数据处理后发送给客户端的业务逻辑处理，包括数据解析和统一封装、是否广播等。
  */
 class Pusher
 {
@@ -77,7 +78,7 @@ class Pusher
         $this->assigned = $assigned;
         $this->event = $event;
         $this->message = $message;
-        $this->sever = $server;
+        $this->server = $server;
     }
 
     /**
@@ -161,5 +162,96 @@ class Pusher
     public function isBroadcast() : bool
     {
         return $this->broadcast;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isAssigned() : bool
+    {
+        return $this->assigned;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEvent() : string
+    {
+        return $this->event;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @return \Swoole\WebSocket\Server
+     */
+    public function getServer()
+    {
+        return $this->server;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function shouldBroadcast() : bool
+    {
+        return $this->broadcast && empty($this->descriptors) && !$this->assigned;
+    }
+
+    /**
+     * Retruns all descriptors that are websocket
+     *
+     * @param \Swoole\Connection\Iterator $descriptors
+     * @return array
+     */
+    protected function getWebSocketConnections() : array
+    {
+        return array_filter(iterator_to_array($this->server->connections), function ($fd) {
+            return $this->server->isEstablished($fd);
+        });
+    }
+
+    /**
+     * @param integer $fd
+     * @return boolean
+     */
+    public function shouldPushToDescriptor(int $fd) : bool
+    {
+        if (!$this->server->isEstablished($fd)) {
+            return false;
+        }
+        return $this->broadcast ? $this->sender !== (int) $fd : true;
+    }
+
+    /**
+     * Push message to related descriptors
+     *
+     * @param mixed $payload
+     * @return void
+     */
+    public function push($payload) : void
+    {
+        // attach sender if not broadcast
+        if (!$this->broadcast && $this->sender && !$this->hasDescriptor($this->sender)) {
+            $this->addDescriptor($this->sender);
+        }
+
+        // check if to broadcast to other clients
+        if ($this->shouldBroadcast()) {
+            $this->addDescriptors($this->getWebSocketConnections());
+        }
+
+        // push message to designated fds
+        foreach ($this->descriptors as $descriptor) {
+            if ($this->shouldPushToDescriptor($descriptor)) {
+                $this->server->push($descriptor, $payload, $this->opcode);
+            }
+        }
     }
 }
