@@ -22,8 +22,8 @@ Route::middleware('auth:api')->group(function () {
 });
 
 // 注册和登录
-Route::post('/register', 'AuthController@register');
-Route::post('/login', 'AuthController@login');
+Route::post('/user/signup', 'AuthController@register');
+Route::post('/user/signin', 'AuthController@login');
 
 // Not Found
 Route::fallback(function(){

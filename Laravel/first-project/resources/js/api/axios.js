@@ -2,7 +2,7 @@ import axios from 'axios';
 import Toast from "../components/Toast";
 import {setItem, getItem} from '../utils/localStorage';
 
-const baseURL = '/api/';
+const baseURL = 'http://lara-first.test';
 
 
 const instance = axios.create();

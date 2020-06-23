@@ -5292,7 +5292,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   userid: res.data.userInfo.name,
                   src: res.data.userInfo.src,
                   id: res.data.userInfo.id,
-                  token: res.data.token
+                  token: res.data.api_token
                 };
 
                 _this.$store.commit("setUserInfo", userInfo);
@@ -58673,7 +58673,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var baseURL = '/api/';
+var baseURL = 'http://lara-first.test';
 var instance = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create();
 instance.defaults.timeout = 30000; // 所有接口30s超时
 // 请求统一处理
