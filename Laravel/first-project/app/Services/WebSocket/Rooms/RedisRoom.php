@@ -44,6 +44,12 @@ class RedisRoom implements RoomContract
         return $this;
     }
 
+    /**
+     * Set redis client.
+     *
+     * @param RedisClient|null $redis
+     * @return void
+     */
     public function setRedis(?RedisClient $redis = null)
     {
         if (!$redis) {
@@ -59,4 +65,6 @@ class RedisRoom implements RoomContract
 
         $this->redis = $redis;
     }
+
+
 }
