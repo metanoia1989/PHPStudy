@@ -19,6 +19,7 @@ Route::middleware('auth:api')->group(function () {
         return $request->user();
     });
     Route::post('/logout', 'AuthController@logout');
+    Route::get('/history/message', 'MessageController@history');
 });
 
 // 注册和登录

@@ -79,7 +79,8 @@ socket.on('connect', async () => {
       const obj = {
           name: userId,
           src: store.state.userInfo.src,
-          roomid, roomId,
+          roomid: roomId,
+          api_token: token,
       };
       socket.emit('room', obj);
 
