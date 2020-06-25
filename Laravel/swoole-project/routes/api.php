@@ -23,6 +23,9 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('/file/uploadimg', 'FileController@uploadImage');
     Route::post('/file/avatar', 'FileController@avatar');
+
+    Route::get('/socket.io', 'SocketIOController@upgrade');
+    Route::post('/socket.io', 'SocketIOController@ok');
 });
 
 // 注册和登录
