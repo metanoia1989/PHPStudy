@@ -3,7 +3,9 @@
 namespace App\Services\Websocket\Rooms;
 
 use Illuminate\Support\Arr;
+use InvalidArgumentException;
 use Predis\Client as RedisClient;
+use Predis\Pipeline\Pipeline;
 
 /**
  * Redis 作为存储媒介
@@ -66,5 +68,175 @@ class RedisRoom implements RoomContract
         $this->redis = $redis;
     }
 
+    /**
+     * Set key prefix from config
+     *
+     * @return void
+     */
+    protected function setPrefix()
+    {
+        if ($prefix = Arr::get($this->config, 'prefix')) {
+            $this->prefix = $prefix;
+        }
+    }
 
+    /**
+     * Get redis client
+     *
+     * @return \Predis\Client
+     */
+    public function getRedis()
+    {
+        return $this->redis;
+    }
+
+    /**
+     * Add multiple socket fds to a room
+     *
+     * @param integer $fd
+     * @param array|string $rooms
+     * @return void
+     */
+    public function add(int $fd, $rooms)
+    {
+        $rooms = is_array($rooms) ? $rooms : [$rooms];
+
+        $this->addValue($fd, $rooms, RoomContract::DESCRIPTORS_KEY);
+
+        foreach ($rooms as $room) {
+            $this->addValue($room, [$fd], RoomContract::ROOMS_KEY);
+        }
+    }
+
+    /**
+     * Delete multiple socket fds from a room.
+     *
+     * @param integer $fd
+     * @param array|string $rooms
+     * @return void
+     */
+    public function delete(int $fd, $rooms)
+    {
+        $rooms = is_array($rooms) ? $rooms : [$rooms];
+        $rooms = count($rooms) ? $rooms : $this->getRooms($fd);
+
+        $this->removeValue($fd, $rooms, RoomContract::DESCRIPTORS_KEY);
+
+        foreach ($rooms as $room) {
+            $this->removeValue($room, [$fd], RoomContract::ROOMS_KEY);
+        }
+    }
+
+    /**
+     * Add value to redis
+     *
+     * @param string $key
+     * @param array $values
+     * @param string $table
+     * @return $this
+     */
+    public function addValue($key, array $values, string $table)
+    {
+        $this->checkTable($table);
+        $redisKey = $this->getKey($key, $table);
+
+        $this->redis->pipeline(function (Pipeline $pipe) use ($redisKey, $values) {
+            foreach ($values as $value) {
+                $pipe->sadd($redisKey, $value);
+            }
+        });
+
+        return $this;
+    }
+
+    /**
+     * Remove value from redis
+     *
+     * @param string $key
+     * @param array $values
+     * @param string $table
+     * @return void
+     */
+    public function removeValue($key, array $values, string $table)
+    {
+        $this->checkTable($table);
+        $redisKey = $this->getKey($key, $table);
+
+        $this->redis->pipeline(function (Pipeline $pipe) use ($redisKey, $values) {
+            foreach ($values as $value) {
+                $pipe->srem($redisKey, $value);
+            }
+        });
+
+        return $this;
+    }
+
+    /**
+     * Get all sockets by a room key
+     *
+     * @param string $room
+     * @return array
+     */
+    public function getClients(string $room)
+    {
+        return $this->getValue($room, RoomContract::ROOMS_KEY) ?? [];
+    }
+
+    /**
+     * Get all rooms by a fd
+     *
+     * @param integer $fd
+     * @return array
+     */
+    public function getRooms(int $fd)
+    {
+        return $this->getValue($fd, RoomContract::DESCRIPTORS_KEY);
+    }
+
+    protected function checkTable(string $table)
+    {
+        if (!in_array($table, [RoomContract::ROOMS_KEY, RoomContract::DESCRIPTORS_KEY])) {
+            throw new InvalidArgumentException("Invalid table name: `{$table}`");
+        }
+    }
+
+    /**
+     * Get value
+     *
+     * @param string $key
+     * @param string $table
+     * @return array
+     */
+    public function getValue(string $key, string $table)
+    {
+        $this->checkTable($table);
+
+        $result = $this->redis->smembers($this->getKey($key, $table));
+
+        return is_array($result) ? $result : [];
+    }
+
+    /**
+     * Get key
+     *
+     * @param string $key
+     * @param string $table
+     * @return string
+     */
+    public function getKey(string $key, string $table)
+    {
+        return "{$this->prefix}{$table}:{$key}";
+    }
+
+    /**
+     * Clean all rooms.
+     *
+     * @return void
+     */
+    protected function cleanRooms() : void
+    {
+        if (count($keys = $this->redis->keys("{$this->prefix}*"))) {
+            $this->redis->del($keys);
+        }
+    }
 }

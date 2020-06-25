@@ -72,7 +72,7 @@ socket.on('connect', async () => {
   if (userId) {
       socket.emit('login', {
           name: userId,
-          api_token: token,
+          token: token,
       });
   }
   if (roomId) {

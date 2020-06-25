@@ -20,7 +20,8 @@ return [
     ],
     'event_handlers'           => [
         // 添加事件与事件监听器的映射关系
-        'WorkerStart' => \App\Listeners\WorkerStartEventListener::class,
+        // 'WorkerStart' => \App\Listeners\WorkerStartEventListener::class,
+        'WorkerStart' => \App\Events\WorkerStartEvent::class,
     ],
     'events' => [
         // 3.6 版之后就必须在事件类中硬编码了
@@ -33,6 +34,36 @@ return [
         'enable' => true,
         // 'handler' => \App\Services\WebSocketService::class,
         'handler' => \App\Services\WebSocket\WebSocketHandler::class,
+        'middleware' => [
+            //\Illuminate\Auth\Middleware\Authenticate::class,
+            //\App\Http\Middleware\VerifyCsrfToken::class,
+        ],
+        'parser' =>  \App\Services\WebSocket\SocketIO\SocketIOParser::class,
+        'drivers' => [
+            'default' => 'table',
+            'table' => \App\Services\WebSocket\Rooms\TableRoom::class,
+            'redis' => \App\Services\WebSocket\Rooms\RedisRoom::class,
+            'settings' => [
+                'table' => [
+                    'room_rows' => 4096,
+                    'room_size' => 2048,
+                    'client_rows' => 8192,
+                    'client_size' => 2048,
+                ],
+                'redis' => [
+                    'server' => [
+                        'host' => env('REDIS_HOST', '127.0.0.1'),
+                        'password' => env('REDIS_PASSWORD', null),
+                        'port' => env('REDIS_PORT', 6379),
+                        'database' => 0,
+                        'presistent' => true,
+                    ],
+                    'options' => [],
+                    'prefix' => 'swoole',
+                ],
+            ],
+        ],
+
     ],
     'sockets'                  => [],
     'processes'                => [
