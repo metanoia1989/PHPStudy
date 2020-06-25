@@ -1,9 +1,11 @@
 <?php
 
 use App\Count;
+use App\Message;
 use Swoole\Http\Request;
 use App\Services\WebSocket\WebSocket;
 use App\Services\Websocket\Facades\WebSocket as WebSocketProxy;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
@@ -119,3 +121,70 @@ function roomout(WebSocket $websocket, $data)
         $websocket->emit('login', '登录后才能进入聊天室');
     }
 }
+
+/**
+ * 消息发送和广播功能
+ * 在确保用户已认证、房间号和消息内容不为空的前提下，
+ * 获取到客户端发送的文本消息（含 Emoji 表情）后，
+ * 将其保存到 messages 表，然后将其广播给房间内的所有用户即可，
+ */
+WebSocketProxy::on('message', function (WebSocket $websocket, $data) {
+    if ($userId = $websocket->getUserId()) {
+        $user = User::find($userId);
+        // 获取消息内容
+        $msg = $data['msg'];
+        $img = $data['img'];
+        $roomId = intval($data['roomid']);
+        $time = $data['time'];
+        // 消息内容或房间号不能为空
+        if(empty($msg) && empty($img) || empty($roomId)) {
+            return;
+        }
+        // 记录日志
+        Log::info($user->name."在房间里{$roomId}中发布消息：$msg");
+        // 将消息保存到数据库（图片消息除外，因为在上传过程中已保存）
+        if (empty($img)) {
+            $message = new Message();
+            $message->user_id = $user->id;
+            $message->room_id = $roomId;
+            $message->msg = $msg; // 文本消息
+            $message->img = ''; // 图片消息留空
+            $message->created_at = Carbon::now();
+            $message->save();
+        }
+        // 将消息广播给房间内所有用户
+        $room = Count::$ROOMLIST[$roomId];
+        $messageData = [
+            'userid' => $user->name,
+            'username' => $user->name,
+            'src' => $user->avatar,
+            'msg' => $msg,
+            'img' => $img,
+            'roomid' => $roomId,
+            'time' => $time,
+        ];
+        $websocket->to($room)->emit('message', $messageData);
+        // 更新所有用户本房间未读消息数
+        $userIds = Redis::hgetall('socket_id');
+        foreach ($userIds as $userId => $socketId) {
+            // 更新每个用户未读消息数并将其发送给对应在线用户
+            $result = Count::where('user_id', $userId)->where('room_id', $roomId)->first();
+            if ($result) {
+                $result->count += 1;
+                $result->save();
+                $rooms[$room] = $result->count;
+            } else {
+                // 如果某个用户未读消息数记录不存在，则初始化它
+                $count = new Count();
+                $count->user_id = $user->id;
+                $count->room_id = $roomId;
+                $count->count = 1;
+                $count->save();
+                $rooms[$room] = 1;
+            }
+            $websocket->to($socketId)->emit('count', $rooms);
+        }
+    } else {
+        $websocket->emit('login', '登录后才能进入聊天室');
+    }
+});
