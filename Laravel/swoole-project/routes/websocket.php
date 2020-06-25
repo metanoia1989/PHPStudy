@@ -23,8 +23,19 @@ WebSocketProxy::on('disconnect', function (WebSocket $webSocket) {
 WebSocketProxy::on('login', function (WebSocket $websocket, $data) {
     if (!empty($data['token']) && ($user = \App\User::where('api_token', $data['token'])->first())) {
         $websocket->loginUsing($user);
-        // TODO 读取未读消息
         $websocket->toUser($user)->emit('login', '登录成功');
+        // TODO 读取未读消息
+        $rooms = [];
+        foreach (\App\Count::$ROOMLIST as $roomid) {
+            $result = \App\Count::where('user_id', $user->id)->where('room_id', $roomid)->first();
+            $roomid = 'room'.$roomid;
+            if ($result) {
+                $rooms[$roomid] = $result->count;
+            } else {
+                $rooms[$roomid] = 0;
+            }
+        }
+        $websocket->toUser($user)->emit('count', $rooms);
     } else {
         $websocket->emit('login', '登录后才能进入聊天室');
     }
