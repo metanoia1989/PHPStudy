@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\App;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/socket.io', 'SocketIOController@upgrade');
+Route::post('/socket.io', 'SocketIOController@ok');
 
 // Route::get('/', function () {
 //     return view('welcome');

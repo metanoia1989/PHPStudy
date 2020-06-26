@@ -33,7 +33,8 @@ class SocketIOController extends Controller
             'pingTimeout' => config('laravels.swoole.heartbeat_check_interval') * 1000,
         ]);
 
-        return response('97:0', $payload . '2:40');
+        $len = strlen("0{$payload}");
+        return response("$len:0{$payload}2:40");
     }
 
     public function ok()

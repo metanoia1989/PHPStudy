@@ -31,6 +31,7 @@ class WebSocketHandler implements WebSocketHandlerInterface
 
     public function __construct()
     {
+        Log::info('消息解析类 swoole.parser', [app('swoole.parser')]);
         $this->websocket = app('swoole.websocket');
         $this->parser = app('swoole.parser');
     }

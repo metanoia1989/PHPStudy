@@ -293,6 +293,7 @@ const store = new Vuex.Store({
     async getAllMessHistory({state, commit}, data) {
       try {
         const res = await url.RoomHistoryAll(data);
+        console.log(res);
         if (res.data.errno === 0) {
           const result = res.data.data;
           if(data.msgid) {
@@ -306,7 +307,7 @@ const store = new Vuex.Store({
               roomid: data.roomid
             });
           }
-
+          console.log(result.data);
           return {
             data: result.data
           }

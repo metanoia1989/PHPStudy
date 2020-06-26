@@ -5292,7 +5292,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   userid: res.data.userInfo.name,
                   src: res.data.userInfo.src,
                   id: res.data.userInfo.id,
-                  token: res.data.api_token
+                  token: res.data.userInfo.api_token
                 };
 
                 _this.$store.commit("setUserInfo", userInfo);
@@ -39971,7 +39971,7 @@ var render = function() {
                       attrs: { avatar: "", button: "", ripple: true },
                       on: {
                         click: function($event) {
-                          return _vm.chatwindow("room1")
+                          return _vm.chatwindow("1")
                         }
                       }
                     },
@@ -40005,7 +40005,7 @@ var render = function() {
                           _c("mu-list-item-title", [_vm._v("聊天室1")]),
                           _vm._v(" "),
                           _c("mu-list-item-sub-title", [
-                            _vm._v(_vm._s(_vm.getTailMsg("room1")))
+                            _vm._v(_vm._s(_vm.getTailMsg(1)))
                           ])
                         ],
                         1
@@ -40026,7 +40026,7 @@ var render = function() {
                       attrs: { avatar: "", button: "", ripple: true },
                       on: {
                         click: function($event) {
-                          return _vm.chatwindow("room2")
+                          return _vm.chatwindow("2")
                         }
                       }
                     },
@@ -40060,7 +40060,7 @@ var render = function() {
                           _c("mu-list-item-title", [_vm._v("聊天室2")]),
                           _vm._v(" "),
                           _c("mu-list-item-sub-title", [
-                            _vm._v(_vm._s(_vm.getTailMsg("room2")))
+                            _vm._v(_vm._s(_vm.getTailMsg(2)))
                           ])
                         ],
                         1
@@ -58779,7 +58779,7 @@ var Service = {
     });
   },
   RoomHistoryAll: function RoomHistoryAll(data) {
-    return _axios__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/message/v2/history', {
+    return _axios__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/message/history', {
       params: data
     });
   },
@@ -58975,7 +58975,7 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('connect', /*#__PURE__*/_asyn
           if (userId) {
             _socket__WEBPACK_IMPORTED_MODULE_6__["default"].emit('login', {
               name: userId,
-              api_token: token
+              token: token
             });
           }
 
@@ -58987,8 +58987,8 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('connect', /*#__PURE__*/_asyn
           obj = {
             name: userId,
             src: _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.src,
-            roomid: roomid,
-            roomId: roomId
+            roomid: roomId,
+            api_token: token
           };
           _socket__WEBPACK_IMPORTED_MODULE_6__["default"].emit('room', obj);
 
@@ -58998,7 +58998,9 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('connect', /*#__PURE__*/_asyn
           }
 
           _context2.next = 11;
-          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setRoomDetailInfos');
+          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setRoomDetailInfos', {
+            data: null
+          });
 
         case 11:
           _context2.next = 13;
@@ -61285,7 +61287,7 @@ function handleInit(_x) {
 
 function _handleInit() {
   _handleInit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
-    var name, id, src, roomList;
+    var name, id, src, roomList, token;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -61296,20 +61298,24 @@ function _handleInit() {
               name: name,
               id: id
             }, _utils_env__WEBPACK_IMPORTED_MODULE_1__["default"]));
-            ['room1', 'room2'].forEach(function (item) {
+            token = _store__WEBPACK_IMPORTED_MODULE_3__["default"].state.userInfo.token; //   ['room1', 'room2'].forEach(item => {
+
+            [1, 2].forEach(function (item) {
               var obj = {
                 name: name,
                 src: src,
-                roomid: item
+                roomid: item,
+                api_token: token
               };
               _socket__WEBPACK_IMPORTED_MODULE_2__["default"].emit('room', obj);
             });
-            _context.next = 5;
+            _context.next = 6;
             return _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch('getRoomHistory', {
-              selfId: id
+              selfId: id,
+              api_token: token
             });
 
-          case 5:
+          case 6:
           case "end":
             return _context.stop();
         }
@@ -61332,15 +61338,23 @@ function _handleInit() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
 /* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(socket_io_client__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+
  // 将后端配置修改为 Swoole WebSocket 服务器
 // 然后将路径设置为 /ws，以便连接到 Swoole WebSocket 服务器，
 // 最后设置传输层协议为 websocket，取代默认的长轮询（polling）机制。
 
-var url = 'http://lara-first.test/';
+var api_token = _store__WEBPACK_IMPORTED_MODULE_1__["default"].state.userInfo.token; // const url = 'http://lara-first.test?api_token=' + api_token;
+
+var url = 'http://lara-first.test';
 var socket = socket_io_client__WEBPACK_IMPORTED_MODULE_0___default.a.connect(url, {
+  query: {
+    api_token: api_token
+  },
   path: '/ws',
   transports: ['websocket']
-});
+}); // const socket = io(url);
+
 /* harmony default export */ __webpack_exports__["default"] = (socket);
 
 /***/ }),
@@ -61957,9 +61971,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
 
               case 4:
                 res = _context12.sent;
+                console.log(res);
 
                 if (!(res.data.errno === 0)) {
-                  _context12.next = 9;
+                  _context12.next = 11;
                   break;
                 }
 
@@ -61977,24 +61992,25 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
                   });
                 }
 
+                console.log(result.data);
                 return _context12.abrupt("return", {
                   data: result.data
                 });
 
-              case 9:
-                _context12.next = 13;
+              case 11:
+                _context12.next = 15;
                 break;
 
-              case 11:
-                _context12.prev = 11;
+              case 13:
+                _context12.prev = 13;
                 _context12.t0 = _context12["catch"](1);
 
-              case 13:
+              case 15:
               case "end":
                 return _context12.stop();
             }
           }
-        }, _callee12, null, [[1, 11]]);
+        }, _callee12, null, [[1, 13]]);
       }))();
     },
     getRobatMess: function getRobatMess(_ref16, data) {
@@ -63513,8 +63529,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\WorkSpace\PHP\PHPStudy\Laravel\first-project\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\WorkSpace\PHP\PHPStudy\Laravel\first-project\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\WorkSpace\PHP\PHPStudy\Laravel\swoole-project\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\WorkSpace\PHP\PHPStudy\Laravel\swoole-project\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),
@@ -63531,3 +63547,4 @@ module.exports = __webpack_require__(/*! D:\WorkSpace\PHP\PHPStudy\Laravel\first
 /***/ })
 
 /******/ });
+//# sourceMappingURL=app.js.map

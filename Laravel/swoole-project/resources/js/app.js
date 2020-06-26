@@ -85,7 +85,7 @@ socket.on('connect', async () => {
       socket.emit('room', obj);
 
       if (store.state.isDiscount) {
-          await store.commit('setRoomDetailInfos');
+          await store.commit('setRoomDetailInfos', { data:  null } );
           await store.commit('setCurrent', 1);
           await store.commit('setDiscount', false);
           await store.commit('setTotal', 0);

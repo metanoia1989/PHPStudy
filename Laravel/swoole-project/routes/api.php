@@ -16,16 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/user', function (Request $request) {
+        // return $request->input('api_token');
         return $request->user();
     });
+
     Route::post('/logout', 'AuthController@logout');
-    Route::get('/history/message', 'MessageController@history');
+    Route::get('/message/history', 'MessageController@history');
+    Route::get('/message/history/byUser', 'MessageController@byUser');
 
     Route::post('/file/uploadimg', 'FileController@uploadImage');
     Route::post('/file/avatar', 'FileController@avatar');
 
-    Route::get('/socket.io', 'SocketIOController@upgrade');
-    Route::post('/socket.io', 'SocketIOController@ok');
 });
 
 // 注册和登录
@@ -36,3 +37,4 @@ Route::post('/user/signin', 'AuthController@login');
 Route::fallback(function(){
     return response()->json(['message' => 'Resource not found.'], 404);
 });
+

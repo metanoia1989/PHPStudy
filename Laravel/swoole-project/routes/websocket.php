@@ -1,6 +1,7 @@
 <?php
 
 use App\Count;
+use App\User;
 use App\Message;
 use Swoole\Http\Request;
 use App\Services\WebSocket\WebSocket;
@@ -20,7 +21,8 @@ use Illuminate\Support\Facades\Redis;
 WebSocketProxy::on('connect', function (WebSocket $websocket, Request $request) {
     // 发送欢迎消息
     $websocket->setSender($request->fd);
-    $websocket->emit('connect', '欢迎访问聊天室');
+    // $websocket->emit('connect', '欢迎访问聊天室');
+    $websocket->loginUsing(auth('api')->user());
 });
 
 WebSocketProxy::on('disconnect', function (WebSocket $websocket, $data) {
@@ -59,18 +61,27 @@ WebSocketProxy::on('room', function (WebSocket $websocket, $data) {
     if ($userId = $websocket->getUserId()) {
         $user = User::find($userId);
         // 从请求数据中获取房间ID
-        if (empty($data['roomid'])) {
+        if (empty($data['roomid']) || !in_array($data['roomid'], Count::$ROOMLIST) ) {
             return;
         }
+        Log::info("进入房间的数据：", $data);
         $roomId = $data['roomid'];
         // 重置用户与fd关联
         Redis::hset('socket_id', $user->id, $websocket->getSender());
         // 将该房间下用户未读消息清零
         $count = Count::where('user_id', $user->id)->where('room_id', $roomId)->first();
-        $count->count = 0;
-        $count->save();
+        if ($count) {
+            $count->count = 0;
+            $count->save();
+        } else {
+            $count = new Count();
+            $count->user_id = $user->id;
+            $count->room_id = $roomId;
+            $count->count = 0;
+            $count->save();
+        }
         // 将用户加入指定房间
-        $room = Count::$ROOMLIST[$roomId];
+        $room = $roomId;
         $websocket->join($room);
         // 打印日志
         Log::info($user->name."进入房间: ".$room);
@@ -137,7 +148,7 @@ WebSocketProxy::on('message', function (WebSocket $websocket, $data) {
         $roomId = intval($data['roomid']);
         $time = $data['time'];
         // 消息内容或房间号不能为空
-        if(empty($msg) && empty($img) || empty($roomId)) {
+        if(empty($msg) && empty($img) || empty($roomId) || !in_array($roomId, Count::$ROOMLIST)) {
             return;
         }
         // 记录日志
@@ -153,7 +164,7 @@ WebSocketProxy::on('message', function (WebSocket $websocket, $data) {
             $message->save();
         }
         // 将消息广播给房间内所有用户
-        $room = Count::$ROOMLIST[$roomId];
+        $room = $roomId;
         $messageData = [
             'userid' => $user->name,
             'username' => $user->name,

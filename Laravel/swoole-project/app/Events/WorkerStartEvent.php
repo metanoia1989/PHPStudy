@@ -7,7 +7,7 @@ use App\Services\Websocket\Rooms\RoomContract;
 use App\Services\WebSocket\WebSocket;
 use Hhxsv5\LaravelS\Swoole\Events\WorkerStartInterface;
 use Illuminate\Container\Container;
-use Mockery\Matcher\Contains;
+use Illuminate\Support\Facades\Log;
 
 /**
  * WebSocket 相关服务器容器绑定和路由加载
@@ -28,15 +28,15 @@ class WorkerStartEvent implements WorkerStartInterface
 
         // WorkerStart事件发生时Laravel已经初始化完成，在这里做一些组件绑定到容器的初始化工作最合适
         app()->singleton(Parser::class, function() {
-            $parserClass = config('laravels.weboscket.parser');
+            $parserClass = config('laravels.websocket.parser');
             return new $parserClass;
         });
-        app()->alias(Praser::class, 'swoole.parser');
+        app()->alias(Parser::class, 'swoole.parser');
 
         app()->singleton(RoomContract::class, function () {
             $driver = config('laravels.websocket.drivers.default', 'table');
-            $driverClass = config('laravels.websocekt.drivers.'.$driver);
-            $driverConfig = config('laravels.websocekt.drivers.settings'.$driver);
+            $driverClass = config('laravels.websocket.drivers.'.$driver);
+            $driverConfig = config('laravels.websocket.drivers.settings.'.$driver);
             $roomInstance = new $driverClass($driverConfig);
             if ($roomInstance instanceof RoomContract) {
                 $roomInstance->prepare();

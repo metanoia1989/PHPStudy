@@ -14,7 +14,7 @@
       <mu-paper>
         <mu-list>
           <mu-sub-header>最近聊天记录</mu-sub-header>
-          <mu-list-item avatar button :ripple="true" @click="chatwindow('room1')">
+          <mu-list-item avatar button :ripple="true" @click="chatwindow('1')">
             <mu-list-item-action>
               <div class="avatar">
                 <span class="tip" v-if="unRead1!==0">{{unRead1 > 99 ? '99+' : unRead1}}</span>
@@ -23,13 +23,13 @@
             </mu-list-item-action>
             <mu-list-item-content>
               <mu-list-item-title>聊天室1</mu-list-item-title>
-              <mu-list-item-sub-title>{{getTailMsg('room1')}}</mu-list-item-sub-title>
+              <mu-list-item-sub-title>{{getTailMsg(1)}}</mu-list-item-sub-title>
             </mu-list-item-content>
             <mu-list-item-action>
               <mu-icon value="chat_bubble"></mu-icon>
             </mu-list-item-action>
           </mu-list-item>
-          <mu-list-item avatar button :ripple="true" @click="chatwindow('room2')">
+          <mu-list-item avatar button :ripple="true" @click="chatwindow('2')">
             <mu-list-item-action>
               <div class="avatar">
                 <span class="tip" v-if="unRead2!==0">{{unRead2 > 99 ? '99+' : unRead2}}</span>
@@ -38,7 +38,7 @@
             </mu-list-item-action>
             <mu-list-item-content>
               <mu-list-item-title>聊天室2</mu-list-item-title>
-              <mu-list-item-sub-title>{{getTailMsg('room2')}}</mu-list-item-sub-title>
+              <mu-list-item-sub-title>{{getTailMsg(2)}}</mu-list-item-sub-title>
             </mu-list-item-content>
             <mu-list-item-action>
               <mu-icon value="chat_bubble"></mu-icon>

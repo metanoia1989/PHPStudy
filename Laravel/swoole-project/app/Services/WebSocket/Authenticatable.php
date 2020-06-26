@@ -66,7 +66,7 @@ trait Authenticatable
     }
 
     /**
-     * Get current auth user id by sender's fd
+     * Set multiple recepient's fds by userIds
      *
      * @param mixed $userIds
      * @return $this
@@ -81,6 +81,24 @@ trait Authenticatable
         }
 
         return $this;
+    }
+
+    /**
+     * Get current auth user id by sender's fd
+     */
+    public function getUserId()
+    {
+        if(!is_null($this->userId)) {
+            return $this->userId;
+        }
+        $rooms = $this->room->getRooms($this->getSender());
+
+        foreach($rooms as $room) {
+            if (count($explode = explode(static::USER_PREFIX, $room))) {
+                $this->userId = $explode[1];
+            }
+        }
+        return $this->userId;
     }
 
     /**

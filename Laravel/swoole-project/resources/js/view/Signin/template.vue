@@ -84,7 +84,7 @@ export default {
             userid: res.data.userInfo.name,
             src: res.data.userInfo.src,
             id: res.data.userInfo.id,
-            token: res.data.api_token,
+            token: res.data.userInfo.api_token,
           }
           this.$store.commit("setUserInfo", userInfo);
           await handleInit({

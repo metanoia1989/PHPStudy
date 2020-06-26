@@ -16,5 +16,7 @@ class VerifyCsrfToken extends Middleware
         'method',
         'resources',
         'resources/*',
+        '/socket.io',
+        '/api/*',
     ];
 }
