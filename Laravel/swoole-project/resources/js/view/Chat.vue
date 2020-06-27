@@ -42,9 +42,9 @@
             @avatarClick="handleInfo"
             @flexTouch="hadnleTouch"
             @retry="handleRetry"
-            :key="obj._id"
+            :key="obj.id"
             :is-self="obj.username === username"
-            :id="obj._id"
+            :id="obj.id"
             :name="obj.username"
             :head="obj.src"
             :msg="obj.msg"
@@ -228,7 +228,6 @@
         this.chatValue = this.chatValue + data;
       },
       bindScroll: debounce(async function (e) {
-        console.log("测绘师啊  ")
         if (e.target.scrollTop >= 0 && e.target.scrollTop < 150) {
           this.handleScroll();
         }

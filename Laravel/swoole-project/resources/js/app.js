@@ -63,6 +63,15 @@ socket.on('reconnect', async (attemptNumber) => {
   });
 });
 
+socket.on('login', async (msg) => {
+  Toast({
+    content: msg,
+    timeout: 2000,
+    background: "#f44336"
+  });
+});
+
+
 
 socket.on('connect', async () => {
   console.log('connect');
@@ -71,6 +80,7 @@ socket.on('connect', async () => {
   const src = store.state.userInfo.src;
   const userId = store.state.userInfo.id;
   const token = store.state.userInfo.token;
+  console.log(store.state.userInfo, userId);
   if (userId) {
     // 此处逻辑需要抽离复用
     await handleInit({
@@ -113,11 +123,11 @@ socket.on('count', (obj) => {
 })
 
 socket.on('room', (obj) => {
-  console.log(obj);
+  console.log('room', obj);
   store.commit('setUsers', obj);
 });
 socket.on('roomout', (obj) => {
-  console.log(obj);
+  console.log('roomout', obj);
   store.commit('setUsers', obj);
 });
 socket.on('friend', (obj) => {

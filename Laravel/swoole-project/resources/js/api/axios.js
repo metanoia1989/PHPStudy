@@ -41,7 +41,11 @@ instance.interceptors.response.use(response => {
       msg = error.response.data.msg;
       return;
     }
-    msg = '网络异常，请检查你的网络。';
+    if (error.message) {
+      msg = error.message;
+    } else {
+        msg = '网络异常，请检查你的网络。';
+    }
     Toast({
       content: msg,
       timeout: 2000,

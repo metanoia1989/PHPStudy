@@ -3,6 +3,7 @@
 namespace App\Services\WebSocket;
 
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Support\Facades\Log;
 use InvalidArgumentException;
 
 /**
@@ -92,9 +93,8 @@ trait Authenticatable
             return $this->userId;
         }
         $rooms = $this->room->getRooms($this->getSender());
-
         foreach($rooms as $room) {
-            if (count($explode = explode(static::USER_PREFIX, $room))) {
+            if (count($explode = explode(static::USER_PREFIX, $room)) === 2) {
                 $this->userId = $explode[1];
             }
         }

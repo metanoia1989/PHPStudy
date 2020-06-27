@@ -2244,18 +2244,16 @@ var maxHeight = 200;
     },
     avatar: function avatar() {
       var avatar = this.head;
-      var reg = /\.\/static\/img\/(\d+)\.jpg/;
-      var matches = this.head.match(reg);
-
-      if (matches) {
-        avatar = "//s3.qiufengh.com/avatar/".concat(matches[1], ".jpeg");
-      }
-
-      if (avatar.indexOf('?') > -1) {
-        return "".concat(avatar, "&imageView2/2/w/120/h/120");
-      } else {
-        return "".concat(avatar, "?imageView2/2/w/120/h/120");
-      }
+      return avatar; //   const reg = /\.\/static\/img\/(\d+)\.jpg/;
+      //   const matches = this.head.match(reg);
+      //   if (matches) {
+      //     avatar = `//s3.qiufengh.com/avatar/${matches[1]}.jpeg`;
+      //   }
+      //   if(avatar.indexOf('?') > -1) {
+      //     return `${avatar}&imageView2/2/w/120/h/120`;
+      //   } else {
+      //     return `${avatar}?imageView2/2/w/120/h/120`;
+      //   }
     },
     pic: function pic() {
       var pic = this.img;
@@ -3465,13 +3463,11 @@ var isMore = false;
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                console.log("测绘师啊  ");
-
                 if (e.target.scrollTop >= 0 && e.target.scrollTop < 150) {
                   this.handleScroll();
                 }
 
-              case 2:
+              case 1:
               case "end":
                 return _context3.stop();
             }
@@ -39144,10 +39140,10 @@ var render = function() {
             _vm._v(" "),
             _vm._l(_vm.roomdetail[_vm.roomid] || [], function(obj, index) {
               return _c("Message", {
-                key: obj._id,
+                key: obj.id,
                 attrs: {
                   "is-self": obj.username === _vm.username,
-                  id: obj._id,
+                  id: obj.id,
                   name: obj.username,
                   head: obj.src,
                   msg: obj.msg,
@@ -58736,7 +58732,12 @@ instance.interceptors.response.use(function (response) {
       return;
     }
 
-    msg = '网络异常，请检查你的网络。';
+    if (error.message) {
+      msg = error.message;
+    } else {
+      msg = '网络异常，请检查你的网络。';
+    }
+
     Object(_components_Toast__WEBPACK_IMPORTED_MODULE_2__["default"])({
       content: msg,
       timeout: 2000,
@@ -58965,11 +58966,35 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('reconnect', /*#__PURE__*/fun
     return _ref.apply(this, arguments);
   };
 }());
-_socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('connect', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+_socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('login', /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(msg) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            Object(_components_Toast__WEBPACK_IMPORTED_MODULE_10__["default"])({
+              content: msg,
+              timeout: 2000,
+              background: "#f44336"
+            });
+
+          case 1:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function (_x2) {
+    return _ref2.apply(this, arguments);
+  };
+}());
+_socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('connect', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
   var roomId, userName, src, userId, token;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
     while (1) {
-      switch (_context2.prev = _context2.next) {
+      switch (_context3.prev = _context3.next) {
         case 0:
           console.log('connect');
           roomId = Object(_utils_queryString__WEBPACK_IMPORTED_MODULE_7__["queryString"])(window.location.href, 'roomId');
@@ -58977,13 +59002,14 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('connect', /*#__PURE__*/_asyn
           src = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.src;
           userId = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.id;
           token = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.token;
+          console.log(_store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo, userId);
 
           if (!userId) {
-            _context2.next = 9;
+            _context3.next = 10;
             break;
           }
 
-          _context2.next = 9;
+          _context3.next = 10;
           return Object(_socket_handle__WEBPACK_IMPORTED_MODULE_12__["handleInit"])({
             socket: _socket__WEBPACK_IMPORTED_MODULE_6__["default"],
             store: _store__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -58995,12 +59021,12 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('connect', /*#__PURE__*/_asyn
             roomList: ['room1', 'room2']
           });
 
-        case 9:
+        case 10:
         case "end":
-          return _context2.stop();
+          return _context3.stop();
       }
     }
-  }, _callee2);
+  }, _callee3);
 })));
 _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('disconnect', function () {
   console.log('websocket disconnected: ' + _socket__WEBPACK_IMPORTED_MODULE_6__["default"].disconnected);
@@ -59027,11 +59053,11 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('count', function (obj) {
   _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit("setUnread", obj);
 });
 _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('room', function (obj) {
-  console.log(obj);
+  console.log('room', obj);
   _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setUsers', obj);
 });
 _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('roomout', function (obj) {
-  console.log(obj);
+  console.log('roomout', obj);
   _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setUsers', obj);
 });
 _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('friend', function (obj) {
@@ -61268,11 +61294,14 @@ function _handleInit() {
           case 0:
             name = _ref.name, id = _ref.id, src = _ref.src, roomList = _ref.roomList;
             // 此处逻辑需要抽离复用
+            console.log("测试登录");
+            token = _store__WEBPACK_IMPORTED_MODULE_3__["default"].state.userInfo.token;
             _socket__WEBPACK_IMPORTED_MODULE_2__["default"].emit('login', _objectSpread({
               name: name,
               id: id
-            }, _utils_env__WEBPACK_IMPORTED_MODULE_1__["default"]));
-            token = _store__WEBPACK_IMPORTED_MODULE_3__["default"].state.userInfo.token; //   ['room1', 'room2'].forEach(item => {
+            }, _utils_env__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              token: token
+            })); //   ['room1', 'room2'].forEach(item =>
 
             [1, 2].forEach(function (item) {
               var obj = {
@@ -61283,13 +61312,13 @@ function _handleInit() {
               };
               _socket__WEBPACK_IMPORTED_MODULE_2__["default"].emit('room', obj);
             });
-            _context.next = 6;
+            _context.next = 7;
             return _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch('getRoomHistory', {
               selfId: id,
               api_token: token
             });
 
-          case 6:
+          case 7:
           case "end":
             return _context.stop();
         }

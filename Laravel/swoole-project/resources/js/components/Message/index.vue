@@ -75,16 +75,17 @@ export default {
     },
     avatar() {
       let avatar = this.head;
-      const reg = /\.\/static\/img\/(\d+)\.jpg/;
-      const matches = this.head.match(reg);
-      if (matches) {
-        avatar = `//s3.qiufengh.com/avatar/${matches[1]}.jpeg`;
-      }
-      if(avatar.indexOf('?') > -1) {
-        return `${avatar}&imageView2/2/w/120/h/120`;
-      } else {
-        return `${avatar}?imageView2/2/w/120/h/120`;
-      }
+      return avatar;
+    //   const reg = /\.\/static\/img\/(\d+)\.jpg/;
+    //   const matches = this.head.match(reg);
+    //   if (matches) {
+    //     avatar = `//s3.qiufengh.com/avatar/${matches[1]}.jpeg`;
+    //   }
+    //   if(avatar.indexOf('?') > -1) {
+    //     return `${avatar}&imageView2/2/w/120/h/120`;
+    //   } else {
+    //     return `${avatar}?imageView2/2/w/120/h/120`;
+    //   }
     },
     pic() {
       let pic = this.img;

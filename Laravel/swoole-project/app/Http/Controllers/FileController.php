@@ -27,6 +27,8 @@ class FileController extends Controller
             $message->room_id = $request->post('roomid');
             $message->msg = ''; // 文本消息
             $message->img = Storage::disk('public')->url($path);
+            $message->type = 'img';
+            $message->roomType = $request->input['roomType'];
             $message->created_at = Carbon::now();
             $message->save();
             return response()->json([

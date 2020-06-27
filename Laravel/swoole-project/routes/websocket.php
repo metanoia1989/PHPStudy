@@ -99,7 +99,10 @@ WebSocketProxy::on('room', function (WebSocket $websocket, $data) {
             Cache::forever($roomUsersKey, $onlineUsers);
         }
         // 广播消息给房间内所有用户
-        $websocket->to($room)->emit('room', $onlineUsers);
+        $websocket->to($room)->emit('room', [
+            'onlineUsers' => $onlineUsers,
+            'roomid' => $roomId,
+        ]);
     } else {
         $websocket->emit('login', '登录后才能进入聊天室');
     }
@@ -125,7 +128,10 @@ function roomout(WebSocket $websocket, $data)
             unset($onlineUsers[$user->id]);
             Cache::forever($roomUsersKey, $onlineUsers);
         }
-        $websocket->to($room)->emit('roomout', $onlineUsers);
+        $websocket->to($room)->emit('roomout', [
+            'onlineUsers' => $onlineUsers,
+            'roomid' => $roomId,
+        ]);
         Log::info($user->name.'退出房间：'.$room);
         $websocket->leave($room);
     } else {
@@ -160,6 +166,8 @@ WebSocketProxy::on('message', function (WebSocket $websocket, $data) {
             $message->room_id = $roomId;
             $message->msg = $msg; // 文本消息
             $message->img = ''; // 图片消息留空
+            $message->type = 'text';
+            $message->roomType = $data['roomType'];
             $message->created_at = Carbon::now();
             $message->save();
         }
