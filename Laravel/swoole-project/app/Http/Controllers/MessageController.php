@@ -15,27 +15,32 @@ class MessageController extends Controller
     public function history(Request $request)
     {
         $roomId = intval($request->get('roomid'));
-        $current = intval($request->get('current') ?? 1) ;
-        $total = intval($request->get('total'));
-        if ($roomId <= 0 || $current <= 0) {
-            Log::error('无效的房间和页面信息');
+        $msgid = intval($request->get('msgid')) ;
+        if ($roomId <= 0 ) {
+            Log::error('无效的房间信息');
             return response()->json([
                 'data' => [
                     'errno' => 1,
-                    'data' => '无效的房间和页面信息' .$roomId . $current,
+                    'data' => '无效的房间信息' .$roomId,
                 ],
             ]);
         }
-        // 获取消息总数
-        $messageTotal = Message::where('room_id', $roomId)->count();
         $limit = 20; // 每页显示20条信息
-        $skip = ($current - 1) * 20; // 从第多少条消息开始
-        // 分页查询消息
-        $messages = Message::with('user')->where('room_id', $roomId)
-            ->take($limit)
-            ->skip($skip)
-            ->orderBy('created_at', 'asc')
-            ->get();
+        if ($msgid) {
+            $messages = Message::with('user')
+                ->where('room_id', $roomId)
+                ->where('id', '<', $msgid)
+                ->orderBy('id', 'asc')
+                ->take($limit)
+                ->get();
+        } else {
+            $messages = Message::with('user')
+                ->where('room_id', $roomId)
+                ->orderBy('id', 'asc')
+                ->take($limit)
+                ->get();
+        }
+
 
         $messagesData = [];
         if ($messages) {
@@ -45,10 +50,8 @@ class MessageController extends Controller
         return response()->json([
             'errno' => 0,
             'data' => [
-                'data' => $messagesData,
-                'total' => $messageTotal,
-                'current' => $current,
-            ],
+                "data" => $messagesData,
+            ]
         ]);
     }
 

@@ -65,35 +65,24 @@ socket.on('reconnect', async (attemptNumber) => {
 
 
 socket.on('connect', async () => {
-  console.log('websocket connected: ' + socket.connected);
+  console.log('connect');
   const roomId = queryString(window.location.href, 'roomId');
-  const userId = store.state.userInfo.userid;
+  const userName = store.state.userInfo.userid;
+  const src = store.state.userInfo.src;
+  const userId = store.state.userInfo.id;
   const token = store.state.userInfo.token;
   if (userId) {
-      socket.emit('login', {
-          name: userId,
-          token: token,
-      });
-  }
-  if (roomId) {
-      const obj = {
-          name: userId,
-          src: store.state.userInfo.src,
-          roomid: roomId,
-          api_token: token,
-      };
-      socket.emit('room', obj);
-
-      if (store.state.isDiscount) {
-          await store.commit('setRoomDetailInfos', { data:  null } );
-          await store.commit('setCurrent', 1);
-          await store.commit('setDiscount', false);
-          await store.commit('setTotal', 0);
-          await store.dispatch('getAllMessHistory', {
-              current: 1,
-              roomid: roomId,
-          });
-      }
+    // 此处逻辑需要抽离复用
+    await handleInit({
+      socket,
+      store,
+      name: userName,
+      id: userId,
+      src,
+      env,
+      token,
+      roomList: ['room1', 'room2']
+    })
   }
 });
 

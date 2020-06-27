@@ -3465,11 +3465,13 @@ var isMore = false;
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
+                console.log("测绘师啊  ");
+
                 if (e.target.scrollTop >= 0 && e.target.scrollTop < 150) {
                   this.handleScroll();
                 }
 
-              case 1:
+              case 2:
               case "end":
                 return _context3.stop();
             }
@@ -3489,21 +3491,23 @@ var isMore = false;
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
+                console.log(isMore, _this3.isEnd);
+
                 if (!(!isMore && !_this3.isEnd)) {
-                  _context4.next = 7;
+                  _context4.next = 8;
                   break;
                 }
 
                 _this3.isloading = true;
                 isMore = true;
-                _context4.next = 5;
+                _context4.next = 6;
                 return _this3.getRoomMessage();
 
-              case 5:
+              case 6:
                 isMore = false;
                 _this3.isloading = false;
 
-              case 7:
+              case 8:
               case "end":
                 return _context4.stop();
             }
@@ -3538,7 +3542,7 @@ var isMore = false;
                 };
 
                 if (_this5.roomdetail[_this5.roomid] && _this5.roomdetail[_this5.roomid].length > 0) {
-                  id = _this5.roomdetail[_this5.roomid][0]._id;
+                  id = _this5.roomdetail[_this5.roomid][0].id;
                   data.msgid = id;
                 }
 
@@ -6054,7 +6058,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".container[data-v-68468314] {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  background: #f1f5f8;\n  -webkit-overflow-scrolling: touch;\n}\n.container .chat-inner[data-v-68468314] {\n  position: absolute;\n  width: 100%;\n  overflow-y: scroll;\n  overflow-x: hidden;\n  top: 56px;\n  bottom: 80px;\n}\n.container .title[data-v-68468314] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  z-index: 2;\n}\n.container .title .center[data-v-68468314] {\n  flex: 1;\n  padding-left: 8px;\n  padding-right: 8px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-size: 20px;\n  font-weight: 400;\n  line-height: 56px;\n  text-align: center;\n}\n.container .notice-hidden[data-v-68468314] {\n  transform: translate(0, -100%);\n}\n.container .notice[data-v-68468314] {\n  position: absolute;\n  top: 56px;\n  left: 0;\n  right: 0;\n  width: 94%;\n  z-index: 1;\n  margin: 0 auto;\n  background: #fff;\n  transition: transform 0.5s;\n  border-right: 1px #eee solid;\n  border-left: 1px #eee solid;\n  border-bottom: 1px #eee solid;\n}\n.container .notice .notice-li[data-v-68468314] {\n  padding: 2px 5px;\n}\n.container .notice .notice-li a[data-v-68468314] {\n  color: #6d6d6d;\n}\n.container .notice .notice-tool-bar[data-v-68468314] {\n  position: absolute;\n  width: 100px;\n  height: 30px;\n  bottom: -30px;\n  left: 50%;\n  transform: translate(-50%, 0);\n  background: #fff;\n  line-height: 30px;\n  text-align: center;\n  border-right: 1px #eee solid;\n  border-left: 1px #eee solid;\n  border-bottom: 1px #eee solid;\n  z-index: 1;\n}\n.container .chat-container[data-v-68468314] {\n  overflow: hidden;\n}\n.container .chat-container .chat-top[data-v-68468314] {\n  text-align: center;\n  margin: 5px 0 5px;\n  color: #d1cfd2;\n}\n.container .chat-container .chat-no-people[data-v-68468314] {\n  width: 100%;\n  height: 300px;\n  line-height: 300px;\n  text-align: center;\n  color: #d1cfd2;\n}\n.container .bottom[data-v-68468314] {\n  position: fixed;\n  width: 100%;\n  height: 80px;\n  bottom: 0;\n  left: 0;\n  z-index: 1;\n  border-top: 1px solid #ddd;\n  background: #f7f6fb;\n}\n.container .bottom .chat[data-v-68468314] {\n  width: 100%;\n  display: flex;\n}\n.container .bottom .chat .input[data-v-68468314] {\n  flex: 1;\n  padding: 0 4px 4px 4px;\n}\n.container .bottom .chat .input input[data-v-68468314] {\n  width: 100%;\n  height: 42px;\n  box-sizing: border-box;\n  border: 1px solid #e8e7ea;\n  border-radius: 3px;\n  color: #333;\n  font-size: 19px;\n  padding-left: 5px;\n}\n.container .bottom .chat .input .mu-text-field[data-v-68468314] {\n  width: 100%;\n}\n.container .bottom .chat .demo-raised-button[data-v-68468314] {\n  margin-right: 8px;\n}\n.container .bottom .functions[data-v-68468314] {\n  width: 100%;\n}\n.container .bottom .functions .fun-li[data-v-68468314] {\n  width: 40px;\n  height: 30px;\n  line-height: 30px;\n  display: inline-block;\n  position: relative;\n  color: #828187;\n  text-align: center;\n}\n.container .bottom .functions .fun-li .iconfont[data-v-68468314] {\n  font-size: 20px;\n}\n.container .bottom .functions .emoji-content[data-v-68468314] {\n  position: absolute;\n  bottom: 30px;\n  left: -42px;\n  width: 375px;\n  height: 210px;\n  border-top: 1px solid #f3f3f3;\n  overflow: hidden;\n  background-color: #fff;\n}\n.container .bottom .functions .emoji-content .emoji-container[data-v-68468314] {\n  width: 10000px;\n}\n.container .bottom .functions .emoji-content .emoji-tabs[data-v-68468314] {\n  overflow: auto;\n}\n.container .bottom .functions .emoji-content .emoji-tabs .emoji-block[data-v-68468314] {\n  width: 1170px;\n  height: 200px;\n  float: left;\n}\n.container .bottom .functions .emoji-content .emoji-tabs .emoji-block span[data-v-68468314] {\n  display: inline-block;\n  cursor: pointer;\n  font-size: 26px;\n  min-width: 48px;\n  line-height: 39px;\n  text-align: center;\n  list-style: none;\n}\n.all-chat .online[data-v-68468314] {\n  display: inline-block;\n  margin: 5px;\n}\n.all-chat .online img[data-v-68468314] {\n  width: 40px;\n  height: 40px;\n  border-radius: 100%;\n}\n@-webkit-keyframes lds-rolling-data-v-68468314 {\n0% {\n    transform: translate(-50%, -50%) rotate(0deg);\n}\n100% {\n    transform: translate(-50%, -50%) rotate(360deg);\n}\n}\n.chat-loading .lds-rolling[data-v-68468314] {\n  height: 40px;\n  overflow: hidden;\n}\n.chat-loading .lds-rolling div[data-v-68468314],\n.chat-loading .lds-rolling div[data-v-68468314]:after {\n  width: 20px;\n  height: 20px;\n  border: 2px solid #2196f3;\n  border-top-color: transparent;\n  border-radius: 50%;\n  margin: 20px auto 0;\n}\n.chat-loading .lds-rolling div[data-v-68468314] {\n  -webkit-animation: lds-rolling-data-v-68468314 1s linear infinite;\n  animation: lds-rolling-data-v-68468314 1s linear infinite;\n}\n.chat-loading .lds-rolling div[data-v-68468314]:after {\n  transform: rotate(90deg);\n}\n@-webkit-keyframes lds-rolling-data-v-68468314 {\n0% {\n    transform: translate(-50%, -50%) rotate(0deg);\n}\n100% {\n    transform: translate(-50%, -50%) rotate(360deg);\n}\n}\n@keyframes lds-rolling-data-v-68468314 {\n0% {\n    transform: translate(-50%, -50%) rotate(0deg);\n}\n100% {\n    transform: translate(-50%, -50%) rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, ".container[data-v-68468314] {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  background: #f1f5f8;\n  -webkit-overflow-scrolling: touch;\n}\n.container .chat-inner[data-v-68468314] {\n  position: absolute;\n  width: 100%;\n  overflow-y: scroll;\n  overflow-x: hidden;\n  top: 70px;\n  bottom: 80px;\n}\n.container .title[data-v-68468314] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  z-index: 2;\n}\n.container .title .center[data-v-68468314] {\n  flex: 1;\n  padding-left: 8px;\n  padding-right: 8px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-size: 20px;\n  font-weight: 400;\n  line-height: 56px;\n  text-align: center;\n}\n.container .notice-hidden[data-v-68468314] {\n  transform: translate(0, -100%);\n}\n.container .notice[data-v-68468314] {\n  position: absolute;\n  top: 56px;\n  left: 0;\n  right: 0;\n  width: 94%;\n  z-index: 1;\n  margin: 0 auto;\n  background: #fff;\n  transition: transform 0.5s;\n  border-right: 1px #eee solid;\n  border-left: 1px #eee solid;\n  border-bottom: 1px #eee solid;\n}\n.container .notice .notice-li[data-v-68468314] {\n  padding: 2px 5px;\n}\n.container .notice .notice-li a[data-v-68468314] {\n  color: #6d6d6d;\n}\n.container .notice .notice-tool-bar[data-v-68468314] {\n  position: absolute;\n  width: 100px;\n  height: 30px;\n  bottom: -30px;\n  left: 50%;\n  transform: translate(-50%, 0);\n  background: #fff;\n  line-height: 30px;\n  text-align: center;\n  border-right: 1px #eee solid;\n  border-left: 1px #eee solid;\n  border-bottom: 1px #eee solid;\n  z-index: 1;\n}\n.container .chat-container[data-v-68468314] {\n  overflow: hidden;\n  min-height: 105%;\n}\n.container .chat-container .chat-top[data-v-68468314] {\n  text-align: center;\n  margin: 5px 0 5px;\n  color: #d1cfd2;\n}\n.container .chat-container .chat-no-people[data-v-68468314] {\n  width: 100%;\n  height: 300px;\n  line-height: 300px;\n  text-align: center;\n  color: #d1cfd2;\n}\n.container .bottom[data-v-68468314] {\n  position: fixed;\n  width: 100%;\n  height: 80px;\n  bottom: 0;\n  left: 0;\n  z-index: 1;\n  border-top: 1px solid #ddd;\n  background: #f7f6fb;\n}\n.container .bottom .chat[data-v-68468314] {\n  width: 100%;\n  display: flex;\n}\n.container .bottom .chat .input[data-v-68468314] {\n  flex: 1;\n  padding: 0 4px 4px 4px;\n}\n.container .bottom .chat .input input[data-v-68468314] {\n  width: 100%;\n  height: 42px;\n  box-sizing: border-box;\n  border: 1px solid #e8e7ea;\n  border-radius: 3px;\n  color: #333;\n  font-size: 19px;\n  padding-left: 5px;\n}\n.container .bottom .chat .input .mu-text-field[data-v-68468314] {\n  width: 100%;\n}\n.container .bottom .chat .demo-raised-button[data-v-68468314] {\n  margin-right: 8px;\n}\n.container .bottom .functions[data-v-68468314] {\n  width: 100%;\n}\n.container .bottom .functions .fun-li[data-v-68468314] {\n  width: 40px;\n  height: 30px;\n  line-height: 30px;\n  display: inline-block;\n  position: relative;\n  color: #828187;\n  text-align: center;\n}\n.container .bottom .functions .fun-li .iconfont[data-v-68468314] {\n  font-size: 20px;\n}\n.container .bottom .functions .emoji-content[data-v-68468314] {\n  position: absolute;\n  bottom: 30px;\n  left: -42px;\n  width: 375px;\n  height: 210px;\n  border-top: 1px solid #f3f3f3;\n  overflow: hidden;\n  background-color: #fff;\n}\n.container .bottom .functions .emoji-content .emoji-container[data-v-68468314] {\n  width: 10000px;\n}\n.container .bottom .functions .emoji-content .emoji-tabs[data-v-68468314] {\n  overflow: auto;\n}\n.container .bottom .functions .emoji-content .emoji-tabs .emoji-block[data-v-68468314] {\n  width: 1170px;\n  height: 200px;\n  float: left;\n}\n.container .bottom .functions .emoji-content .emoji-tabs .emoji-block span[data-v-68468314] {\n  display: inline-block;\n  cursor: pointer;\n  font-size: 26px;\n  min-width: 48px;\n  line-height: 39px;\n  text-align: center;\n  list-style: none;\n}\n.all-chat .online[data-v-68468314] {\n  display: inline-block;\n  margin: 5px;\n}\n.all-chat .online img[data-v-68468314] {\n  width: 40px;\n  height: 40px;\n  border-radius: 100%;\n}\n@-webkit-keyframes lds-rolling-data-v-68468314 {\n0% {\n    transform: translate(-50%, -50%) rotate(0deg);\n}\n100% {\n    transform: translate(-50%, -50%) rotate(360deg);\n}\n}\n.chat-loading .lds-rolling[data-v-68468314] {\n  height: 40px;\n  overflow: hidden;\n}\n.chat-loading .lds-rolling div[data-v-68468314],\n.chat-loading .lds-rolling div[data-v-68468314]:after {\n  width: 20px;\n  height: 20px;\n  border: 2px solid #2196f3;\n  border-top-color: transparent;\n  border-radius: 50%;\n  margin: 20px auto 0;\n}\n.chat-loading .lds-rolling div[data-v-68468314] {\n  -webkit-animation: lds-rolling-data-v-68468314 1s linear infinite;\n  animation: lds-rolling-data-v-68468314 1s linear infinite;\n}\n.chat-loading .lds-rolling div[data-v-68468314]:after {\n  transform: rotate(90deg);\n}\n@-webkit-keyframes lds-rolling-data-v-68468314 {\n0% {\n    transform: translate(-50%, -50%) rotate(0deg);\n}\n100% {\n    transform: translate(-50%, -50%) rotate(360deg);\n}\n}\n@keyframes lds-rolling-data-v-68468314 {\n0% {\n    transform: translate(-50%, -50%) rotate(0deg);\n}\n100% {\n    transform: translate(-50%, -50%) rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -39065,7 +39069,7 @@ var render = function() {
     _c("div", { staticClass: "container" }, [
       _c(
         "div",
-        { staticClass: "title" },
+        { ref: "title", staticClass: "title" },
         [
           _c(
             "mu-appbar",
@@ -39171,7 +39175,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "bottom" }, [
+      _c("div", { ref: "bottom", staticClass: "bottom" }, [
         _c("div", { staticClass: "functions" }, [
           _c("div", { staticClass: "fun-li", on: { click: _vm.imgupload } }, [
             _c("i", { staticClass: "icon iconfont icon-camera" })
@@ -58962,66 +58966,36 @@ _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('reconnect', /*#__PURE__*/fun
   };
 }());
 _socket__WEBPACK_IMPORTED_MODULE_6__["default"].on('connect', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-  var roomId, userId, token, obj;
+  var roomId, userName, src, userId, token;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          console.log('websocket connected: ' + _socket__WEBPACK_IMPORTED_MODULE_6__["default"].connected);
+          console.log('connect');
           roomId = Object(_utils_queryString__WEBPACK_IMPORTED_MODULE_7__["queryString"])(window.location.href, 'roomId');
-          userId = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.userid;
+          userName = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.userid;
+          src = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.src;
+          userId = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.id;
           token = _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.token;
 
-          if (userId) {
-            _socket__WEBPACK_IMPORTED_MODULE_6__["default"].emit('login', {
-              name: userId,
-              token: token
-            });
-          }
-
-          if (!roomId) {
-            _context2.next = 19;
+          if (!userId) {
+            _context2.next = 9;
             break;
           }
 
-          obj = {
-            name: userId,
-            src: _store__WEBPACK_IMPORTED_MODULE_4__["default"].state.userInfo.src,
-            roomid: roomId,
-            api_token: token
-          };
-          _socket__WEBPACK_IMPORTED_MODULE_6__["default"].emit('room', obj);
-
-          if (!_store__WEBPACK_IMPORTED_MODULE_4__["default"].state.isDiscount) {
-            _context2.next = 19;
-            break;
-          }
-
-          _context2.next = 11;
-          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setRoomDetailInfos', {
-            data: null
+          _context2.next = 9;
+          return Object(_socket_handle__WEBPACK_IMPORTED_MODULE_12__["handleInit"])({
+            socket: _socket__WEBPACK_IMPORTED_MODULE_6__["default"],
+            store: _store__WEBPACK_IMPORTED_MODULE_4__["default"],
+            name: userName,
+            id: userId,
+            src: src,
+            env: _utils_env__WEBPACK_IMPORTED_MODULE_9__["default"],
+            token: token,
+            roomList: ['room1', 'room2']
           });
 
-        case 11:
-          _context2.next = 13;
-          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setCurrent', 1);
-
-        case 13:
-          _context2.next = 15;
-          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setDiscount', false);
-
-        case 15:
-          _context2.next = 17;
-          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('setTotal', 0);
-
-        case 17:
-          _context2.next = 19;
-          return _store__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch('getAllMessHistory', {
-            current: 1,
-            roomid: roomId
-          });
-
-        case 19:
+        case 9:
         case "end":
           return _context2.stop();
       }
@@ -61971,10 +61945,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
 
               case 4:
                 res = _context12.sent;
-                console.log(res);
 
                 if (!(res.data.errno === 0)) {
-                  _context12.next = 11;
+                  _context12.next = 9;
                   break;
                 }
 
@@ -61992,25 +61965,24 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
                   });
                 }
 
-                console.log(result.data);
                 return _context12.abrupt("return", {
                   data: result.data
                 });
 
-              case 11:
-                _context12.next = 15;
+              case 9:
+                _context12.next = 13;
                 break;
 
-              case 13:
-                _context12.prev = 13;
+              case 11:
+                _context12.prev = 11;
                 _context12.t0 = _context12["catch"](1);
 
-              case 15:
+              case 13:
               case "end":
                 return _context12.stop();
             }
           }
-        }, _callee12, null, [[1, 13]]);
+        }, _callee12, null, [[1, 11]]);
       }))();
     },
     getRobatMess: function getRobatMess(_ref16, data) {

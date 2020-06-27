@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div class="title">
+      <div class="title" ref="title">
         <mu-appbar color="primary">
           <mu-button icon slot="left" @click="goback">
             <mu-icon value="chevron_left"></mu-icon>
@@ -61,7 +61,7 @@
           <div class="clear"></div>
         </div>
       </div>
-      <div class="bottom">
+      <div class="bottom" ref="bottom">
         <div class="functions">
           <div class="fun-li" @click="imgupload">
             <i class="icon iconfont icon-camera"></i>
@@ -198,6 +198,7 @@
 
       this.bindEmoji();
     },
+
     methods: {
       handleRetry(obj) {
         if(obj.img) {
@@ -227,11 +228,13 @@
         this.chatValue = this.chatValue + data;
       },
       bindScroll: debounce(async function (e) {
+        console.log("测绘师啊  ")
         if (e.target.scrollTop >= 0 && e.target.scrollTop < 150) {
           this.handleScroll();
         }
       }, 30),
       async handleScroll() {
+          console.log(isMore, this.isEnd)
         if(!isMore && !this.isEnd) {
           this.isloading = true;
           isMore = true;
@@ -254,7 +257,7 @@
           roomid: this.roomid
         };
         if(this.roomdetail[this.roomid] && this.roomdetail[this.roomid].length > 0) {
-          const id = this.roomdetail[this.roomid][0]._id;
+          const id = this.roomdetail[this.roomid][0].id;
           data.msgid = id;
         }
         try {
