@@ -9,6 +9,8 @@ return [
     'UrlControllerName' => 'c', // 自定义控制器名称，例如：index.php?c=index
     'UrlActionName' => 'a', // 自定义方法名称，例如：index.php?c=index&a=Index
     'UrlGroupName' => 'g', // 自定义分组名
-    'db' => [],
+    'db' => [
+
+    ],
     'smtp' => [],
 ];
