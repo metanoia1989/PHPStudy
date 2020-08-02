@@ -1,5 +1,8 @@
 <?php
-require_once _SYS_PATH.'core/Controller.php';
+namespace app\front\module\controller;
+
+use Lonicera\core\Controller;
+use app\model\User;
 
 class IndexController extends Controller
 {

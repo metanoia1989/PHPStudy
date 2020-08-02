@@ -1,4 +1,5 @@
 <?php
+namespace Lonicera\core;
 
 /**
  * 模板引擎的接口

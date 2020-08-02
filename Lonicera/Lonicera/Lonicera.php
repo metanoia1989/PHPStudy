@@ -1,4 +1,7 @@
 <?php
+namespace Lonicera;
+
+use Lonicera\core\Route;
 
 class Lonicera
 {
@@ -6,7 +9,8 @@ class Lonicera
 
     public function run()
     {
-        require_once _SYS_PATH.'core/Route.php';
+        require_once _SYS_PATH.'core/Loader.php';
+        spl_autoload_register(['Lonicera\core\Loader', 'loadLibClass']);
 
         $this->route();
         $this->dispatch();
@@ -32,16 +36,17 @@ class Lonicera
     {
         $controlName = $this->route->control.'Controller';
         $actionName = $this->route->action.'Action';
-        $path = _APP.$this->route->group.DIRECTORY_SEPARATOR.'module';
-        $path .= DIRECTORY_SEPARATOR.'controller'.DIRECTORY_SEPARATOR.$controlName.'.php';
-        require_once $path;
-
-        $methods = get_class_methods($controlName);
+        $group = $this->route->group;
+        $className = "app\\{$group}\module\controller\\{$controlName}";
+        // $path = _APP.$this->route->group.DIRECTORY_SEPARATOR.'module';
+        // $path .= DIRECTORY_SEPARATOR.'controller'.DIRECTORY_SEPARATOR.$controlName.'.php';
+        // require_once $path;
+        $methods = get_class_methods($className);
         if (!in_array($actionName, $methods, TRUE)) {
-            throw new Exception(sprintf('方法名 %s -> %s 不存在或非public', $controlName, $actionName));
+            throw new \Exception(sprintf('方法名 %s -> %s 不存在或非public', $controlName, $actionName));
         }
-        $handler = new $controlName(); // 实例控制器
-        $reflectedClass = new ReflectionClass('Controller');
+        $handler = new $className(); // 实例控制器
+        $reflectedClass = new \ReflectionClass('Lonicera\core\Controller');
         $reflectedProperty = $reflectedClass->getProperty('route');
         $reflectedProperty->setAccessible(true);
         $reflectedProperty->setValue($this->route);

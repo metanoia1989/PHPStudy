@@ -1,5 +1,8 @@
 <?php
-require_once _SYS_PATH.'core/Model.php';
+namespace app\model;
+
+use Lonicera\core\Model;
+
 /**
  * 用户表 x2_user 表的模型
  */

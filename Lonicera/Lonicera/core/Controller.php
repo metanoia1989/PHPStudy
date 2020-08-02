@@ -1,4 +1,7 @@
 <?php
+namespace Lonicera\core;
+
+use library\render\PhpRender;
 
 /**
  * 做连接数据库和渲染视图的重复工作
@@ -13,7 +16,6 @@ class Controller
 
     public function __construct()
     {
-        require_once _ROOT.'library/render/PhpRender.php'; 
         $this->view = new PhpRender();
     }
 

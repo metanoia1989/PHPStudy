@@ -1,6 +1,8 @@
 <?php
+namespace library\render;
 
-require_once _SYS_PATH.'core/Render.php';
+use Lonicera\core\Render;
+
 
 class PhpRender implements Render
 {

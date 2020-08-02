@@ -1,5 +1,5 @@
 <?php
-require_once _SYS_PATH.'core/DB.php';
+namespace Lonicera\core;
 
 class Model
 {
@@ -60,9 +60,9 @@ class Model
      */
     public function save()
     {
-        $reflect = new ReflectionClass($this);
+        $reflect = new \ReflectionClass($this);
         // 只获取 PUBLIC 字段，约定所有表字段对应的类属性使用 PUBLIC 修饰符 
-        $props = $reflect->getProperties(ReflectionProperty::IS_PUBLIC);
+        $props = $reflect->getProperties(\ReflectionProperty::IS_PUBLIC);
         $sqlTemplate = "INSERT INTO ".$this->getTableNameByPO($reflect)."(";
         $keyArray = array_column($props, 'name');
         $keys = implode(',', $keyArray);

@@ -1,4 +1,5 @@
 <?php
+namespace Lonicera\core;
 
 /**
  * 数据库操作类，包括基本的connect和CURD
@@ -45,16 +46,16 @@ class DB
     public function connect($config)
     {
         try {
-            $this->dbLink = new PDO($config['dsn'], $config['username'], $config['password'], $config['param']);
+            $this->dbLink = new \PDO($config['dsn'], $config['username'], $config['password'], $config['param']);
         } catch (\PDOException $e) {
             throw $e; // 此异常无法处理，记录日志后往上层抛出
         }
     }
 
-    public function query($sql, $bind = [], $fetchType = PDO::FETCH_ASSOC)
+    public function query($sql, $bind = [], $fetchType = \PDO::FETCH_ASSOC)
     {
         if (!$this->dbLink) {
-            throw new Exception("数据库连接失败");
+            throw new \Exception("数据库连接失败");
         }
         $this->PDOStatement = $this->dbLink->prepare($sql);
         $this->PDOStatement->execute($bind);
@@ -66,7 +67,7 @@ class DB
     public function execute($sql, $bind = [])
     {
         if (!$this->dbLink) {
-            throw new Exception("数据库连接失败");
+            throw new \Exception("数据库连接失败");
         }
         $this->PDOStatement = $this->dbLink->prepare($sql);
         $ret = $this->PDOStatement->execute($bind);
