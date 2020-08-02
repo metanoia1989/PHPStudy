@@ -1,6 +1,7 @@
 <?php
+require_once _SYS_PATH.'core/Controller.php';
 
-class IndexController
+class IndexController extends Controller
 {
     public function indexAction()
     {
@@ -21,8 +22,8 @@ class IndexController
         $user->name = 'baicai2';
         $user->age = 20;
         $ret = $user->save();
-        var_dump($ret);
-        var_dump($user);
+        $this->assign('age', $user->age + 1);
+        $this->display();
     }
 
     public function updateAction()

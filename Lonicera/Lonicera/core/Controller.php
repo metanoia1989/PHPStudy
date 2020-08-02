@@ -56,11 +56,26 @@ class Controller
         if (func_num_args() == 0 || $file == null) {
             $control = self::$route->control;
             $action = self::$route->action;
-            $viewFilePath = _ROOT.'app/'.self::$route->group.'module/view/';
+            $viewFilePath = _ROOT.'app/'.self::$route->group.'/module/view/';
             $viewFilePath .= $control.DIRECTORY_SEPARATOR.$action.'.php';
         } else {
             $viewFilePath = $file . '.php';
         }
         $this->view->display($viewFilePath);
+    }
+
+    /**
+     * 获取视图渲染的结果
+     *
+     * @param string $file
+     * @return string
+     */
+    public function fetch($file = "")
+    {
+        ob_start();
+        ob_implicit_flush(0);
+        $this->display($file);
+        $contents = ob_get_clean();
+        return $contents;
     }
 }
