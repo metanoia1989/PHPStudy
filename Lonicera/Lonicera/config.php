@@ -10,7 +10,11 @@ return [
     'UrlActionName' => 'a', // 自定义方法名称，例如：index.php?c=index&a=Index
     'UrlGroupName' => 'g', // 自定义分组名
     'db' => [
-
+        'dsn' => 'mysql:host=localhost;dbname=lonicera',
+        'username' => 'root',
+        'password' => 'root',
+        'param' => [],
+        'prefix' => 'o2o', // 数据表前缀
     ],
     'smtp' => [],
 ];

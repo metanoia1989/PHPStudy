@@ -41,7 +41,10 @@ class Lonicera
             throw new Exception(sprintf('方法名 %s -> %s 不存在或非public', $controlName, $actionName));
         }
         $handler = new $controlName(); // 实例控制器
-        $handler->param = $this->param;
+        $reflectedClass = new ReflectionClass('Controller');
+        $reflectedProperty = $reflectedClass->getProperty('route');
+        $reflectedProperty->setAccessible(true);
+        $reflectedProperty->setValue($this->route);
         $handler->{$actionName}();
     }
 }
