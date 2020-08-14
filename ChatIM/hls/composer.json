@@ -1,0 +1,6 @@
+{
+    "name": "metanoia1989/hls",
+    "require": {
+        "aminyazdanpanah/php-ffmpeg-video-streaming": "^1.2"
+    }
+}

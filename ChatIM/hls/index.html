@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频播放测试</title>
+    <style>
+        .pv-video {
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <video class="pv-video" id="video" preload="preload" autoplay="true"
+    muted="muted"></video>
+    
+    <script src="./jquery-1.8.3.min.js"></script>
+    <script src="./hls.js"></script>
+    <script>
+        var video = document.getElementById('video');
+        var videoSrc = 'http://localhost:9999/stream/video.m3u8';
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(videoSrc);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+            });
+        } else {
+            console.log("不支持");
+        }
+    </script>
+</body>
+</html>
