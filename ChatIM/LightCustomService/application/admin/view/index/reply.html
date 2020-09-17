@@ -1,0 +1,32 @@
+{include file="public/header"/}
+<div id="container">
+    <div id="page-header" class="am-cf">
+
+        <div class="button">
+            <a id="addword" class="am-btn am-btn-xs am-btn-primary" data-pjax><i class="am-icon-plus"></i> 添加快捷用语</a>
+        </div>
+    </div>
+    <div class="custom" style="position: absolute;left: 1%;top:50px;width: 98%;">
+        <table class="page-table am-table am-table-bordered am-table-striped am-table-hover am-table-compact am-margin-bottom-xs am-table-centered">
+
+            <tr>
+                <th>快捷语</th>
+                <th>操作</th>
+            </tr>
+       {foreach $replylist as $r}
+            <tr>
+                <td>{$r.word}</td>
+                <td>
+                  <a onclick="deletes({$r.id})" class='am-badge am-badge-danger'> <i class='am-icon-recycle'></i> 删除</a>
+                </td>
+            </tr>
+          
+        {/foreach}
+        </table>
+        {$page}
+    </div>
+</div>
+
+<script type="text/javascript" src="https://img.phpym.net/kefu/index_reply.js"></script>
+
+{include file="public/footer"/}

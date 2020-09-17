@@ -1,0 +1,18 @@
+安装教程：https://wx.whtcw.net/web/index.php?c=article&a=news-show&do=detail&id=1
+
+
+环境：ap / ng   php7.2  
+
+取消防跨站，根目录public，伪静态thinkPHP
+
+安装：/install.php
+
+禁用PHP函数
+
+开启推送：
+
+cd /www/wwwroot/域名/cgwl_pusher
+
+php start.php start -d
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/cgwl.ico" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <title>{$business['business_name']} -xianyuboke.com 闲鱼资源网 -xianyuboke.com 闲鱼资源网</title>
+    <script>
+        CGWL_ROOT_URL = '{:request()->root()}';
+    </script>
+    <!--加载引用文件 -->
+    {load href="__libs__/layer/admin/admin.css"/}
+    {load href="__libs__/layer/admin/login.css"/}
+    {load href="__libs__/layer/admin/layui.css"/}
+    <!--技术支持：辰光网络 QQ：204455206-->
+    <style>
+        .layadmin-user-login {
+            background-image: url(/assets/images/admin/noise.png), url(/assets/images/admin/1.jpg);
+            background-repeat: repeat, no-repeat;
+            background-position: left top;
+            background-size: auto, cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+  
+      <div class="layadmin-user-login-main">
+        <div class="layadmin-user-login-box layadmin-user-login-header">
+            {if condition="!empty($business['logo'])"}
+            <img class="login-logo" src="{$business['logo']}">
+            {/if}
+          <h2>{$business['business_name']}</h2>
+        </div>
+        <form method="post" action="{$submit}" class="am-form" data-submit data-am-validator>
+            <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="LAY-user-login-username"></label>
+                <input type="text" name="username" id="LAY-user-login-username" lay-verify="required" placeholder="用户名" class="layui-input">
+            </div>
+            <div class="layui-form-item" id="login-input">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-user-login-password"></label>
+                <input type="password" id="password" name="password" lay-verify="required" placeholder="密码" class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-row">
+                    <div class="layui-col-xs7">
+                        <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="LAY-user-login-vercode"></label>
+                        <input type="text" name="captcha" lay-verify="required" placeholder="图形验证码" class="layui-input">
+                      </div>
+                      <div class="layui-col-xs5">
+                        <div style="margin-left: 10px;">
+                          <img  id="login-captcha" src="{:url('captcha')}" class="layadmin-user-login-codeimg" align="absmiddle" onclick="this.src='{:url('captcha')}?_r='+Math.random();" title="不清楚? 点击换一个"/>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <input type="hidden" name="business_id" value="{$business_id}">
+            <div class="layui-form-item">
+                <button id="login-submit" class="layui-btn layui-btn-fluid" lay-submit lay-filter="LAY-user-login-submit">登 入</button>
+            </div>
+            </div>
+        </form>    
+      </div>
+      
+      <div class="layui-trans layadmin-user-login-footer">
+        
+        <p>{if condition="!empty($business['copyright']) || $business['copyright'] != ''"}{$business['copyright']}{else} © 2019 辰光网络PHP客服系统 kf.whtcw.net{/if}</p>
+      </div> 
+    </div>
+<script >
+  </body>
+  </html>

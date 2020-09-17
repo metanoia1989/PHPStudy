@@ -1,0 +1,610 @@
+{include file="public/header"/}
+{load href="__libs__/vue/vue.js"/}
+<style>
+    #container{
+        display: flex;
+        padding: 10px 0 0 10px;
+        background-color: #F7F7F7;
+    }
+    .left{
+        width: 15%;
+        min-width: 250px;
+        border-right: 10px solid #f7f7f7;
+        background-color: #fff;
+        border-top-left-radius: 10px;
+        position: relative;
+    }
+    .left-title {
+        height: 50px;
+        padding-left: 15px;
+        line-height: 50px;
+    }
+
+    .left p{
+        font-size: 14px;
+        color: #858684;
+    }
+    .left ul{
+        display: flex;
+        flex-direction:column;
+        border-top: 1px solid #F7F7F7;
+    }
+    .left ul li{
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 15px;
+        font-size: 14px;
+        height: 45px;
+        line-height: 45px;
+        position: relative;
+    }
+
+    .left ul li .more-menu{
+        top: 40px;
+    }
+
+    .left ul li.active {
+        background-color: #F5FAFF;
+    }
+
+    .left ul li:hover .number {
+        display: none;
+    }
+
+    .left ul li .more {
+        display: none;
+        float: right;
+        height: 20px;
+        width: 20px;
+        margin: 12.5px 0;
+    }
+
+    .left ul li:hover .more {
+        display: block;
+    }
+
+
+    .left ul li .number{
+        float: right;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        width: 20px;
+        margin: 12.5px 0;
+        color: #999999;
+    }
+
+    .right{
+        background-color: #fff;
+        width: 85%;
+        position: relative;
+    }
+
+    .right-title {
+        height: 50px;
+        padding-left: 15px;
+        line-height: 50px;
+        border-bottom: 1px solid #f7f7f7;
+    }
+
+    .right .wrap{
+        display: flex;
+		flex-wrap: wrap;
+		align-content: flex-start;
+		padding: 15px;
+		padding-top: 0;
+		height: 60%;
+		overflow-y: auto;
+    }
+
+    .right .wrap .item{
+        display: flex;
+        width: 350px;
+        height: 90px;
+        padding: 20px 15px;
+        background-color: #f7f7f7;
+        margin: 5px;
+        position: relative;
+    }
+
+    .right .wrap .item.selected {
+        border: 2px solid #2E9FFF;
+    }
+
+    .right .wrap .item.hand {
+        cursor: pointer;
+    }
+
+    .right .wrap .item .wrap-name {
+        font-size: 14px;
+        margin: 5px 0;
+        height: 15px;
+        line-height: 15px;
+    }
+
+    .right .wrap .item .more {
+        position: absolute;
+        bottom: 20px;
+        right: 15px;
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+    }
+
+    .right .wrap .item .info{
+        position: static;
+        padding: 15px 0 0 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .right .wrap .item .control{
+        padding: 30px 0 0 85px;
+    }
+
+    .right .wrap .wrap-img{
+        margin-right: 15px;
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+
+    .right .wrap .wrap-status {
+        height: 28px;
+        width: 28px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .addgroup{
+        height: 32px;
+        width: 120px;
+        line-height: 32px;
+        text-align: center;
+        font-size: 13px;
+        margin-top: 25px;
+        color: #7571f9!important;
+        border: 1px solid #7571f9;
+        border-radius: 16px;
+        cursor: pointer;
+        margin-bottom: 25px;
+    }
+    .group .layui-layer-ico{
+        height: 24px;
+        width: 24px;
+        background:url("__image__/admin/B/cha.png") no-repeat;
+    }
+    .recycle{
+        width: 20px;
+        height: 20px;
+        background:url("__image__/admin/B/delete.png");
+        cursor: pointer;
+    }
+    .layui-layer label {
+        width: 100px;
+    }
+    .group .layui-input-block{
+        padding-top: 5px;
+    }
+
+    .search {
+        margin: 20px;
+        height: 30px;
+        width: 200px;
+        position: relative;
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    .search-input {
+        border: 1px solid #E5E3E9;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 35px 0 15px;
+        width: 200px;
+        border-radius: 15px;       
+    }
+
+    .search-icon {
+        position: absolute;
+        display: block;
+        height: 15px;
+        width: 15px;
+        right: 15px;
+        top: 7.5px;
+        cursor: pointer;
+    }
+
+    .choose {
+        height: 30px;
+        width: 90px;
+        display: inline-block;
+    }
+
+    .choose-btn{
+        height: 30px;
+        width: 90px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #fff;
+        font-size: 13px;
+        color: #7571f9;
+        border: 1px solid #7571f9;
+        border-radius: 16px;
+        cursor: pointer;
+    }
+
+    .more-menu {
+        position: absolute;
+        right: 0;
+        width: 105px;
+        padding: 3px 0;
+        border-radius: 3px;
+        background-color: #fff;
+        z-index: 5;
+    }
+
+    .more-menu.left-menu {
+        width: 90px;
+        background-color: #F7F7F7;
+    }
+
+    .more-menu.left-menu .menu-item {
+        width: 90px;
+        background-color: #F7F7F7;
+    }
+
+    .more-menu .menu-item {
+        width: 105px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        cursor: pointer;
+        color: #353535;
+        background-color: #fff;
+    }
+
+    .more-menu .menu-item:hover {
+        background-color: #DDDDDD;
+    }
+
+    .operate-menu {
+        margin: 20px;
+        margin-bottom: 0;
+        display: flex;
+        color: #353535;
+    }
+
+    .operate-menu .dropdown {
+        background-color: #fff;
+        height: 30px;
+        border-radius: 15px;
+    }
+
+    .operate-menu button {
+        padding: 0 15px;
+        background-color: #fff;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 15px;
+        border: 1px solid #E9E7EC;
+    }
+
+    .operate-btn {
+        margin-left: 18px;
+    }
+
+    .list {
+        display: none;
+        position: absolute;
+        top: 32px;
+        left: 0;
+        width: 90px;
+        background-color: #fff;
+        color: #353535;
+        border: 1px solid #e2e2e2;
+        z-index: 10;
+    }
+
+    .list li {
+        height: 30px;
+        width: 88px;
+        line-height: 30px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .list li:hover {
+        background-color: #F5FAFF;
+    }
+
+    .set-dialog {
+        padding-bottom: 20px;
+        width: 300px;
+        position: fixed;
+        top: 250px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+
+    .checkbox-list {
+        padding: 5px 25px;
+    }
+
+    .checkbox-item {
+        height: 45px;
+        line-height: 45px;
+    }
+
+    .checkbox-item input[type='checkbox'] {
+        width: 16px;
+        height: 16px;
+        background-color: #fff;
+        background: url("__image__/admin/none.png") no-repeat center;
+        font-size: 12px;
+        display: inline-block;
+        border: 0;
+        position: relative;
+        top: 7px;
+        -webkit-appearance:none;
+        outline: none;
+    }
+
+    .checkbox-item input[type=checkbox]:checked{
+       background: url("__image__/admin/over.png") no-repeat center;
+    }
+
+    .group-name {
+        position: absolute;
+        width: 60%;
+        overflow: hidden;
+        white-space: nowrap;
+        left: 80px;
+        bottom: 20px;
+    }
+
+    .group-name .group-name-item {
+        padding: 0 10px;
+        display: inline-block;
+        margin-right: 3px;
+        height: 22px;
+        line-height: 22px;
+        border-radius: 11px;
+        border: 1px solid #DDDDDD;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .triangle_border_up{
+        width:0;
+        height:0;
+        border-width:0 30px 30px;
+        border-style:solid;
+        border-color:transparent transparent #333;/*透明 透明  灰*/
+        position: absolute;
+        top: 75px;
+        left: 80px;
+        z-index: 99;
+    }
+
+    .group-name-array {
+        position: absolute;
+        top: 80px;
+        left: 80px;
+        background-color: #353535;
+        color: #fff;
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 5px;
+        padding: 0 10px;
+        z-index: 99;
+    }
+
+    .addgroup-input {
+        margin-top: 5px;
+        display: none;
+    }
+
+    .addgroup-input .form-control {
+        border: 1px solid #E5E3E9;
+        border-radius: 10px;
+    }
+
+    .addgroup-input .btn {
+        border: 1px solid #2E9FFF;
+        border-radius: 10px;
+    }
+
+    .new-item {
+        display: none;
+    }
+
+    .page {
+        margin-right: 30px;
+        height: 100px;
+    }
+
+    .pagination {
+        float: right;
+    }
+
+    .pagination li {
+        display: inline-block;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .tag {
+        font-size: 10px;
+        height: 20px;
+        background-color: #F5FAFF;
+        border: 1px solid #7571f9;
+        border-radius: 10px;
+        color: #7571f9;
+        padding: 1px 5px;
+        border-bottom-left-radius: 0px;
+    }
+
+    .tag:hover .msg-info {
+        display: block;
+    }
+
+    .msg-info {
+        padding: 15px;
+        padding-right: 25px;
+        position: absolute;
+        left: 75px;
+        bottom: 80px;
+        border-radius: 10px;
+        background-color: #fff;
+        z-index: 20;
+        display: none;
+        font-size: 13px;
+        color: #353535;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3)
+    }
+
+    .msg-info .border {
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid #fff;
+        position: absolute;
+        bottom: -8px;
+        z-index: 99;
+    }
+</style>
+<div id="container" style="overflow-y: auto">
+    <div id="group_list" style="display: none;">
+        <div class="checkbox-list">
+            <div class="checkbox-item" v-for="item in group">
+                <input class="checkbox" v-model="item.checked" name="group" :value="item.id" type="checkbox">
+                <span style="margin-left: 15px;">{{item.group_name}}</span>
+            </div>
+            <p class="addgroup" style="margin-top: 10px;" onclick="createdGroup()">+ 添加分组</p>
+            <div class="addgroup-input input-group" style="margin-bottom: 25px">
+                <input type="text" placeholder="请输入分组名，最多12个字" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" style="background-color:#2E9FFF" type="button" onclick="add()">添加</button>
+                </span>
+            </div>
+        </div>    
+    </div>
+    <div class="left">
+        <p class="left-title">客户分组</p>
+
+        <ul style="max-height: 400px;overflow: auto">
+            <li :class="group_id == 0 ? 'active' : ''" @click="ajax(0,1,'全部客户')">
+                <span>全部客户</span>
+                <div class="number" style="display: block;">{$allcount}</div>
+            </li>
+
+            <li :class="group_id == -2 ? 'active' : ''" @click="ajax(-2,1,'意向客户')">
+                <span>意向客户</span>
+                <div class="number" style="display: block;">{$message_count}</div>
+            </li>
+
+            <li class="group-item" v-for="item in group" :class="group_id == item.id ? 'active' : ''" @click="ajax(item.id,1,item.group_name)">
+                <span>{{item.group_name}}</span>
+                <div class="number">{{item.count}}</div>
+                <img class="more" @click.stop="show(item.id,$event)" src="__image__/admin/more.png" alt="">
+            </li>
+            <div class="more-menu left-menu" v-if="toggle" :style="{top: top}">
+                <div @click.stop="editgroup" class="menu-item">修改名称</div>
+                <div @click.stop="delGroup" class="menu-item">删除分组</div>
+            </div>
+        </ul>
+        <p class="addgroup" style="margin-left: 15px;" onclick="addgroup()">+ 添加分组</p>
+        <ul>
+            <li @click="ajax(-1,1,'黑名单')">
+                <span>黑名单</span>
+                <div class="number" style="display: block;">{$blackcount}</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right">
+        <p class="right-title">{{title}}</p>
+        <div class="search" v-if="operate == false">
+            <input class="search-input" v-model="keyword" type="text" placeholder="请输入">
+            <img class="search-icon" @click.stop="search" src="__image__/admin/icon-search.png" alt="">
+        </div>
+        <div class="choose" @click.stop="toEdit" v-if="!operate">
+            <button class="choose-btn">批量操作</button>
+        </div>
+        <div class="operate-menu" v-if="operate == true">
+            <button type="operate-btn" @click="setGroup">添加到
+                <span class="caret"></span>
+            </button>
+            <button class="operate-btn" @click.stop="moreblack">加入黑名单</button>
+            <button class="operate-btn" @click.stop="toEdit">退出管理</button>
+        </div>
+
+        <div id="wrap" class="wrap">
+            <div @click.stop="selecte(item)" class="item" :class="{hand:title != '黑名单',selected:item.choose}" v-for="item in list" :key="item.vid">
+                <div v-if="item.group_name_array.length > 1 && show_id == item.vid" class="triangle_border_up"></div>
+                <span v-if="item.group_name_array.length > 1 && show_id == item.vid" class="group-name-array">{{item.group_name}}</span>
+                <img v-if="item.choose" class="wrap-status" src="__image__/admin/choose.png" alt="">
+                <img class="wrap-img" :src="item.avatar" alt="">
+                <div class="wrap-name">
+                    <span v-if="item.name || item.tel" class="tag">
+                        <span>已留信息</span>
+                        <div class="msg-info">
+                            <div>{{item.name}}</div>
+                            <div>{{item.tel}}</div>
+                            <div style="color: #999">{{item.msg_time}}</div>
+                            <div class="border"></div>
+                        </div>
+                    </span>
+                    <span>{{item.visiter_name}}</span>
+                </div>
+                <div class="group-name" v-if="item.group_name && title != '黑名单'">
+                    <span :data-id="item.vid" class="group-name-item group-first-name">{{item.group_name_array[0]}}</span>
+                    <span v-if="item.group_name_array.length > 1">...</span>
+                </div>
+                <div class="group-name" v-if="title == '黑名单'">
+                    <span class="group-name-item" @click.stop="remove(item.visiter_id)">移出黑名单</span>
+                </div>
+                <img  v-if="title != '黑名单'" class="more" @click.stop="showMenu(item)" src="__image__/admin/more.png" alt="">
+                <div class="more-menu" style="top: 80px" v-if="vid == item.vid && title != '黑名单'">
+                    <div class="menu-item" @click.stop="setGroup">修改分组</div>
+                    <div class="menu-item" @click.stop="toBlack(item.visiter_id)">加入黑名单</div>
+                </div>
+            </div>
+        </div>
+        <div class="page">
+            <ul class="pagination" v-if="list.length > 0">
+                <li @click="lastPage" class="page-item" :class="{disabled:page.current_page == 1}">
+                    <a onclick="return false">&laquo;</a>
+                </li>
+                <li v-if="length > 1" @click="choosePage" class="page-item" :class="{active:page.current_page == 1}">
+                    <a :data-id="1" onclick="return false">1</a>
+                </li>
+                <li v-if="left_more" class="page-item disabled">
+                    <a>…</a>
+                </li>
+                <li @click="choosePage" v-for="item in page_list" class="page-item" :class="{active:page.current_page == item}">
+                    <a :data-id="item" onclick="return false">{{item}}</a>
+                </li>
+                <li v-if="right_more" class="page-item disabled">
+                    <a>…</a>
+                </li>
+                <li @click="choosePage" class="page-item" :class="{active:page.current_page == length}">
+                    <a :data-id="length" onclick="return false">{{length}}</a>
+                </li>
+                <li @click="nextPage" class="page-item" :class="{disabled:page.current_page == length}">
+                    <a onclick="return false">&raquo;</a>
+                </li>
+            </ul>            
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://img.phpym.net/kefu/custom_index.js"></script>
+{include file="public/footer"/}
