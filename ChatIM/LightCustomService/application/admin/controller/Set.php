@@ -380,7 +380,13 @@ class Set extends Base
 
         $login = $_SESSION['Msg'];
 
-        $visiters = Admins::table('wolive_queue')->distinct(true)->field('visiter_id')->where(['service_id' => $login['service_id'], 'business_id' => $login['business_id']])->where('state', 'normal')->order('timestamp desc')->select();
+        $visiters = Admins::table('wolive_queue')
+            ->distinct(true)
+            ->field('visiter_id, timestamp')
+            ->where(['service_id' => $login['service_id'], 'business_id' => $login['business_id']])
+            ->where('state', 'normal')
+            ->order('timestamp desc')
+            ->select();
         $visiters = array_column(collection($visiters)->toArray(),'visiter_id');
 
         if (empty($visiters)) {

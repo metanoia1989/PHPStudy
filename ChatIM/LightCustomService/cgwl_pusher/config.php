@@ -1,6 +1,6 @@
 <?php
 // 这里填写客服系统域名，前面带http://，用于pusher系统通知客服平台客户或者客服上下线
-$domain = 'http://kf.whtcw.net';
+$domain = 'http://wolive.test';
 
 // App_key，客服系统与pusher通讯的key
 $app_key = '3331333731383036';

@@ -328,7 +328,7 @@ CREATE TABLE  IF NOT EXISTS `wolive_visiter_vgroup` (
   PRIMARY KEY (`vid`, `group_id`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
 
-ALTER TABLE `wolive_wechat_platform` ADD COLUMN `customer_tpl`  varchar(255) NOT NULL DEFAULT '' COMMENT '访客模板消息' AFTER `msg_tpl`;
+-- ALTER TABLE `wolive_wechat_platform` ADD COLUMN `customer_tpl`  varchar(255) NOT NULL DEFAULT '' COMMENT '访客模板消息' AFTER `msg_tpl`;
 
 CREATE TABLE  IF NOT EXISTS `wolive_comment_setting` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -361,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `wolive_comment_detail` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE `wolive_queue` ADD COLUMN `remind_comment`  tinyint(2) NOT NULL DEFAULT 0 COMMENT '是否已推送评价' AFTER `remind_tpl`;
+-- ALTER TABLE `wolive_queue` ADD COLUMN `remind_comment`  tinyint(2) NOT NULL DEFAULT 0 COMMENT '是否已推送评价' AFTER `remind_tpl`;
 
 CREATE TABLE IF NOT EXISTS `wolive_rest_setting` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -377,15 +377,15 @@ CREATE TABLE IF NOT EXISTS `wolive_rest_setting` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-ALTER TABLE `wolive_visiter`
-ADD COLUMN `name`  varchar(255) NOT NULL DEFAULT '' AFTER `avatar`,
-ADD COLUMN `tel`  varchar(32) NOT NULL DEFAULT '' AFTER `name`;
+-- ALTER TABLE `wolive_visiter`
+-- ADD COLUMN `name`  varchar(255) NOT NULL DEFAULT '' AFTER `avatar`,
+-- ADD COLUMN `tel`  varchar(32) NOT NULL DEFAULT '' AFTER `name`;
 
-ALTER TABLE `wolive_question`
-ADD COLUMN `keyword`  varchar(12) NOT NULL DEFAULT '' COMMENT '关键词' AFTER `question`;
+-- ALTER TABLE `wolive_question`
+-- ADD COLUMN `keyword`  varchar(12) NOT NULL DEFAULT '' COMMENT '关键词' AFTER `question`;
 
-ALTER TABLE `wolive_question`
-ADD COLUMN `sort`  int(11) NOT NULL DEFAULT 0 AFTER `keyword`;
+-- ALTER TABLE `wolive_question`
+-- ADD COLUMN `sort`  int(11) NOT NULL DEFAULT 0 AFTER `keyword`;
 
 CREATE TABLE IF NOT EXISTS`wolive_storage` (
 `id`  int(11) UNSIGNED NOT NULL AUTO_INCREMENT ,
@@ -419,7 +419,7 @@ CREATE TABLE  IF NOT EXISTS `wolive_visiter_vgroup` (
   PRIMARY KEY (`vid`, `group_id`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
 
-ALTER TABLE `wolive_wechat_platform` ADD COLUMN `customer_tpl`  varchar(255) NOT NULL DEFAULT '' COMMENT '访客模板消息' AFTER `msg_tpl`;
+-- ALTER TABLE `wolive_wechat_platform` ADD COLUMN `customer_tpl`  varchar(255) NOT NULL DEFAULT '' COMMENT '访客模板消息' AFTER `msg_tpl`;
 
 CREATE TABLE  IF NOT EXISTS `wolive_comment_setting` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -452,7 +452,7 @@ CREATE TABLE IF NOT EXISTS `wolive_comment_detail` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE `wolive_queue` ADD COLUMN `remind_comment`  tinyint(2) NOT NULL DEFAULT 0 COMMENT '是否已推送评价' AFTER `remind_tpl`;
+-- ALTER TABLE `wolive_queue` ADD COLUMN `remind_comment`  tinyint(2) NOT NULL DEFAULT 0 COMMENT '是否已推送评价' AFTER `remind_tpl`;
 
 CREATE TABLE IF NOT EXISTS `wolive_rest_setting` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -468,15 +468,15 @@ CREATE TABLE IF NOT EXISTS `wolive_rest_setting` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-ALTER TABLE `wolive_visiter`
-ADD COLUMN `name`  varchar(255) NOT NULL DEFAULT '' AFTER `avatar`,
-ADD COLUMN `tel`  varchar(32) NOT NULL DEFAULT '' AFTER `name`;
+-- ALTER TABLE `wolive_visiter`
+-- ADD COLUMN `name`  varchar(255) NOT NULL DEFAULT '' AFTER `avatar`,
+-- ADD COLUMN `tel`  varchar(32) NOT NULL DEFAULT '' AFTER `name`;
 
-ALTER TABLE `wolive_question`
-ADD COLUMN `keyword`  varchar(12) NOT NULL DEFAULT '' COMMENT '关键词' AFTER `question`;
+-- ALTER TABLE `wolive_question`
+-- ADD COLUMN `keyword`  varchar(12) NOT NULL DEFAULT '' COMMENT '关键词' AFTER `question`;
 
-ALTER TABLE `wolive_question`
-ADD COLUMN `sort`  int(11) NOT NULL DEFAULT 0 AFTER `keyword`;
+-- ALTER TABLE `wolive_question`
+-- ADD COLUMN `sort`  int(11) NOT NULL DEFAULT 0 AFTER `keyword`;
 
 CREATE TABLE IF NOT EXISTS`wolive_storage` (
 `id`  int(11) UNSIGNED NOT NULL AUTO_INCREMENT ,
