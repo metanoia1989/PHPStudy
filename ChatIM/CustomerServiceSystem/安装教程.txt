@@ -1,0 +1,2 @@
+﻿设置运行目录public
+访问 http://域名/install.php  进行安装
