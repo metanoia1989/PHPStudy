@@ -43,7 +43,7 @@ class Socket
     protected $allowForceClientIds = []; //配置强制推送且被授权的client_id
 
     /**
-     * 构造函数
+     * 架构函数
      * @param array $config 缓存参数
      * @access public
      */
@@ -60,7 +60,7 @@ class Socket
      * @param array     $log 日志信息
      * @return bool
      */
-    public function save(array $log = [], $append = false)
+    public function save(array $log = [])
     {
         if (!$this->check()) {
             return false;

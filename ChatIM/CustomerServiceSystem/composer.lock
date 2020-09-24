@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1feac963f814ee74f8af3407bc262774",
+    "content-hash": "0c660ac20a02da53e77c351327222386",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2816,16 +2816,16 @@
         },
         {
             "name": "topthink/framework",
-            "version": "v5.0.24",
+            "version": "v5.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/framework.git",
-                "reference": "c255c22b2f5fa30f320ecf6c1d29f7740eb3e8be"
+                "reference": "86cc9378a0c46e66dabed6681f8b8de758585ae1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/top-think/framework/zipball/c255c22b2f5fa30f320ecf6c1d29f7740eb3e8be",
-                "reference": "c255c22b2f5fa30f320ecf6c1d29f7740eb3e8be",
+                "url": "https://api.github.com/repos/top-think/framework/zipball/86cc9378a0c46e66dabed6681f8b8de758585ae1",
+                "reference": "86cc9378a0c46e66dabed6681f8b8de758585ae1",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2869,7 +2869,7 @@
                 "orm",
                 "thinkphp"
             ],
-            "time": "2019-01-11T08:04:58+00:00"
+            "time": "2017-01-23T05:59:21+00:00"
         },
         {
             "name": "topthink/think-angular",

@@ -4,10 +4,11 @@ return [
     // +----------------------------------------------------------------------
     // | 应用设置
     // +----------------------------------------------------------------------
-    // 默认Host地址
-    'app_host'               => '',
+
+    // 应用命名空间
+    'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => false,
+    'app_debug'              => true,
     // 应用Trace
     'app_trace'              => false,
     // 应用模式状态
@@ -74,8 +75,6 @@ return [
     'pathinfo_fetch'         => ['ORIG_PATH_INFO', 'REDIRECT_PATH_INFO', 'REDIRECT_URL'],
     // pathinfo分隔符
     'pathinfo_depr'          => '/',
-    // HTTPS代理标识
-    'https_agent_name'       => '',
     // URL伪静态后缀
     'url_html_suffix'        => 'html',
     // URL普通方式参数 用于自动生成
@@ -108,16 +107,12 @@ return [
     'request_cache'          => false,
     // 请求缓存有效期
     'request_cache_expire'   => null,
-    // 全局请求缓存排除规则
-    'request_cache_except'   => [],
 
     // +----------------------------------------------------------------------
     // | 模板设置
     // +----------------------------------------------------------------------
 
     'template'               => [
-        // 默认模板渲染规则 1 解析为小写+下划线 2 全部转换小写
-        'auto_rule'    => 1,
         // 模板引擎类型 支持 php think 支持扩展
         'type'         => 'Think',
         // 视图基础目录，配置目录为所有模块的视图起始目录
@@ -157,8 +152,6 @@ return [
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
     'exception_handle'       => '',
-    // 是否记录trace信息到日志
-    'record_trace'           => false,
 
     // +----------------------------------------------------------------------
     // | 日志设置
@@ -211,7 +204,7 @@ return [
         // 是否自动开启 SESSION
         'auto_start'     => true,
         'httponly'       => true,
-        'secure'         => false,
+        'secure'         => true,
     ],
 
     // +----------------------------------------------------------------------
@@ -279,6 +272,10 @@ return [
         'datetime_format' => 'Y-m-d H:i:s',
         // 是否需要进行SQL性能分析
         'sql_explain'     => false,
+        // Builder类
+        'builder'         => '',
+        // Query类
+        'query'           => '\\think\\db\\Query',
     ],
 
     //分页配置
@@ -286,13 +283,6 @@ return [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
         'list_rows' => 15,
-    ],
-
-    //控制台配置
-    'console'                => [
-        'name'    => 'Think Console',
-        'version' => '0.1',
-        'user'    => null,
     ],
 
 ];
