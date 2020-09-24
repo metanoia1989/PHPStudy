@@ -86,9 +86,9 @@ class Base extends Controller
         } else {
             $is_we7 = 0;
         }
-        if (!$is_we7) {
-            $this->error('您不是微擎超级用户!');
-        }
+        // if (!$is_we7) {
+        //     $this->error('您不是微擎超级用户!');
+        // }
         $login = $_SESSION['Msg'];
         $result = Admins::table("wolive_service")->where('service_id', $login['service_id'])->find();
         $this->assign('arr', $result);

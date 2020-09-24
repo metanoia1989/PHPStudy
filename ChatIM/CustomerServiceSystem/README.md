@@ -21,6 +21,18 @@ Array and string offset access syntax with curly braces is deprecated
 这个能正常使用了，前后端都有。只有实时分发消息用到websocket，其他的信息管理完全可以用传统的模式。    
 看看怎么移植到教务系统那边去。这个的IM消息分发还有点问题，需要研究修复一下。          
 
+# 文件目录及数据表说明      
+application/platform 管理员后台模块
+application/admin 客服后台模块
+application/api 
+application/index PC端访客模块
+application/mobile 手机端访客模块
+application/weixin 微信端访客模块
+application/manager 微擎超级管理员模块，没啥乱用，感觉这个后台框架好像是移植这个来的    
+
+
+
+
 
 # BUG 修复
 ## wolive_queue 字段查询有误
@@ -119,3 +131,9 @@ var show =function(){
     </form>
 </div>
 ```
+
+## 评价提交失败
+http://customerservice.test/admin/event/comment
+Class 'app\admin\model\Comment' not found       
+
+从另外一份文件里复制过来就行。=_= 这一份下载的，总是缺一两个文件，图标啊、模型类啊啥的。      
