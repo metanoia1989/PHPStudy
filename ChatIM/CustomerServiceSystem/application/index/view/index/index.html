@@ -309,6 +309,7 @@
 </head>
 <body>
 
+    <!-- 聊天IM逻辑 START -->
   <script>
    var mediaStreamTrack;
         var visiter ='{$visiter}';
@@ -368,15 +369,14 @@
           }
 
         var wolive_connect =function () {
-
             pusher = new Pusher('{$app_key}', {
-                encrypted: {$value}
-                ,enabledTransports: ['ws']
-                ,wsHost: '{$whost}'
-                ,{$port}: {$wport}
-                ,authEndpoint: HJWEB_ROOT_URL + '/admin/login/auth'
-                ,disableStats: true
-         });
+                encrypted: {$value},
+                enabledTransports: ['ws'],
+                wsHost: '{$whost}',
+                {$port}: {$wport},
+                authEndpoint: HJWEB_ROOT_URL + '/admin/login/auth',
+                disableStats: true
+            });
 
             var channels = pusher.subscribe("cu" + channel);
 
@@ -604,6 +604,9 @@
         }
 
     </script>
+    <!-- 聊天IM逻辑 END -->
+
+<!-- 客服服务评价 START -->
 <div class="bg">
     <div class="dialog">
         <img class="close" src="__image__/index/close.png" alt="">
@@ -648,6 +651,9 @@
         </div>
     </div>
 </div>
+<!-- 客服服务评价 END -->
+
+<!-- 离线留言 START -->
 <div class="offline" {if $reststate == true}style="display: block;" {/if}>
     <div class="dialog" style="width: 370px;">
         <img class="close" src="__image__/index/close.png" alt="">
@@ -675,6 +681,8 @@
         </div>
     </div>    
 </div>
+<!-- 离线留言 END -->
+
 <div style="width: 80%;height: 90%;min-height:500px;min-width:900px;margin: 2% auto;position: relative;">
       <!--  对话框头部 -->
      <div class="header grey12">
@@ -825,6 +833,7 @@
 <script type="text/javascript" src="__script__/video.js?v=1.3"></script>
 
 <script type="text/javascript">
+    /* 常见问题标签左右滚动 START */
     var mySwiper = new Swiper ('.keyword', {
         noSwipingClass : 'keyword-item',
     })
@@ -865,8 +874,10 @@
                 transform: 'translate3d('+(-allWidth+listWidth*number)+'px, 0px, 0px)',
             });
         }
-    })
+    });
+    /* 常见问题标签左右滚动 START */
 
+    /* 离线留言提交 START */
     $(document).on('click','.reset',function(){
         $('.bg').hide();
         $('.offline').hide();
@@ -897,7 +908,9 @@
             }
         });
     });
+    /* 离线留言提交 END */
 
+    /* 客服评价提交 START */
     $(document).on('click','.bg .submit',function(){
         let comment = '';
         if($('.about-text').val()){
@@ -969,7 +982,8 @@
                 $(this).parent('.evaluate-item').attr('data-score',5)
                 break;
         }
-    })
+    });
+    /* 客服评价提交 END */
 
     var getaudio =function(){
 
@@ -1231,6 +1245,7 @@
                     str += "</li>";
 
                     $(".conversation").append(str);
+                    var div = document.getElementById('wrap');
                     div.scrollTop = div.scrollHeight;
                     $('#wrap').animate({scrollTop: $('.footer').offset().top},'fast');
                     setTimeout(function(){

@@ -328,14 +328,14 @@ pre {
 .chatmsg:after, .chatmsg p {
     content: "";
     display: table;
-+    width: 80%;
-+    clear: both;
-+    overflow: hidden;
-+    text-overflow: ellipsis;
-+    display: -webkit-box;
-+    -webkit-line-clamp: 2;
-+    overflow:hidden;
-+    /*! autoprefixer: off */
+    width: 80%;
+    clear: both;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow:hidden;
+    /*! autoprefixer: off */
 }
 
 .service-name {

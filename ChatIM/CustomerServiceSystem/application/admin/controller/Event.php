@@ -1027,7 +1027,8 @@ class Event extends Controller
 
 
     /**
-     *
+     * 客服申请视频通话
+     * 
      * @return string
      */
     public function apply()
@@ -1081,9 +1082,9 @@ class Event extends Controller
     }
 
     /**
-     *
-     * [refuse description]
-     * @return [type] [description]
+     * 拒绝访客端视频通话请求
+     * 
+     * @return array
      */
     public function refuse()
     {
@@ -1118,8 +1119,9 @@ class Event extends Controller
     }
 
     /**
-     * [getquestion description]
-     * @return [type] [description]
+     * 获取常见问题
+     * 
+     * @return array
      */
     public function getquestion()
     {
@@ -1142,9 +1144,9 @@ class Event extends Controller
     }
 
     /**
-     *
-     * [getanswer description]
-     * @return [type] [description]
+     * 获取指定问题的回复
+     * 
+     * @return array
      */
     public function getanswer()
     {
@@ -1204,9 +1206,9 @@ class Event extends Controller
     }
 
     /**
-     *
-     * [groupNum description]
-     * @return [type] [description]
+     * 获取客服分组数量
+     * 
+     * @return integer
      */
     public function groupNum()
     {
@@ -1215,8 +1217,9 @@ class Event extends Controller
     }
 
     /**
-     * [getchangekefu description]
-     * @return [type] [description]
+     * 转接访客的客服
+     * 
+     * @return array
      */
     public function getchangekefu()
     {
@@ -1229,9 +1232,9 @@ class Event extends Controller
     }
 
     /**
-     *
-     * [gettablist description]
-     * @return [type] [description]
+     * 获取访客窗口页右侧Tab 
+     * 
+     * @return array
      */
     public function gettablist()
     {
@@ -1246,8 +1249,8 @@ class Event extends Controller
 
 
     /**
-     *
-     * [uploadimg description]
+     * 接收图片上传
+     * 
      * @return [type] [description]
      */
     public function uploadimg()
@@ -1292,9 +1295,9 @@ class Event extends Controller
 
 
     /**
-     *
-     * [uploadVoice description]
-     * @return [type] [description]
+     * 接收音频上传
+     * 
+     * @return array
      */
     public function uploadVoice()
     {
@@ -1326,11 +1329,10 @@ class Event extends Controller
 
 
     /**
-     *
-     * [getwaitnum description]
-     * @return [type] [description]
+     * 获取访客排队的数量
+     * 
+     * @return integer
      */
-
     public function getwaitnum()
     {
 
@@ -1344,6 +1346,9 @@ class Event extends Controller
         return $count;
     }
 
+    /** 
+     * 访客提交客服评价
+     */
     public function comment()
     {
         $post = $this->request->post();
@@ -1409,6 +1414,9 @@ class Event extends Controller
         }
     }
 
+    /** 
+     * 客服离线时，访客提交个人信息
+     */
     public function info()
     {
         $post = $this->request->post();
