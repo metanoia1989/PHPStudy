@@ -235,7 +235,7 @@ class Custom extends Base
                 ->where('vg.service_id',$this->login['service_id'])
                 ->where('q.state','neq','in_black_list')
                 ->distinct(true)
-                ->field('vg.vid')
+                ->field('vg.vid, v.timestamp')
                 ->order('v.timestamp','desc')
                 ->paginate(20);
         }

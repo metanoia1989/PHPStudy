@@ -170,176 +170,75 @@ class Index extends Controller
             }
         }
 
-        // 判断是否访问过
-        if ($visiter_id) {
+        // 判断是否访问过 - 完全多余啊，你上面几行代码完全会生成 $visiter_id，这个判断一定会过的。 =_=
+        // if ($visiter_id) 
+        // 发送产品信息 
+        if (!isset($_COOKIE['product_id'])) {
+            if ($arr2['product'] != NULL) {
 
-            if (!isset($_COOKIE['product_id'])) {
+                $product = $arr2['product'];
+                $content = json_decode($arr2['product'], true);
+                if (isset($content['pid']) && isset($content['url']) && isset($content['img']) && isset($content['title']) && isset($content['info']) && isset($content['price'])) {
+                    setcookie("product_id", $content['pid'], time() + 3600 * 12);
+                    $arr2['timestamp'] = time();
 
-                if ($arr2['product'] != NULL) {
+                    $service = User::table('wolive_queue')->where(['visiter_id' => $visiter_id, 'business_id' => $business_id])->find();
 
-                    $product = $arr2['product'];
-                    $content = json_decode($arr2['product'], true);
-                    if (isset($content['pid']) && isset($content['url']) && isset($content['img']) && isset($content['title']) && isset($content['info']) && isset($content['price'])) {
-                        setcookie("product_id", $content['pid'], time() + 3600 * 12);
-                        $arr2['timestamp'] = time();
-
-                        $service = User::table('wolive_queue')->where(['visiter_id' => $visiter_id, 'business_id' => $business_id])->find();
-
-                        if ($service) {
-                            $service_id = $service['service_id'];
-                        } else {
-                            $service_id = 0;
-                        }
-
-                        $str = '<a href="' . $content['url'] . '" target="_blank" class="wolive_product">';
-                        $str .= '<div class="wolive_img"><img src="' . $content['img'] . '" width="100px"></div>';
-                        $str .= '<div class="wolive_head"><p class="wolive_info">' . $content['title'] . '</p><p class="wolive_price">' . $content['price'] . '</p>';
-                        $str .= '<p class="wolive_info">' . $content['info'] . '</p>';
-                        $str .= '</div></a>';
-
-
-                        $mydata = ['service_id' => $service_id, 'visiter_id' => $visiter_id, 'content' => $str, 'timestamp' => time(), 'business_id' => $business_id, 'direction' => 'to_service'];
-
-                        $pusher->trigger('kefu' . $service_id, 'cu-event', array('message' => $mydata));
-
-                        $chats = User::table('wolive_chats')->insert($mydata);
+                    if ($service) {
+                        $service_id = $service['service_id'];
+                    } else {
+                        $service_id = 0;
                     }
 
+                    $str = '<a href="' . $content['url'] . '" target="_blank" class="wolive_product">';
+                    $str .= '<div class="wolive_img"><img src="' . $content['img'] . '" width="100px"></div>';
+                    $str .= '<div class="wolive_head"><p class="wolive_info">' . $content['title'] . '</p><p class="wolive_price">' . $content['price'] . '</p>';
+                    $str .= '<p class="wolive_info">' . $content['info'] . '</p>';
+                    $str .= '</div></a>';
+
+
+                    $mydata = ['service_id' => $service_id, 'visiter_id' => $visiter_id, 'content' => $str, 'timestamp' => time(), 'business_id' => $business_id, 'direction' => 'to_service'];
+
+                    $pusher->trigger('kefu' . $service_id, 'cu-event', array('message' => $mydata));
+
+                    $chats = User::table('wolive_chats')->insert($mydata);
                 }
-            } else {
 
-                $pid = isset($_COOKIE['product_id']) ? $_COOKIE['product_id'] : '';
-
-                if ($arr2['product'] != NULL) {
-                    $product = $arr2['product'];
-                    $content = json_decode($arr2['product'], true);
-
-                    if (isset($content['pid']) && isset($content['url']) && isset($content['img']) && isset($content['title']) && isset($content['info']) && isset($content['price']) && $content['pid'] != $pid) {
-
-                        $service = User::table('wolive_queue')->where(['visiter_id' => $visiter_id, 'business_id' => $business_id])->find();
-
-                        if ($service) {
-                            $service_id = $service['service_id'];
-                        } else {
-                            $service_id = 0;
-                        }
-
-                        $str = '<a href="' . $content['url'] . '" target="_blank" class="wolive_product">';
-                        $str .= '<div class="wolive_img"><img src="' . $content['img'] . '" width="100px"></div>';
-                        $str .= '<div class="wolive_head"><p class="wolive_info">' . $content['title'] . '</p><p class="wolive_price">' . $content['price'] . '</p>';
-                        $str .= '<p class="wolive_info">' . $content['info'] . '</p>';
-                        $str .= '</div></a>';
-
-                        $mydata = ['service_id' => $service_id, 'visiter_id' => $visiter_id, 'content' => $str, 'timestamp' => time(), 'business_id' => $business_id, 'direction' => 'to_service'];
-
-                        $pusher->trigger('kefu' . $service_id, 'cu-event', array('message' => $mydata));
-                        $chats = User::table('wolive_chats')->insert($mydata);
-
-                    }
-                }
             }
-
         } else {
 
-            if (!isset($_COOKIE['product_id'])) {
+            $pid = isset($_COOKIE['product_id']) ? $_COOKIE['product_id'] : '';
 
-                if ($arr2['product'] != NULL) {
-                    $product = $arr2['product'];
-                    $content = json_decode($arr2['product'], true);
-                    if (isset($content['pid']) && isset($content['url']) && isset($content['img']) && isset($content['title']) && isset($content['info']) && isset($content['price'])) {
-                        setcookie("product_id", $content['pid'], time() + 3600 * 12);
-                        $arr2['timestamp'] = time();
+            if ($arr2['product'] != NULL) {
+                $product = $arr2['product'];
+                $content = json_decode($arr2['product'], true);
 
-                        $service = User::table('wolive_queue')->where(['visiter_id' => $visiter_id, 'business_id' => $business_id])->find();
+                if (isset($content['pid']) && isset($content['url']) && isset($content['img']) && isset($content['title']) && isset($content['info']) && isset($content['price']) && $content['pid'] != $pid) {
 
-                        if ($service) {
-                            $service_id = $service['service_id'];
-                        } else {
-                            $service_id = 0;
-                        }
+                    $service = User::table('wolive_queue')->where(['visiter_id' => $visiter_id, 'business_id' => $business_id])->find();
 
-                        $str = '<a href="' . $content['url'] . '" target="_blank" class="wolive_product">';
-                        $str .= '<div class="wolive_img"><img src="' . $content['img'] . '" width="100px"></div>';
-                        $str .= '<div class="wolive_head"><p class="wolive_info">' . $content['title'] . '</p><p class="wolive_price">' . $content['price'] . '</p>';
-                        $str .= '<p class="wolive_info">' . $content['info'] . '</p>';
-                        $str .= '</div></a>';
-
-
-                        $mydata = ['service_id' => $service_id, 'visiter_id' => $visiter_id, 'content' => $str, 'timestamp' => time(), 'business_id' => $business_id, 'direction' => 'to_service'];
-
-                        $pusher->trigger('kefu' . $service_id, 'cu-event', array('message' => $mydata));
-
-                        $chats = User::table('wolive_chats')->insert($mydata);
-                    }
-
-                }
-            } else {
-
-                if ($arr2['product'] != NULL) {
-
-
-                    if ($arr2['visiter_id'] != $_SESSION['Custom']['visiter_id']) {
-
-                        $product = $arr2['product'];
-                        $content = json_decode($arr2['product'], true);
-
-                        if (isset($content['pid']) && isset($content['url']) && isset($content['img']) && isset($content['title']) && isset($content['info']) && isset($content['price'])) {
-
-                            $service = User::table('wolive_queue')->where(['visiter_id' => $visiter_id, 'business_id' => $business_id])->find();
-
-                            if ($service) {
-                                $service_id = $service['service_id'];
-                            } else {
-                                $service_id = 0;
-                            }
-
-                            $str = '<a href="' . $content['url'] . '" target="_blank" class="wolive_product">';
-                            $str .= '<div class="wolive_img"><img src="' . $content['img'] . '" width="100px"></div>';
-                            $str .= '<div class="wolive_head"><p class="wolive_info">' . $content['title'] . '</p><p class="wolive_price">' . $content['price'] . '</p><p>';
-                            $str .= '<p class="wolive_info">' . $content['info'] . '</p>';
-                            $str .= '</div></a>';
-
-
-                            $mydata = ['service_id' => $service_id, 'visiter_id' => $visiter_id, 'content' => $str, 'timestamp' => time(), 'business_id' => $business_id, 'direction' => 'to_service'];
-
-                            $pusher->trigger('kefu' . $service_id, 'cu-event', array('message' => $mydata));
-                            $chats = User::table('wolive_chats')->insert($mydata);
-                        }
-
+                    if ($service) {
+                        $service_id = $service['service_id'];
                     } else {
-
-                        $pid = $_COOKIE['product_id'];
-
-                        $product = $arr2['product'];
-                        $content = json_decode($arr2['product'], true);
-                        // 判断是否是同个商品
-                        if (isset($content['pid']) && isset($content['url']) && isset($content['img']) && isset($content['title']) && isset($content['info']) && isset($content['price']) && $content['pid'] != $pid) {
-
-                            $service = User::table('wolive_queue')->where(['visiter_id' => $visiter_id, 'business_id' => $business_id])->find();
-
-                            if ($service) {
-                                $service_id = $service['service_id'];
-                            } else {
-                                $service_id = 0;
-                            }
-
-                            $str = '<a href="' . $content['url'] . '" target="_blank" class="wolive_product">';
-                            $str .= '<div class="wolive_img"><img src="' . $content['img'] . '" width="100px"></div>';
-                            $str .= '<div class="wolive_head"><p class="wolive_info">' . $content['title'] . '</p><p class="wolive_price">' . $content['price'] . '</p>';
-                            $str .= '<p class="wolive_info">' . $content['info'] . '</p>';
-                            $str .= '</div></a>';
-
-
-                            $mydata = ['service_id' => $service_id, 'visiter_id' => $visiter_id, 'content' => $str, 'timestamp' => time(), 'business_id' => $business_id, 'direction' => 'to_service'];
-
-                            $pusher->trigger('kefu' . $service_id, 'cu-event', array('message' => $mydata));
-                            $chats = User::table('wolive_chats')->insert($mydata);
-                        }
+                        $service_id = 0;
                     }
+
+                    $str = '<a href="' . $content['url'] . '" target="_blank" class="wolive_product">';
+                    $str .= '<div class="wolive_img"><img src="' . $content['img'] . '" width="100px"></div>';
+                    $str .= '<div class="wolive_head"><p class="wolive_info">' . $content['title'] . '</p><p class="wolive_price">' . $content['price'] . '</p>';
+                    $str .= '<p class="wolive_info">' . $content['info'] . '</p>';
+                    $str .= '</div></a>';
+
+                    $mydata = ['service_id' => $service_id, 'visiter_id' => $visiter_id, 'content' => $str, 'timestamp' => time(), 'business_id' => $business_id, 'direction' => 'to_service'];
+
+                    $pusher->trigger('kefu' . $service_id, 'cu-event', array('message' => $mydata));
+                    $chats = User::table('wolive_chats')->insert($mydata);
 
                 }
             }
         }
+
+
 
         $channel = bin2hex($visiter_id . '/' . $business_id);
         $visiter_name = htmlspecialchars($arr2['visiter_name']);
