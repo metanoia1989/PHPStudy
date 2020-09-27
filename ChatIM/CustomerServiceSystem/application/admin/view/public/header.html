@@ -41,39 +41,37 @@
         var WEB_SOCKET_DEBUG = true;
         var WEB_SOCKET_SUPPRESS_CROSS_DOMAIN_SWF_ERROR = true;
 
-        var chat_data =Array();
+        var chat_data = Array();
         var record;
         var choose_lock = false;
         var myTitle = document.title;
         var config ={
-          'app_key':'{$app_key}',
-          'whost':'{$whost}',
-          'value':{$value},
-          'wport':{$wport}
+            'app_key': '{$app_key}',
+            'whost': '{$whost}',
+            'value': {$value},
+            'wport': {$wport}
         }
 
         function titleBlink(){
-       
-        record++;
+            record++;
+            if(record === 3){
+                record =1;
+            }
+            
+            if(record === 1){
+                document.title='【 】'+myTitle;
+            }
 
-        if(record === 3){
-             record =1;
-        }
-         
-        if(record === 1){
-            document.title='【 】'+myTitle;
-        }
+            if(record === 2){
+                document.title='【消息】'+myTitle;
+            }
 
-        if(record === 2){
-            document.title='【消息】'+myTitle;
-        }
+            if(record > 3){
+                getwaitnum();
+                return;
+            }
 
-        if(record > 3){
-              getwaitnum();
-             return;
-        }
-
-          setTimeout("titleBlink()",500);//调节时间，单位毫秒。
+            setTimeout("titleBlink()",500);//调节时间，单位毫秒。
         }
     
     
@@ -89,7 +87,7 @@
                 , {$port}: {$wport}
                 , authEndpoint: HJWEB_ROOT_URL + '/admin/login/auth'
                 ,disableStats: true
-         });
+            });
 
             var web = "{$arr['business_id']}";
             var dataarr = new Array();
@@ -111,9 +109,7 @@
                getchat();
             });
 
-          
-            // 公共平道
-          
+            // 公共频道
             var channelall = pusher.subscribe("all" + web);
             channelall.bind("on_notice", function (data) {
 
@@ -226,14 +222,12 @@
             });
 
             // 接受消息
-
             channel.bind("cu-event", function (data) {
                 if("{$voice}" == 'open'){
                     audioElementHovertree = document.createElement('audio');
                     audioElementHovertree.setAttribute('src', "{$voice_address}");
                     audioElementHovertree.setAttribute('autoplay', 'autoplay');
                 }
-
 
                 var debug, portrait,showtime;
                 var cdata = $.cookie("cu_com");
@@ -327,7 +321,6 @@
             });
 
             channel.bind("geton", function (data) {
-
                 //表示访客在线
                 var cdata = $.cookie("cu_com");
                 var chas;
@@ -347,9 +340,7 @@
             });
 
             pusher.connection.bind('state_change', function(states) {
-              
                 if(states.current == 'unavailable' || states.current == "disconnected" || states.current == "failed" ){
-
                         pusher.unsubscribe("kefu" + value);
                         pusher.unsubscribe("all" + web);
                         pusher.unsubscribe("ud" + value);
@@ -364,7 +355,6 @@
                          wolive_connect();
                       },1000);
                     }
-
                  
                     $(".profile").text('离线');
                 }
@@ -377,7 +367,6 @@
 
 
         function showpage(obj){
-
             var value =$(obj).attr("name");
             var key =$(obj).attr("id");
             layer.tips(value, '#'+key,{tips: [4, '#2F4050']});

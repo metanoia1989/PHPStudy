@@ -9,7 +9,7 @@ var e={'羊驼':'emo_01','神马':'emo_02','浮云':'emo_03','给力':'emo_04','
 var types=function(){
     if($.cookie('type') == 1){
      //快捷键
-document.getElementById("text_in").onkeydown = function (e) {
+    document.getElementById("text_in").onkeydown = function (e) {
     e = e || window.event;
 
      if (e.ctrlKey && e.keyCode == 13) {
@@ -64,8 +64,9 @@ document.getElementById("text_in").onkeydown = function (e) {
 }
 
 
-// 默认加载
-
+/**
+ * 页面初始化加载
+ */
 var chaton = function () {
     var height =document.body.clientHeight;
     $("#chat_list").css("height",(height -110)+"px");
@@ -111,6 +112,9 @@ var chaton = function () {
 window.onload = chaton();
 
 
+/**
+ * 获取快捷回复信息
+ */
 function getreply(){
     $.ajax({
         url:HJWEB_ROOT_URL+"/admin/manager/replyinfo",
@@ -143,7 +147,6 @@ function getreply(){
 }
 
 // 选择对象
-
 function choose(vid) {
    if (choose_lock) {
        return false;
@@ -194,7 +197,6 @@ function getblack() {
 var send = function () {
     //获取 游客id
     var msg = $("#text_in").val();
-
 
     var reg = new RegExp( '<' , "g" )
         msg =msg.replace(reg,'&lt;');
@@ -333,11 +335,11 @@ $(".wl_faces_main img").click(function () {
     var a = $(this).attr("title");
     var str=$("#text_in").val();
     var reg = new RegExp( '<' , "g" )
-        str =str.replace(reg,'&lt;');
+    str =str.replace(reg,'&lt;');
 
     var reg2 = new RegExp( '>' , "g" )     
 
-        str =str.replace(reg2,'&gt;'); 
+    str = str.replace(reg2,'&gt;'); 
     var b = "";
     b += str+" face["+a+"]";
     $("#text_in").val(b);
@@ -347,7 +349,6 @@ $(".wl_faces_main img").click(function () {
 
 
 //删除对象
-
 function cut(id) {
 
     var data = $.cookie("cu_com");
@@ -356,6 +357,7 @@ function cut(id) {
         var jsondata = $.parseJSON(data);
         visiter_checked = jsondata.visiter_id;
     }
+
     $.ajax({
         url:HJWEB_ROOT_URL+"/admin/set/deletes",
         type: "post",
@@ -387,7 +389,6 @@ function recovery(id){
         },
         dataType:'json',
         success: function (res) {
-
             if(res.code == 0){
                 // 删除修改
                 getblacklist();
@@ -455,7 +456,7 @@ function putfile() {
                     var se = $("#chatmsg_submit").attr('name');
                     var customer = $("#customer").text();
                     $.ajax({
-                        url:HJWEB_ROOT_URL+"/admin/set/chats",
+                        url: HJWEB_ROOT_URL+"/admin/set/chats",
                         type: "post",
                         data: {visiter_id:sid,content: msg, avatar: img}
                     });

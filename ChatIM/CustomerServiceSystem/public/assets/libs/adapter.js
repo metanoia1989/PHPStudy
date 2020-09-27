@@ -852,8 +852,8 @@
                 return description;
             };
 
-// Generates parts of the SDP media section describing the capabilities /
-// parameters.
+            // Generates parts of the SDP media section describing the capabilities /
+            // parameters.
             SDPUtils.writeRtpDescription = function (kind, caps) {
                 var sdp = '';
 
@@ -882,8 +882,8 @@
                 return sdp;
             };
 
-// Parses the SDP media section and returns an array of
-// RTCRtpEncodingParameters.
+            // Parses the SDP media section and returns an array of
+            // RTCRtpEncodingParameters.
             SDPUtils.parseRtpEncodingParameters = function (mediaSection) {
                 var encodingParameters = [];
                 var description = SDPUtils.parseRtpParameters(mediaSection);
@@ -1000,7 +1000,7 @@
                 return sdp;
             };
 
-// Gets the direction from the mediaSection or the sessionpart.
+            // Gets the direction from the mediaSection or the sessionpart.
             SDPUtils.getDirection = function (mediaSection, sessionpart) {
                 // Look for sendrecv, sendonly, recvonly, inactive, default to sendrecv.
                 var lines = SDPUtils.splitLines(mediaSection);
