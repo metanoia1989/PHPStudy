@@ -439,6 +439,13 @@ class Pusher extends Worker
     }
 
 
+    /**
+     * 获取presence频道中连接的所有客户端用户信息 
+     * 
+     * @param string $app_key
+     * @param string $channel
+     * @return array
+     */
     public function getPresenceChannelDataForSubscribe($app_key, $channel)
     {
         $hash = array();
@@ -591,15 +598,13 @@ class Pusher extends Worker
     }
 
     /**
-    POST /apps/145871/events?auth_key=b054014693241bcd9c26&auth_signature=ed7f5b604e6bbd21a888a861ed536a430a9d5e4df210937a241a811bd17fcf97&auth_timestamp=1487428415&auth_version=1.0&body_md5=15d251b35306a6da7efa515a0e971f80 HTTP/1.1
-    {"name":"my-event","data":"{\"message\":\"hello world\"}","channels":["my-channel"]}
-    {"name":"my-event","data":"{\"message\":\"haha\"}","channels":["my-channel"],"socket_id":"123.456"}
+     * POST /apps/145871/events?auth_key=b054014693241bcd9c26&auth_signature=ed7f5b604e6bbd21a888a861ed536a430a9d5e4df210937a241a811bd17fcf97&auth_timestamp=1487428415&auth_version=1.0&body_md5=15d251b35306a6da7efa515a0e971f80 HTTP/1.1
+     *      {"name":"my-event","data":"{\"message\":\"hello world\"}","channels":["my-channel"]}
+     *      {"name":"my-event","data":"{\"message\":\"haha\"}","channels":["my-channel"],"socket_id":"123.456"}
      *
-    GET /apps/145871/channels/my-channel?auth_key=b054014693241bcd9c26&auth_signature=5226650be00a064b417d50d49229e42bbb918e969c42e63aaa63b9d1c6cf9803&auth_timestamp=1489898340&auth_version=1.0
-
-    GET /apps/145871/channels/presence-channel?auth_key=b054014693241bcd9c26&auth_signature=d46281bf69ccadfe9da270176c85daa88d4b9da55b1f3c2570d48fa1236f0b2c&auth_timestamp=1489903433&auth_version=1.0&info=subscription_count,user_count
-
-    GET /apps/145871/channels/presence-channel/users?auth_key=b054014693241bcd9c26&auth_signature=2eee0ca6292e17b00484bdcb0bba686a47e8a7365a1b190248946182fc926309&auth_timestamp=1489904560&auth_version=1.0
+     * GET /apps/145871/channels/my-channel?auth_key=b054014693241bcd9c26&auth_signature=5226650be00a064b417d50d49229e42bbb918e969c42e63aaa63b9d1c6cf9803&auth_timestamp=1489898340&auth_version=1.0
+     * GET /apps/145871/channels/presence-channel?auth_key=b054014693241bcd9c26&auth_signature=d46281bf69ccadfe9da270176c85daa88d4b9da55b1f3c2570d48fa1236f0b2c&auth_timestamp=1489903433&auth_version=1.0&info=subscription_count,user_count
+     * GET /apps/145871/channels/presence-channel/users?auth_key=b054014693241bcd9c26&auth_signature=2eee0ca6292e17b00484bdcb0bba686a47e8a7365a1b190248946182fc926309&auth_timestamp=1489904560&auth_version=1.0
      */
     public function onApiClientMessage($connection)
     {
@@ -832,6 +837,16 @@ class Pusher extends Worker
         }
     }
 
+    /**
+     * 发送异步HTTP请求
+     *
+     * @param string $address
+     * @param string $app_key
+     * @param string $secret
+     * @param string $body
+     * @param integer $redirect_count
+     * @return void|boolean
+     */ 
     protected function sendHttpRequest($address, $app_key, $secret, $body, $redirect_count = 0)
     {
         $address_info = parse_url($address);

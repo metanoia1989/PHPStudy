@@ -564,13 +564,11 @@
                 //通知游客 客服离线
                 channels.bind('logout', function (data) {
                     $("#img_head").addClass("icon_gray");   
-                                 
                 });
 
                 //表示客服在线
                 channels.bind("geton", function (data) {
                     $("#img_head").removeClass("icon_gray");
-
                 });
              }
 
