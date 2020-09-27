@@ -279,10 +279,10 @@
                             </form>
                         </a>
                         {if $type == 'open'}
-                        <a onclick="getvideo()"><img src="__image__/admin/B/blacklist.png" alt=""></a>
+                        <a onclick="getvideo()"><img src="__image__/admin/B/blacklist.png" alt="视频通话"></a>
                         {/if}     
                         {if $atype == 'open'}
-                        <a onclick="getaudio()"><i class="layui-icon" style="font-size: 22px;cursor: pointer;">&#xe688;</i></a>
+                        <a onclick="getaudio()"><i class="layui-icon" style="font-size: 22px;cursor: pointer;" alt="音频通话">&#xe688;</i></a>
                         {/if}
                         <a href="javascript:getblack()"><img src="__image__/admin/B/blacklist.png" alt="移入黑名单" title="移入黑名单"></a>
                         <a onclick="getswitch()"><img src="__image__/admin/B/transfer.png" alt="客服转接" title="客服转接"></a>
@@ -447,6 +447,7 @@
             }
         </style>
 
+        <!-- 右侧几个Tab页 -->
         <section class="chatinfo">
 
             <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin: 0px;height: 100%;background-color: #fff;position: relative;">
@@ -457,56 +458,47 @@
                 </ul>
 
                 <div class="layui-tab-content" style="padding: 16px;height: 100%">
+                    <!-- 访客信息 -->
                     <div class="layui-tab-item layui-show">
                         <div class="" style="margin:24px;color: #555555;">
-
                             <div style="font-size: 16px;">访问信息</div>
-
                             <div style="margin-top: 12px;">
                                 <img style="height: 20px;width: 20px;margin-right: 10px;" alt="来自url" title="来自url" src="__image__/admin/B/from-info.png"><span class="record"></span>
                             </div>
                             <div style="margin-top: 14px;">
                                 <img style="height: 20px;width: 20px;margin-right: 10px;" alt="地区" title="地区" src="__image__/admin/B/place-info.png"><span class="iparea"></span>
                             </div>
-
                             <div style="margin-top: 14px;">
                                 <img style="height: 20px;width: 20px;margin-right: 10px;" src="__image__/admin/B/status-info.png" alt="状态" title="状态"><span
                                         id="v_state" style="font-size: 10px;"></span></i>
                             </div>
-
                             <div style="margin-top: 14px;">
                                 <img style="height: 20px;width: 20px;margin-right: 10px;" src="__image__/admin/B/time.png" alt="上次登录时间" title="上次登录时间"><span
                                     id="last_login_time" style="font-size: 10px;"></span></i>
                             </div>
-
                             <div style="margin-top: 14px;">
                                 <img style="height: 20px;width: 20px;margin-right: 10px;" src="__image__/admin/B/times.png" alt="登录次数" title="登录次数"><span
                                     id="login_times" style="font-size: 10px;"></span></i>
                             </div>
-
                             <div style="margin-top: 14px;">
                                 <img style="height: 20px;width: 20px;margin-right: 10px;" src="__image__/admin/B/name.png" alt="访客姓名" title="访客姓名"><span
                                     id="name" style="font-size: 10px;"></span></i>
                             </div>
-
                              <div style="margin-top: 14px;">
                                  <img style="height: 20px;width: 20px;margin-right: 10px;" src="__image__/admin/B/tel.png" alt="访客电话" title="访客电话"><span
                                      id="tel" style="font-size: 10px;"></span></i>
                             </div>
                         </div>
-
                     </div>
 
+                    <!-- 黑名单 -->
                     <div class="layui-tab-item" id='black_list' style="width: 100%;overflow-y: auto;padding: 0px;">
                     </div>
 
+                    <!-- 快捷回复 -->
                     <div class="layui-tab-item" id='word_list' style="width: 100%;height: 100%; overflow-y: auto;">
                         <div id='quit_reply' >
-                            
-                                            
                         </div>
-
-                       
                     </div>
 
                 </div>
@@ -573,13 +565,13 @@
 
     function addreply(){
         $('.del-reply').hide();
-        $('.manager-reply').text('管理快捷回复')
-      var html='<form class="layui-form reply-form" style="margin-top:20px;">';
-          html+='<div class="layui-form-item"><label class="layui-form-label">标签</label>';
-          html+='<div class="layui-input-block"><input id="tag" type="text" class="layui-input" style="width:552px" /></div></div>';
-          html+='<div class="layui-form-item layui-form-text"><label class="layui-form-label">快捷用语</label>';
-          html+='<div class="layui-input-block"><textarea id="word" name="content" class="layui-textarea" style="height:160px;width:552px"></textarea></div></div>'
-          html+='</form>';
+        $('.manager-reply').text('管理快捷回复');
+        var html = '<form class="layui-form reply-form" style="margin-top:20px;">';
+            html +='<div class="layui-form-item"><label class="layui-form-label">标签</label>';
+            html +='<div class="layui-input-block"><input id="tag" type="text" class="layui-input" style="width:552px" /></div></div>';
+            html +='<div class="layui-form-item layui-form-text"><label class="layui-form-label">快捷用语</label>';
+            html +='<div class="layui-input-block"><textarea id="word" name="content" class="layui-textarea" style="height:160px;width:552px"></textarea></div></div>'
+            html +='</form>';
 
         layer.open({
             type:1,
@@ -614,28 +606,23 @@
 
     function close(id){
         $.ajax({
-            url:HJWEB_ROOT_URL+'/admin/manager/delreply',
+            url: HJWEB_ROOT_URL+'/admin/manager/delreply',
             type:'post',
             data:{id:id},
             success:function(res){
                 if(res.code ==0){
                     layer.msg(res.msg,{icon:1,end:function(){
-                        
-                         $("#reply"+id).remove();
+                        $("#reply"+id).remove();
                     }});
                 }
             }
         })
     }
 
-
     function showon(str){
-      
-      $("#text_in").val(str);
-      $("#text_in").focus();
+        $("#text_in").val(str);
+        $("#text_in").focus();
     }
-
-
 
     function getOs() {
         var OsObject = "";
@@ -645,31 +632,23 @@
         }
     }
 
- function showDiv(){
-       
+    function showDiv(){
        $("#fuceng").toggleClass('hide');
     }
 
 
     $(function (){
+        $("#showinfo").on('click',function(){
+            showDiv();
+            $(document).one("click", function () {
+                $("#fuceng").addClass('hide');
+            }); 
+            event.stopPropagation();//阻止事件向上冒泡
+        });
 
-    $("#showinfo").on('click',function(){
-
-        showDiv();
-
-        $(document).one("click", function () {
-        
-         $("#fuceng").addClass('hide');
-
-        }); 
-        event.stopPropagation();//阻止事件向上冒泡
-    });
-
-   $("#fuceng").click(function (event) 
-    {
-        event.stopPropagation();//阻止事件向上冒泡
-        
-    });
+        $("#fuceng").click(function (event) {
+            event.stopPropagation();//阻止事件向上冒泡
+        });
  });
    
 
@@ -687,7 +666,10 @@
     }
 
 
-    //获取qq截图的图片
+    /**
+     * 获取qq截图的图片，监听剪切板事件，读取图片然后发送消息，并且入库
+     * 这里的代码的ID都写死了，其实可以抽象出来，后台页面、访客页面复用
+     */ 
     (function () {
         var imgReader = function (item) {
             var blob = item.getAsFile(),
@@ -696,7 +678,6 @@
             reader.onload = function (e) {
                 var msg = '';
                 msg += "<img onclick='getbig(this)'  src='" + e.target.result + "'>";
-
 
                     var sdata = $.cookie('cu_com');
                     if (sdata) {
@@ -805,7 +786,9 @@
     })();
 
   
-    // 视频通话
+    /**
+     * 视频通话
+     */ 
     var getvideo =function(){
 
         var sid = $('#channel').text();
@@ -863,9 +846,9 @@
     }
 
 
-
-
-    //
+    /**
+     * 获取用户的所有历史消息
+     */ 
     var gethistory=function(){
 
        var sdata = $.cookie("cu_com");
@@ -881,197 +864,197 @@
     }
 
     var getaudio =function(){
+        //音频先加载
+        var audio_context;
+        var recorder;
+        var wavBlob;
 
-          //音频先加载
-                var audio_context;
-                var recorder;
-                var wavBlob;
-                //创建音频
-                try {
-                    // webkit shim
-                    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-                    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.mediaDevices.getUserMedia;
-                    window.URL = window.URL || window.webkitURL;
+        //创建音频
+        try {
+            // webkit shim
+            window.AudioContext = window.AudioContext || window.webkitAudioContext;
+            navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.mediaDevices.getUserMedia;
+            window.URL = window.URL || window.webkitURL;
 
-                    audio_context = new AudioContext;
+            audio_context = new AudioContext;
 
-                    if (!navigator.getUserMedia) {
-                        console.log('语音创建失败');
-                    }
-                    ;
-                } catch (e) {
-                    console.log(e);
-                    return;
-                }
-                navigator.getUserMedia({audio: true}, function (stream) {
-                    var input = audio_context.createMediaStreamSource(stream);
-                    recorder = new Recorder(input);
+            if (!navigator.getUserMedia) {
+                console.log('语音创建失败');
+            };
+        } catch (e) {
+            console.log(e);
+            return;
+        }
 
-                    var falg = window.location.protocol;
-                    if (falg == 'https:') {
-                        recorder && recorder.record();
+        navigator.getUserMedia({audio: true}, function (stream) {
+            var input = audio_context.createMediaStreamSource(stream);
+            recorder = new Recorder(input);
 
-                        //示范一个公告层
-                        layui.use(['jquery', 'layer'], function () {
-                            var layer = layui.layer;
+            var falg = window.location.protocol;
+            if (falg == 'https:') {
+                recorder && recorder.record();
 
-                            layer.msg('录音中...', {
-                                icon: 16
-                                , shade: 0.01
-                                , skin: 'layui-layer-lan'
-                                , time: 0 //20s后自动关闭
-                                , btn: ['发送', '取消']
-                                , yes: function (index, layero) {
-                                    //按钮【按钮一】的回调
-                                    recorder && recorder.stop();
-                                    recorder && recorder.exportWAV(function (blob) {
-                                        wavBlob = blob;
-                                        var fd = new FormData();
-                                        var wavName = encodeURIComponent('audio_recording_' + new Date().getTime() + '.wav');
-                                        fd.append('wavName', wavName);
-                                        fd.append('file', wavBlob);
+                //示范一个公告层
+                layui.use(['jquery', 'layer'], function () {
+                    var layer = layui.layer;
 
-                                        var xhr = new XMLHttpRequest();
-                                        xhr.onreadystatechange = function () {
-                                            if (xhr.readyState == 4 && xhr.status == 200) {
-                                                jsonObject = JSON.parse(xhr.responseText);
+                    layer.msg('录音中...', {
+                        icon: 16
+                        , shade: 0.01
+                        , skin: 'layui-layer-lan'
+                        , time: 0 //20s后自动关闭
+                        , btn: ['发送', '取消']
+                        , yes: function (index, layero) {
+                            //按钮【按钮一】的回调
+                            recorder && recorder.stop();
+                            recorder && recorder.exportWAV(function (blob) {
+                                wavBlob = blob;
+                                var fd = new FormData();
+                                var wavName = encodeURIComponent('audio_recording_' + new Date().getTime() + '.wav');
+                                fd.append('wavName', wavName);
+                                fd.append('file', wavBlob);
 
-                                                voicemessage = '<div style="cursor:pointer;text-align:center;" onclick="getstate(this)" data="play"><audio src="'+jsonObject.data.src+'"></audio><i class="layui-icon" style="font-size:25px;">&#xe652;</i><p>音频消息</p></div>';
+                                var xhr = new XMLHttpRequest();
+                                xhr.onreadystatechange = function () {
+                                    if (xhr.readyState == 4 && xhr.status == 200) {
+                                        jsonObject = JSON.parse(xhr.responseText);
 
-                                                    var sid = $('#channel').text();
-                                                    var pic = $("#se_avatar").attr('src');
-                                                    var time;
+                                        voicemessage = '<div style="cursor:pointer;text-align:center;" onclick="getstate(this)" data="play"><audio src="'+jsonObject.data.src+'"></audio><i class="layui-icon" style="font-size:25px;">&#xe652;</i><p>音频消息</p></div>';
 
-                                                    var sdata = $.cookie('cu_com');
+                                            var sid = $('#channel').text();
+                                            var pic = $("#se_avatar").attr('src');
+                                            var time;
 
-                                                    if (sdata) {
-                                                        var json = $.parseJSON(sdata);
-                                                        var img = json.avater;
+                                            var sdata = $.cookie('cu_com');
 
-                                                    }
+                                            if (sdata) {
+                                                var json = $.parseJSON(sdata);
+                                                var img = json.avater;
 
-                                                    if($.cookie("time") == ""){
-                                                        var myDate = new Date();
-                                                        let hours = myDate.getHours();
-                                                        let minutes = myDate.getMinutes();
-                                                        if(hours < 10 ) {
-                                                            minutes = '0'+minutes.toString();
-                                                        }
-                                                        if(minutes < 10 ) {
-                                                            minutes = '0'+minutes.toString();
-                                                        }
-                                                            time = hours+":"+minutes;
-                                                        var timestamp = Date.parse(new Date());
-                                                        $.cookie("time",timestamp/1000);
-
-                                                    }else{
-
-                                                        var timestamp = Date.parse(new Date());
-
-                                                        var lasttime =$.cookie("time");
-                                                        if((timestamp/1000 - lasttime) >30){
-                                                            var myDate =new Date(timestamp*1000);
-                                                            let hours = myDate.getHours();
-                                                            let minutes = myDate.getMinutes();
-                                                            if(hours < 10 ) {
-                                                                minutes = '0'+minutes.toString();
-                                                            }
-                                                            if(minutes < 10 ) {
-                                                                minutes = '0'+minutes.toString();
-                                                            }
-                                                                time = hours+":"+minutes;
-                                                        }else{
-                                                            time ="";
-                                                        }
-
-                                                        $.cookie("time",timestamp/1000);
-                                                    }
-                                                var str = '';
-                                                    str += '<li class="chatmsg"><div class="showtime">' + time + '</div>';
-                                                    str += '<div style="position: absolute;top: 26px;right: 2px;"><img  class="my-circle se_pic" src="' + pic + '" width="50px" height="50px"></div>';
-                                                    str += "<div class='outer-right'><div class='service'>";
-                                                    str += "<pre>" +  voicemessage + "</pre>";
-                                                    str += "</div></div>";
-                                                    str += "</li>";
-
-                                                    $(".conversation").append(str);
-                                                    $("#text_in").empty();
-
-                                                    var div = document.getElementById("wrap");
-                                                    div.scrollTop = div.scrollHeight;
-                                                    $(".chatmsg").css({
-                                                        height: 'auto'
-                                                    });
-                                                    $.ajax({
-                                                        url:HJWEB_ROOT_URL+"/admin/set/chats",
-                                                        type: "post",
-                                                        data: {visiter_id:sid,content:  voicemessage, avatar: img}
-                                                    });
                                             }
-                                        };
-                                        xhr.open('POST', '/admin/event/uploadVoice');
-                                        xhr.send(fd);
-                                    });
-                                    recorder.clear();
-                                    layer.close(index);
-                                }
-                                , btn2: function (index, layero) {
-                                    //按钮【按钮二】的回调
-                                    recorder && recorder.stop();
-                                    recorder.clear();
-                                    audio_context.close();
-                                    layer.close(index);
-                                }
+
+                                            if($.cookie("time") == ""){
+                                                var myDate = new Date();
+                                                let hours = myDate.getHours();
+                                                let minutes = myDate.getMinutes();
+                                                if(hours < 10 ) {
+                                                    minutes = '0'+minutes.toString();
+                                                }
+                                                if(minutes < 10 ) {
+                                                    minutes = '0'+minutes.toString();
+                                                }
+                                                    time = hours+":"+minutes;
+                                                var timestamp = Date.parse(new Date());
+                                                $.cookie("time",timestamp/1000);
+
+                                            }else{
+
+                                                var timestamp = Date.parse(new Date());
+
+                                                var lasttime =$.cookie("time");
+                                                if((timestamp/1000 - lasttime) >30){
+                                                    var myDate =new Date(timestamp*1000);
+                                                    let hours = myDate.getHours();
+                                                    let minutes = myDate.getMinutes();
+                                                    if(hours < 10 ) {
+                                                        minutes = '0'+minutes.toString();
+                                                    }
+                                                    if(minutes < 10 ) {
+                                                        minutes = '0'+minutes.toString();
+                                                    }
+                                                        time = hours+":"+minutes;
+                                                }else{
+                                                    time ="";
+                                                }
+
+                                                $.cookie("time",timestamp/1000);
+                                            }
+                                        var str = '';
+                                            str += '<li class="chatmsg"><div class="showtime">' + time + '</div>';
+                                            str += '<div style="position: absolute;top: 26px;right: 2px;"><img  class="my-circle se_pic" src="' + pic + '" width="50px" height="50px"></div>';
+                                            str += "<div class='outer-right'><div class='service'>";
+                                            str += "<pre>" +  voicemessage + "</pre>";
+                                            str += "</div></div>";
+                                            str += "</li>";
+
+                                            $(".conversation").append(str);
+                                            $("#text_in").empty();
+
+                                            var div = document.getElementById("wrap");
+                                            div.scrollTop = div.scrollHeight;
+                                            $(".chatmsg").css({
+                                                height: 'auto'
+                                            });
+                                            $.ajax({
+                                                url:HJWEB_ROOT_URL+"/admin/set/chats",
+                                                type: "post",
+                                                data: {visiter_id:sid,content:  voicemessage, avatar: img}
+                                            });
+                                    }
+                                };
+                                xhr.open('POST', '/admin/event/uploadVoice');
+                                xhr.send(fd);
                             });
+                            recorder.clear();
+                            layer.close(index);
+                        }
+                        ,btn2: function (index, layero) {
+                            //按钮【按钮二】的回调
+                            recorder && recorder.stop();
+                            recorder.clear();
+                            audio_context.close();
+                            layer.close(index);
+                        }
+                    });
 
-                        });
-                    } else {
-                        
-                            layer.msg('音频输入只支持https协议！');
-                        
-                    }
-
-
-                }, function (e) {
-                     layer.msg(e);
                 });
+            } else {
+                layer.msg('音频输入只支持https协议！');
+            }
 
+
+        }, function (e) {
+                layer.msg(e);
+        });
 
     }
 
-var getstate =function(obj){
-       
-       var c=obj.children[0];
- 
-       var state=$(obj).attr('data');
+    /**
+     * 切换对象状态，play 播放，pause 暂停
+     */ 
+    var getstate =function(obj){
+        var c=obj.children[0];
+        var state=$(obj).attr('data');
    
-       if(state == 'play'){
-         c.play();
-         $(obj).attr('data','pause');
-         $(obj).find('i').html("&#xe651;");
-       
-       }else if(state == 'pause'){
-          c.pause();
-         $(obj).attr('data','play');
-          $(obj).find('i').html("&#xe652;");
-       }
+        if(state == 'play'){
+            c.play();
+            $(obj).attr('data','pause');
+            $(obj).find('i').html("&#xe651;");
+        }else if(state == 'pause'){
+            c.pause();
+            $(obj).attr('data','play');
+            $(obj).find('i').html("&#xe652;");
+        }
 
         c.addEventListener('ended', function () {  
-         $(obj).attr('data','play');
-         $(obj).find('i').html("&#xe652;");
+        $(obj).attr('data','play');
+        $(obj).find('i').html("&#xe652;");
         
        }, false);
     }
 
+    /**
+     * 转接客服列表，提供访客ID以及客服名称
+     * visiter_id: 5f6c3364
+     * name:  azxf1234
+     */ 
     var getswitch =function(){
+        var sdata = $.cookie("cu_com");
+        var jsondata = $.parseJSON(sdata);
+        var sid = jsondata.visiter_id;
+        var se = $("#se").text();
 
-    var sdata = $.cookie("cu_com");
-    var jsondata = $.parseJSON(sdata);
-    var sid = jsondata.visiter_id;
-
-    var se = $("#se").text();
-
-      layer.open({
+        layer.open({
             type: 2,
             title: '转接客服列表',
             area: ['400px', '420px'],
@@ -1079,7 +1062,6 @@ var getstate =function(obj){
             content: HJWEB_ROOT_URL+'/admin/index/service?visiter_id='+sid+'&name='+se
         });
     }
-
 
   
 
