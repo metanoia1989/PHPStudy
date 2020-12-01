@@ -1,9 +1,0 @@
-config/my.php
-www/data/
-release/*
-tmp/extensions/*
-tmp/log/*
-tmp/model/*
-tmp/cache/*
-tmp/extension/*
-.gitkeep
