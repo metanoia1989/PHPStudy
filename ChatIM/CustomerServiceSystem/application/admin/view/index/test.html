@@ -1,0 +1,127 @@
+{include file="public/header"/}
+<style>
+  .my-setting {
+    margin: 10px 0px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.my-setting .head {
+    height: 40px;
+    line-height: 40px;
+    background: #F5FAFF;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+
+.my-setting .head .title {
+    padding-left: 16px;
+}
+
+.my-setting .head .action {
+    padding: 0px 15px;
+}
+.my-setting .contents{
+    font-size: 13px;
+    color: #555555;
+}
+
+.copy-js-content{
+    display: block;
+    height: 50px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    resize: none;
+    background: rgba(240, 240, 240, .8);
+    margin: 5px 0px;
+    font-size: 16px;
+    font-weight: bold;
+}
+#container{
+    padding: 40px;
+}
+.layui-btn.layui-btn-normal{
+    color: #3399ff;
+    background: #ffffff;
+    border: 1px solid #3399ff;
+    height: 32px;
+    line-height: 32px;
+    margin-left: 20px;
+    border-radius: 15px;
+}
+#minjs{
+    padding: 16px;
+    font-size: 14px;
+    color: #ff5c5c;
+}
+#wolive-js , #wechat-mp,#personal{
+    height: 50px;
+    line-height: 30px;
+    padding-left: 16px;
+    margin-bottom: 10px;
+    color: #555555;
+    font-size: 14px;
+    border-radius: 8px;
+    background: #f7f7f7;
+}
+</style>
+<div id="container" >
+    <div class="front">
+        <h1>测试信息广播</h1>
+        <div class="btn btn-primary call">打电话</div>
+    </div>
+</div>
+
+<script>
+    var connect_server =function () {
+        pusher = new Pusher('{$app_key}', {
+            encrypted: {$value}
+            , enabledTransports: ['ws']
+            , wsHost: '{$whost}'
+            , {$port}: {$wport}
+            , authEndpoint: HJWEB_ROOT_URL + '/admin/login/auth'
+            ,disableStats: true
+        });
+
+        var channel =pusher.subscribe("test");
+        channel.bind("call_phone",function(data){
+            console.log("电话过来了");
+        });
+
+        pusher.connection.bind('state_change', function(states) {
+            if(states.current == 'unavailable' || states.current == "disconnected" || states.current == "failed" ){
+                    pusher.unsubscribe("test");
+        
+                if (typeof pusher.isdisconnect == 'undefined') {
+                    pusher.isdisconnect = true;
+
+                    pusher.disconnect();
+                    delete pusher;
+                    
+                    window.setTimeout(function(){
+                        connect_server();
+                    },1000);
+                }
+                
+                console.log("断线了");
+            }
+        });
+
+        pusher.connection.bind('connected', function() {
+            console.log("连接成功！")
+        });
+    };
+    connect_server();
+
+    $(function () {
+        $('.call').on('click', function (e) {
+            $.post('/admin/index/callphone', function (res) {
+                console.log('接收到响应数据', res);
+            });
+        });
+    });
+</script>
+
+{include file="public/footer"/}

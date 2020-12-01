@@ -650,4 +650,47 @@ class Index extends Base
         $url = $qrcode->url($ticket);
         return json(['code'=>0,'data'=>$url]);
     }
+
+    public function test()
+    {
+        $this->assign('title', '测试频道');
+        $this->assign('part', "测试信息广播");
+        return $this->fetch();
+    }
+
+    public function callphone()
+    {
+
+        if (!ahost) {
+            $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+
+            $domain = $http_type . $_SERVER['HTTP_HOST'];
+        } else {
+            $domain = ahost;
+        }
+
+        $sarr = parse_url($domain);
+
+        if ($sarr['scheme'] == 'https') {
+            $state = true;
+        } else {
+            $state = false;
+        }
+
+        $app_key = app_key;
+        $app_secret = app_secret;
+        $app_id = app_id;
+        $options = array(
+            'encrypted' => $state
+        );
+        $host = $domain;
+        $port = aport;
+
+        $pusher = new \app\extra\push\Pusher($app_key, $app_secret, $app_id, $options, $host, $port);
+        $arr = [ 'msg' => '金刚板若波罗蜜', 'code' => 0, ];
+        // 推送消息
+        $pusher->trigger('test', 'call_phone', array('message' => $arr));
+        $data = ['code' => 0, 'msg' => 'success', 'data' => '拨打成功'];
+        return $data;
+    }
 }
