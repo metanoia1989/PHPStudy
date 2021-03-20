@@ -91,11 +91,11 @@ switch($ts){
 				 }else{
 					 $msg=$ret;
 					 }
-				}else{
-					fileWrite($apps.'_plugins.php','data',$app_plugins);
-					$tsMySqlCache->set($apps.'_plugins',$app_plugins);
-					$msg='插件启用成功！';
-				}
+			}else{
+				fileWrite($apps.'_plugins.php','data',$app_plugins);
+				$tsMySqlCache->set($apps.'_plugins',$app_plugins);
+				$msg='插件启用成功！';
+			}
 			
 			qiMsg($msg);
 		
