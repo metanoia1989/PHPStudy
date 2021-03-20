@@ -1,0 +1,28 @@
+{php include pubTemplate("header_admin")}
+<!--main-->
+<div class="midder">
+{php include template("admin/menu");}
+
+<form method="POST" action="{SITE_URL}index.php?app=article&ac=admin&mg=cate&ts=add_do">
+<table  class="table table-hover">
+<tr><td>分类名称：</td><td><input class=" form-control" name="catename" value="" /></td></tr>
+
+<tr><td>分类介绍：</td><td>
+
+    <textarea class=" form-control" name="cateinfo"></textarea>
+
+</td></tr>
+
+<tr><td>排序ID：</td><td><input class=" form-control" name="orderid" value="0" /></td></tr>
+
+<tr><td></td><td>
+
+    <input type="hidden" name="referid" value="{$referid}" />
+<input class="btn btn-primary" type="submit" value="添加分类" />
+</td></tr>
+</table>
+</form>
+
+</div>
+
+{php include pubTemplate("footer_admin")}

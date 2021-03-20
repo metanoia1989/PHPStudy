@@ -1,0 +1,89 @@
+{php include pubTemplate("header")}
+<div class="container">
+
+
+
+    <div class="row">
+
+
+        <div class="col-md-3">
+
+            <div class="my_left">
+
+                {php include pubTemplate("my")}
+
+            </div>
+
+        </div>
+        <div class="col-md-9">
+
+
+
+            <div class="card">
+            <div class="card-header">创建的小组</div>
+            <div class="card-body">
+
+
+
+
+                <div class="row">
+
+                    {loop $arrCreateGroup $key $item}
+                    <div class="col-6 col-md-2 mb-3">
+                        <div class="thumbnail">
+                            <a href="{tsUrl('group','show',array('id'=>$item['groupid']))}"><img class="rounded mw-100" src="{$item['photo']}"></a>
+                            <div class="caption">
+                                <div class="title-cut text-center c9">{$item['groupname']}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {/loop}
+
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+            <div class="card">
+                <div class="card-header">加入的小组</div>
+                <div class="card-body">
+                <div class="row">
+
+
+
+
+                    {loop $arrGroup $key $item}
+                    <div class="col-6 col-md-2 mb-3">
+                        <div class="thumbnail">
+                            <a href="{tsUrl('group','show',array('id'=>$item['groupid']))}"><img class="rounded mw-100" src="{$item['photo']}" alt="{$item['groupname']}"></a>
+                            <div class="caption">
+                                <div class="title-cut text-center c9">{php echo cututf8($item['groupname'],0,6,false)}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {/loop}
+
+                </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+        </div>
+
+
+
+
+</div>
+{php include pubTemplate("footer")}

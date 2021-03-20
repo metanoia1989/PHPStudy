@@ -1,0 +1,15 @@
+
+<div class="tabnav">
+    <h6>文章管理</h6>
+<ul>
+<li {if $mg=='options'}class="select"{/if}><a href="{SITE_URL}index.php?app=article&ac=admin&mg=options">文章配置</a></li>
+
+<li {if $mg=='cate' && $ts=='list'}class="select"{/if}><a href="{SITE_URL}index.php?app=article&ac=admin&mg=cate&ts=list">分类列表</a></li>
+
+<li {if $mg=='cate' && $ts=='add'}class="select"{/if}><a href="{SITE_URL}index.php?app=article&ac=admin&mg=cate&ts=add">新建分类</a></li>
+
+<li {if $mg=='article' && $ts=='list'}class="select"{/if}><a href="{SITE_URL}index.php?app=article&ac=admin&mg=article&ts=list">文章列表</a></li>
+
+</ul>
+</div>
+<div style="height: 100px;"></div>
