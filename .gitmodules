@@ -3,5 +3,8 @@
 	url = https://github.com/metanoia1989/PHP-Advance-Course.git
 
 [submodule "FirstExt"]
-	path = Base/Extension/FirstExt
-	url = https://github.com/metanoia1989/FirstExt.git
+	path = FirstExt
+	url = https://github.com/metanoia1989/FirstExt
+[submodule "Base\\Extension\\FirstExt"]
+	path = Base\\Extension\\FirstExt
+	url = https://github.com/metanoia1989/FirstExt
