@@ -1,0 +1,29 @@
+{
+    "name": "metanoia1989/first_ext",
+    "description": "My first composer package",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AdamSmith",
+            "email": "sogaxili@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Metanoia1989\\FirstExt\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Metanoia1989\\FirstExt\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5",
+        "mockery/mockery": "^1.3"
+    }
+}
