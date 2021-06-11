@@ -1,0 +1,20 @@
+{
+    "name": "metanoia1989/first-ext-test",
+    "type": "project",
+    "authors": [
+        {
+            "name": "AdamSmith",
+            "email": "m15171641694@163.com"
+        }
+    ],
+    "require": {
+        "metanoia1989/first_ext": "dev-master",
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "repositories": {
+        "first_ext": {
+            "type": "path",
+            "url": "..\\FirstExt"
+        }
+    }
+}
