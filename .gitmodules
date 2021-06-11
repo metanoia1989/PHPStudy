@@ -2,9 +2,6 @@
 	path = PHP-Advance-Course
 	url = https://github.com/metanoia1989/PHP-Advance-Course.git
 
-[submodule "FirstExt"]
-	path = FirstExt
-	url = https://github.com/metanoia1989/FirstExt
 [submodule "Base\\Extension\\FirstExt"]
 	path = Base\\Extension\\FirstExt
 	url = https://github.com/metanoia1989/FirstExt
