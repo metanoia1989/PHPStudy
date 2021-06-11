@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^7.3"
+        "guzzlehttp/guzzle": "^7.3",
+        "illuminate/support": "^7.30"
     },
     "autoload": {
         "psr-4": {
@@ -20,6 +21,13 @@
     "autoload-dev": {
         "psr-4": {
             "Metanoia1989\\FirstExt\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Metanoia1989\\FirstExt\\ServiceProvider"
+            ]
         }
     },
     "require-dev": {
