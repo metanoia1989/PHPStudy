@@ -23,7 +23,7 @@
         "vuex": "^3.4.0",
         "core-js": "^2.6.5",
         "randomcolor": "^0.5.4",
-        "socket.io-client": "^1.7.3",
+        "socket.io-client": "^4.5.3",
         "vue": "^2.6.10",
         "vue-cropper": "^0.4.9",
         "vue-flex-touch": "^1.0.0",
